@@ -52,20 +52,27 @@ All folders marked with `<dvc>` are versioned via dvc and so are their subfolder
 ```
 
 ## Setup
+### Prerequesites
 Make sure poetry is installed on your system.
 ```
 pip install poetry
 ```
+It is advised to create project environments in the same place as the code.
+```
+poetry config virtualenvs.in-project true
+```
+### Installation
 Navigate to the project directory and install all dependencies.
 ```
 poetry install
 ```
 To activate the virtual environment run
 
-+ on Windows `env\scripts\activate`
-+ on Unix `source env/bin/activate`
++ on Windows `.venv\scripts\activate`
++ on Unix `source .venv/bin/activate`
 
 in your terminal.
+Most Terminals from within IDEs do this automatically.
 
 Make sure that pre-commits are enabled.
 ```
@@ -81,7 +88,6 @@ mkdocs serve
 ```
 
 Use the following command to build the documentation website. Use this inside your CI/CD Pipeline.
-
 ```
 mkdocs build
 ```
