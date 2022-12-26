@@ -17,10 +17,9 @@ All folders marked with `<dvc>` are versioned via dvc and so are their subfolder
 ```html
 ├── .dvc               <- Data and model version control managed by dvc.
 ├── data <dvc>
-│   ├── external       <- Data from third party sources.
 │   ├── interim        <- Intermediate data that has been or is being transformed. Put your dask dataframes here.
 │   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, (mostly) immutable data dump.
+│   └── raw            <- The original, unedited data dump.
 │
 ├── docs               <- Project documentation.
 │   ├── index          <- Landing page
