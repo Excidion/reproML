@@ -7,7 +7,7 @@ Some choices regarding technology are made for you when using this template:
 + `git` for version control
 + `dvc` for data versioning, ML workflow automation and experiment management
 + `poetry` for dependecy management
-+ `mkdocs-material` and `mkdocstrings` for documentation
++ `mkdocs-material` and `mkdocstrings` for documentation with `mermaid` for diagrams
 + `black` code formatter, enforced via `pre-commit` hooks
 
 
