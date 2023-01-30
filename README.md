@@ -15,9 +15,10 @@ Some choices regarding technology are made for you when using this template:
 All folders marked with `<dvc>` are versioned via dvc and so are their subfolders.
 
 ```html
-├── .dvc               <- Data and model version control managed by dvc.
-├── data <dvc>
-│   ├── interim        <- Intermediate data that has been or is being transformed. Put your dask dataframes here.
+├── .dvc               <- Metadata managed by dvc, do not touch.
+│
+├── data <dvc>         <- All data files belong into one of this folders subfolder
+│   ├── interim        <- Intermediate data that has been or is being transformed.
 │   ├── processed      <- The final, canonical data sets for modeling.
 │   └── raw            <- The original, unedited data dump.
 │
@@ -26,26 +27,25 @@ All folders marked with `<dvc>` are versioned via dvc and so are their subfolder
 │   ├── technical.md   <- Document code.
 │   └── business.md    <- Document business goals.
 │
-├── models <dvc>       <- Trained and serialized models.
+├── models <dvc>       <- Trained and serialized models and other artifacts
+│   └── logs           <- Logfiles and plots from training and prediction
 │
 ├── notebooks          <- Jupyter notebooks.
 │
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
+├── references         <- Data dictionaries, manuals, and helper materials.
 │
 ├── reports <dvc>      <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
+│   └── figures        <- Generated graphics and figures to be used in reports
 │
 ├── src                <- Source code for use in this project.
 │   ├── __init__.py    <- Makes src a Python module
-│   │
 │   ├── data           <- Scripts to download or generate data
-│   │
 │   ├── features       <- Scripts to turn raw data into features for modeling
-│   │
-│   ├── models         <- Scripts to train models and then use trained models to make
-│   │                     predictions
-│   │
-│   └── visualization  <- Scripts to create exploratory and results oriented visualizations
+│   ├── models         <- Scripts for training and prediction
+│   └── visualization  <- Scripts to create visualizations
+│
+├── poetry.lock        <- Full dependency list. Managed by poetry, do no touch.
+├── pyproject.toml     <- Project configuration, define dependencies here.
 │
 └── README.md          <- The top-level README for developers using this project.
 ```
