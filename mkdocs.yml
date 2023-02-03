@@ -8,6 +8,10 @@ plugins:
   - mkdocstrings
 
 markdown_extensions:
+  # admonitions
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
   - tables # data tables
   # support for flowcharts via mermaid
   - pymdownx.superfences:

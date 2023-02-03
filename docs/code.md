@@ -1,4 +1,5 @@
-# Technical Documentation
+# Source Code
+
 ::: src.data.make_dataset
 ::: src.features.build_features
 ::: src.models.train_model
