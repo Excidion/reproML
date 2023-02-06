@@ -41,7 +41,7 @@ Furthermore it gives directions on how to use both tools and structure.
 
 ## Directory structure
 This is your first overview how to find your way around this project.
-```html
+```
 ├── .dvc               <- Metadata managed by dvc, do not touch.
 │
 ├── data <dvc>         <- All data files belong into one of this folders subfolder

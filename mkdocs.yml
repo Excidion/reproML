@@ -2,6 +2,9 @@ site_name: Documentation
 
 theme:
   name: "material"
+  palette:
+    scheme: slate
+    primary: teal
 
 plugins:
   - search
