@@ -15,6 +15,10 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+  # highlighz, strikethrough and underline
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
   - tables # data tables
   # support for flowcharts via mermaid
   - pymdownx.superfences:
