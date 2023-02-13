@@ -110,7 +110,7 @@ If you care to add your own, please reach out to share them.
 
 ### Code styles are not worth fighting over
 Even though code quality is important - nobody likes debating about indentation aesthetics or pedantic formatting standards.
-That is why this template uses an automatic code formatter (with little to no configuration ability) and enforces it's style via pre-commit hooks.
+That is why this template uses an automatic code formatter ([black](https://black.readthedocs.io/en/stable/)) and enforces it's style via pre-commit hooks.
 
 
 ### Raw data should be immutable
