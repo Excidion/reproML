@@ -78,15 +78,6 @@ This is your first overview how to find your way around this project.
 ```
 All folders marked with `<dvc>` are versioned via dvc and so are their subfolders.
 
-## Prerequisites
-What you need installed on your system:
-
-+ [Python](https://www.python.org/downloads/) (3.8 or higher)
-
-+ [git](https://git-scm.com/downloads)
-
-+ [dvc](https://dvc.org/)
-
 
 ## Tools
 Some choices regarding technology are made for you when using this template:
@@ -97,7 +88,6 @@ For motivation whese precisely these tools where chosen see the section about [o
 + `poetry` for dependecy management
 + `mkdocs-material` and `mkdocstrings` for documentation with [`mermaid`](https://squidfunk.github.io/mkdocs-material/reference/diagrams/) for diagrams
 + `black` code formatter, enforced via `pre-commit` hooks
-
 
 
 ## Opinions

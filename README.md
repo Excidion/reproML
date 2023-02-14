@@ -4,11 +4,17 @@ For details take look at the [documentation](#look-at-the-documentation).
 
 ## Setup
 ### Prerequesites
+What you need installed on your system:
++ [Python](https://www.python.org/downloads/) (3.8 or higher) added to PATH
++ [git](https://git-scm.com/downloads)
++ [dvc](https://dvc.org/)
+
 Make sure poetry is installed on your system.
 ```
 pip install poetry
 ```
 It is advised to create project environments in the same place as the code.
+The following command will configure poetry such that they always will be created there.
 ```
 poetry config virtualenvs.in-project true
 ```
