@@ -20,6 +20,7 @@ poetry config virtualenvs.in-project true
 ```
 ### Installation
 Navigate to the project directory and install all dependencies.
+This command will also create a virtual environment for the project.
 ```
 poetry install
 ```
@@ -28,22 +29,17 @@ To activate the virtual environment run
 poetry shell
 ```
 in your terminal.
-Most Terminals from within IDEs do this automatically.
+Most Terminals from within IDEs activate the environment automatically.
 
-Make sure that pre-commits are enabled.
+With an activated environment, make sure that pre-commits are enabled.
 ```
 pre-commit install
 ```
 
 ## Look at the Documentation
+For more detailed information about the project checkout the documentation.
 Use the following command to run the documentation webserver.
-The server will automatically reload on any change.
-Very useful for development purposes.
+The server will automatically reload on any change to the markdown files in the `docs` directory.
 ```
 mkdocs serve
-```
-
-Use the following command to build the documentation website. Use this inside your CI/CD Pipeline.
-```
-mkdocs build
 ```
