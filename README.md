@@ -24,10 +24,9 @@ Navigate to the project directory and install all dependencies.
 poetry install
 ```
 To activate the virtual environment run
-
-+ on Windows `.venv\scripts\activate`
-+ on Unix `source .venv/bin/activate`
-
+```
+poetry shell
+```
 in your terminal.
 Most Terminals from within IDEs do this automatically.
 
