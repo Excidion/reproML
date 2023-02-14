@@ -39,7 +39,7 @@ pre-commit install
 ## Look at the Documentation
 For more detailed information about the project checkout the documentation.
 Use the following command to run the documentation webserver.
-The server will automatically reload on any change to the markdown files in the `docs` directory.
 ```
 mkdocs serve
 ```
+The server will automatically reload on any change to the markdown files in the `docs` directory.
