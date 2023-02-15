@@ -53,8 +53,9 @@ This is your first overview how to find your way around this project.
 │   ├── helper         <- Helper files for docs deployment. You can ignore these.
 │   ├── index.md       <- Landing page, describe the project and team.
 │   ├── business.md    <- Document business context and goals.
+│   ├── model.md       <- Document modeling from data to ML.
 │   ├── code.md        <- Document code.
-│   └── structure.md   <- Ducoment tools and technical organization. You are here.
+│   └── structure.md   <- Document tools and technical organization. You are here.
 │
 ├── models <dvc>       <- Trained and serialized models and other artifacts
 │   └── logs           <- Logfiles and plots from training and prediction
@@ -78,6 +79,22 @@ This is your first overview how to find your way around this project.
 └── README.md          <- The top-level README for developers using this project.
 ```
 All folders marked with `<dvc>` are versioned via dvc and so are their subfolders.
+
+
+## FAQ
+??? error "ERROR: failed to push data to the cloud - config file error: no remote specified"
+    When pushing your first commits to the remote you might encounter the error message above.
+    The reason behind this that dvc wants to push your data, just as git pushes your code.
+    By default, no remote data storage is configured and therefore dvc complains.
+
+    To fix this use the [dvc add](https://dvc.org/doc/command-reference/remote/add#remote-add) command:
+    `dvc remote add -d <remote name> <remote url>`
+    You can use a number of [remote storage backends](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+
+
+??? question "How do I make a diagrams and flowchart?"
+    You can design flowcharts in you markdown files.
+    You can find some examples [here](https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage) and more advanced syntax [here](https://mermaid.js.org/syntax/flowchart.html)
 
 
 ## Tools
