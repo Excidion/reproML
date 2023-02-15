@@ -50,6 +50,7 @@ This is your first overview how to find your way around this project.
 │   └── raw            <- The original, unedited data dump.
 │
 ├── docs               <- Project documentation.
+│   ├── helper         <- Helper files for docs deployment. You can ignore these.
 │   ├── index.md       <- Landing page, describe the project and team.
 │   ├── business.md    <- Document business context and goals.
 │   ├── code.md        <- Document code.
