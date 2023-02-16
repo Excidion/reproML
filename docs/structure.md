@@ -97,23 +97,39 @@ All folders marked with `<dvc>` are versioned via dvc and so are their subfolder
     You can find some examples [here](https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage) and more advanced syntax [here](https://mermaid.js.org/syntax/flowchart.html)
 
 
-## Tools
-Some choices regarding technology are made for you when using this template:
-For motivation whese precisely these tools where chosen see the section about [opinions](#opinions).
-
-+ `git` for version control
-+ `dvc` for data versioning, ML workflow automation and experiment management
-+ `poetry` for dependecy management
-+ `mkdocs-material` and `mkdocstrings` for documentation with [`mermaid`](https://squidfunk.github.io/mkdocs-material/reference/diagrams/) for diagrams
-+ `black` code formatter, enforced via `pre-commit` hooks
-
-
 ## Opinions
 There are some opinions and assumptions implicit in the project structure.
 These are derived from experience gained with past data science projects.
 Some of the opinions are about workflows, and some of the opinions are about tools that make things easier.
 The following section contains some of the thoughts which this project is built upon.
 If you care to add your own, please reach out to share them.
+
+
+### Automate the boring stuff
+Things like quality checks are important but tedious.
+We can use [pre-commit](https://pre-commit.com/) hooks to automatically run most checks before comitting or pushing changes.
+Becasue every part of the workflow that can be automated, should be.
+
+
+### Documentation should be close to code
+Having no documentation is bad.
+Having Documentation that is out of date is even worse.
+If documenting takes too much effort, your documentation is doomed to be out of date.
+These observations lead to three decisions that keep documentation close to the code and easy to maintain.
+
++ Documentation is versioned within the repository.
+
++ Document in simple markdown files to keep effort low.
+Markdown can be rendered to beautiful web pages (like this one) via [mkdocs-material](https://squidfunk.github.io/mkdocs-material/).
+If you use GitHub ~~or GitLab~~, this template comes with code to automatically [publish your site](https://squidfunk.github.io/mkdocs-material/publishing-your-site/).
+If you are feeling fancy you can even define 
+[diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage), 
+[tables](https://squidfunk.github.io/mkdocs-material/reference/data-tables/#usage),
+and [checklists](https://squidfunk.github.io/mkdocs-material/reference/lists/#using-task-lists)
+inside markdown.
+
++ Source code documentation is automatically generated from [docstrings](https://peps.python.org/pep-0257/#what-is-a-docstring) with [mkdocstrings-python](https://mkdocstrings.github.io/python/).
+A pre-commit hook with [interrogate](https://interrogate.readthedocs.io/) ensures that enough docstrings exist.
 
 
 ### Code styles are not worth fighting over
@@ -219,5 +235,5 @@ In this way we want to put the least amount of limits on you and avoid unecessar
 
 If your project uses proprietary software, go ahead - but we did not want to cherry-pick a specific vendor for everyone.
 
-This need for flexibility one of the reasons for choosing `dvc` for data version control and experiment tracking.
+This need for flexibility is one of the reasons for choosing `dvc` for data version control and experiment tracking.
 It is open source and supports all major cloud prviders (and more) as [remote storage backends](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
