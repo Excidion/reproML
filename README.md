@@ -1,4 +1,6 @@
 # Data Science Project Template
+[![interrogate](docs/helper/interrogate_badge.svg)](https://interrogate.readthedocs.io/)
+
 A toolset for collaboritive development and reproducible results in data science projects.
 For details take look at the [documentation](#look-at-the-documentation).
 

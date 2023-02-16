@@ -25,3 +25,7 @@ build-backend = "poetry.core.masonry.api"
 ignore-init-method = true
 ignore-init-module = true
 ignore-module = true
+fail-under = 80
+verbose = 1
+generate-badge = "docs/helper"
+badge-format = "svg"
