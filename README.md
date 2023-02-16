@@ -24,6 +24,8 @@ This command will also create a virtual environment for the project.
 ```
 poetry install
 ```
+In case you have multiple Python versions installed on your system and want to use a specific one, you can follow [these instructions](https://python-poetry.org/docs/managing-environments/#switching-between-environments).
+
 To activate the virtual environment run
 ```
 poetry shell
