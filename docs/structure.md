@@ -91,6 +91,17 @@ All folders marked with `<dvc>` are versioned via dvc and so are their subfolder
     `dvc remote add -d <remote name> <remote url>`
     You can use a number of [remote storage backends](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
 
+    If you don't want to add a remote storage (yet), you can also use `git push --no-verify` to skip the synchronization.
+
+
+??? question "How do I install new packages?"
+    You can install packages via poetry
+    ```
+    poetry add <package-name>
+    ```
+    The packages is then installed and added to the `pyproject.toml` and `poetry.lock`.
+    Commit these changes so everyone else that uses your code will have the same dependencies installed.
+
 
 ??? question "How do I make a diagrams and flowchart?"
     You can design flowcharts in you markdown files.
