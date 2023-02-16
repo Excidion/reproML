@@ -19,6 +19,10 @@ markdown_extensions:
   - pymdownx.caret
   - pymdownx.mark
   - pymdownx.tilde
+  # fancy lists
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - tables # data tables
   # support for flowcharts via mermaid
   - pymdownx.superfences:
