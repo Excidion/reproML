@@ -246,5 +246,5 @@ In this way we want to put the least amount of limits on you and avoid unecessar
 
 If your project uses proprietary software, go ahead - but we did not want to cherry-pick a specific vendor for everyone.
 
-This need for flexibility is one of the reasons for choosing `dvc` for data version control and experiment tracking.
-It is open source and supports all major cloud prviders (and more) as [remote storage backends](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+This need for flexibility is one of the reasons for choosing [dvc](https://dvc.org/) for data version control and experiment tracking.
+It is open source and supports all major cloud providers as [remote storage backends](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
