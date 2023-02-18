@@ -8,7 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.8"
 python-dotenv = "^0.21.0"
-dvc = "^2.45.1"
+dvc = {extras = ["all"], version = "^2.45.1"}
 
 [tool.poetry.dev-dependencies]
 black = "^22.3.0"
