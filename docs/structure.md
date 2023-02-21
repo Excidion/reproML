@@ -95,7 +95,7 @@ All folders marked with `<dvc>` are versioned via dvc and so are their subfolder
 
 
 ??? question "How do I install new packages?"
-    You can install packages via poetry
+    You can [install packages via poetry](https://python-poetry.org/docs/basic-usage/#specifying-dependencies)
     ```
     poetry add <package-name>
     ```
@@ -199,21 +199,22 @@ from src.data import make_dataset
 
 
 ### Build reproducible environments
-
-The first step in reproducing an analysis is always reproducing the computational environment it was run in.
+The first step in reproducing an analysis is reproducing the computational environment it was run in.
 You need the same tools, the same libraries, and the same versions to make everything play nicely together.
-For this we use poetry which can handle your dependencies as well setup your environments.
+For this we use [poetry](https://python-poetry.org/) which can handle your dependencies as well setup your environments.
 This has a couple of advantages over the classic `requirements.txt`:
 
 + Resolve dependencies automatically:
 If one of your used packages requires `numpy>1.10` and another `numpy<1.24` poetry will figure out a version of numpy that satisfies both.
+For more details see [version constraints](https://python-poetry.org/docs/dependency-specification/#version-constraints)
 
 + Less headache when collaborating over different operating systems:
 Everyone on a Mac who ever got at `requirements.txt` from a colleague on Windows will understand.
-This also comes handy if you want to deploy your code to the cloud.
+This also comes in handy if you want to deploy your code to the cloud.
 
 + Differentiate between different categories of dependencies:
 Because you deployment in the cloud does not need a jupyter kernel or a code formatter.
+For more details see poetry's [dependency groups](https://python-poetry.org/docs/managing-dependencies/#dependency-groups).
 
 
 ### No secrets in version control
