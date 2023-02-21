@@ -7,7 +7,6 @@ For details take look at the [documentation](#look-at-the-documentation).
 What you need installed on your system:
 + [Python](https://www.python.org/downloads/) (3.8 or higher) added to PATH
 + [git](https://git-scm.com/downloads)
-+ [dvc](https://dvc.org/)
 
 Make sure poetry is installed on your system.
 ```
@@ -26,17 +25,20 @@ poetry install
 ```
 In case you have multiple Python versions installed on your system and want to use a specific one, you can follow [these instructions](https://python-poetry.org/docs/managing-environments/#switching-between-environments).
 
-To activate the virtual environment run
+To activate the virtual environment run the following command.
+(Most Terminals from within IDEs activate the environment automatically.)
 ```
 poetry shell
 ```
-in your terminal.
-Most Terminals from within IDEs activate the environment automatically.
-
 With an activated environment, make sure that pre-commits are enabled.
 ```
 pre-commit install
 ```
+And make sure that you have all the necessary data available.
+```
+dvc pull
+```
+Now you can start coding.
 
 ## Look at the Documentation
 For more detailed information about the project checkout the documentation.
