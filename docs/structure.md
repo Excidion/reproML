@@ -76,6 +76,9 @@ This is your first overview how to find your way around this project.
 ├── poetry.lock        <- Full dependency list. Managed by poetry, do no touch.
 ├── pyproject.toml     <- Project configuration, define dependencies here.
 │
+├── .github/workflows  <- CICD code for GitHub
+├── .gitlab-ci.yml     <- CICD code for GitLab
+│
 └── README.md          <- The top-level README for developers using this project.
 ```
 All folders marked with `<dvc>` are versioned via dvc and so are their subfolders.
