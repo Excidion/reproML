@@ -136,8 +136,8 @@ These observations lead to three decisions that keep documentation close to the 
 + Document in simple markdown files to keep effort low.
 Markdown can be rendered to beautiful web pages (like this one) via [mkdocs-material](https://squidfunk.github.io/mkdocs-material/).
 If you use GitHub ~~or GitLab~~, this template comes with code to automatically [publish your site](https://squidfunk.github.io/mkdocs-material/publishing-your-site/).
-If you are feeling fancy you can even define 
-[diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage), 
+If you are feeling fancy you can even define
+[diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage),
 [tables](https://squidfunk.github.io/mkdocs-material/reference/data-tables/#usage),
 and [checklists](https://squidfunk.github.io/mkdocs-material/reference/lists/#using-task-lists)
 inside markdown.
@@ -152,21 +152,21 @@ That is why this template uses an automatic code formatter ([black](https://blac
 
 
 ### Raw data should be immutable
-Don't ever edit your **raw data**, especially not manually, and especially not in Excel. 
-Don't overwrite your raw data. 
-Don't save multiple versions of the raw data. 
-Treat the data (and its format) as immutable as possible. 
-The code you write should move the raw data through a pipeline to your final analysis. 
+Don't ever edit your **raw data**, especially not manually, and especially not in Excel.
+Don't overwrite your raw data.
+Don't save multiple versions of the raw data.
+Treat the data (and its format) as immutable as possible.
+The code you write should move the raw data through a pipeline to your final analysis.
 You shouldn't have to run all of the steps every time you want to make a new figure, but anyone should be able to reproduce the final products with only the code in `src` and the data in `data/raw`.
 
 ??? tip "Processed and interim data is mutable"
-    
+
     Data in and after processing is very much mutable.
     The suggestions for immutability apply only to the folder `data/raw`.
-    The contents of folders `data/interim` and `data/processed` have to be able to change. 
+    The contents of folders `data/interim` and `data/processed` have to be able to change.
 
 ??? question "What if my data changes over time?"
-    
+
     Imagine the scenario where you pull your data from an SQL database into `data/raw`.
     Since you (probalby) only have limited control over that database, the data a new download would produce might change in the future.
     This is not ideal, but can be accounted for:
@@ -180,7 +180,7 @@ You shouldn't have to run all of the steps every time you want to make a new fig
 Jupyter Notebooks are very effective for exploratory data analysis.
 However, these tools can be less effective as reproducible pieces of software.
 
-Since notebooks are challenging objects for source control (diffs are not human-readable and merging is near impossible), it is recommended not to collaborate directly with others on the same notebook. 
+Since notebooks are challenging objects for source control (diffs are not human-readable and merging is near impossible), it is recommended not to collaborate directly with others on the same notebook.
 There are two hints for using notebooks effectively:
 
 + Follow a naming convention that shows the order the analysis was done in. We use the format `<step>-<description>.ipynb` (e.g., `01-visualize-distributions.ipynb`).
@@ -223,8 +223,8 @@ For more details see poetry's [dependency groups](https://python-poetry.org/docs
 ### No secrets in version control
 You really don't want to leak your AWS secret key or Postgres username and password on Github.
 To ensure this we use `python-dotenv`.
-Create a file named `.env` in the project root folder. 
-Thanks to the `.gitignore`, this file should never get committed into the version control repository. 
+Create a file named `.env` in the project root folder.
+Thanks to the `.gitignore`, this file should never get committed into the version control repository.
 Here's an example how that file might look like:
 ```ini
 DATABASE_URL=postgres://username:password@localhost:5432/dbname
@@ -232,7 +232,7 @@ AWS_ACCESS_KEY=myaccesskey
 AWS_SECRET_ACCESS_KEY=mysecretkey
 OTHER_VARIABLE=something
 ```
-In your code you can access these screts like this: 
+In your code you can access these screts like this:
 ```python
 import os
 from dotenv import load_dotenv
