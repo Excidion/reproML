@@ -32,7 +32,7 @@ poetry shell
 ```
 With an activated environment, make sure that pre-commits are enabled.
 ```
-pre-commit install
+pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
 ```
 And make sure that you have all the necessary data available.
 ```
