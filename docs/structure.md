@@ -111,6 +111,24 @@ All folders marked with `<dvc>` are versioned via dvc and so are their subfolder
     You can find some examples [here](https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage) and more advanced syntax [here](https://mermaid.js.org/syntax/flowchart.html)
 
 
+??? question "How do I use dvc with git?"
+    Instead of tracking a file (eg. `data.csv`) directly, you track it's `data.csv.dvc` file with git.
+    To create this file and therefore start tracking the original file with dvc execute:
+    ```
+    dvc add data `data.csv`
+    ```
+    If you change `data.csv` later can simply add the chages again with the same command.
+
+    You can always check on the status of all your tracked files with
+    ```
+    dvc data status
+    ```
+    If you want to stop tracking a file you can just delete the file and it's dvc file.
+    Then commit the deletion of the dvc file:
+    ```
+    git add data.csv.dvc
+    ```
+
 ## Opinions
 There are some opinions and assumptions implicit in the project structure.
 These are derived from experience gained with past data science projects.
