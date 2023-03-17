@@ -12,11 +12,11 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@v2
 
+      - name: Setup environment
+        run: pip install poetry && poetry install --only docs
+
       - name: Generate badges
-        run: pip install interrogate && interrogate
+        run: poetry run interrogate
 
       - name: Deploy docs
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REQUIREMENTS: docs/helper/requirements_GitHub.txt
+        run: poetry run mkdocs gh-deploy --force
