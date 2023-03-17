@@ -1,12 +1,14 @@
 image: python:3.8-buster
 
 before_script:
-  - pip install -r docs/helper/requirements_GitLab.txt
+  - pip install poetry
+  - poetry install --only docs
+  - poetry run interrogate
 
 test:
   stage: test
   script:
-  - mkdocs build --strict --verbose --site-dir test
+  - poetry run mkdocs build --strict --verbose --site-dir test
   artifacts:
     paths:
     - test
@@ -16,7 +18,7 @@ test:
 pages:
   stage: deploy
   script:
-  - mkdocs build --strict --verbose --site-dir public
+  - poetry run mkdocs build --strict --verbose --site-dir public
   artifacts:
     paths:
     - public
