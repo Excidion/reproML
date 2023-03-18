@@ -90,7 +90,7 @@ All folders marked with `<dvc>` are versioned via dvc and so are their subfolder
     The reason behind this that dvc wants to push your data, just as git pushes your code.
     By default, no remote data storage is configured and therefore dvc complains.
 
-    To fix this use the [dvc add](https://dvc.org/doc/command-reference/remote/add#remote-add) command:
+    To fix this use the [this command](https://dvc.org/doc/command-reference/remote/add#remote-add):
     `dvc remote add -d <remote name> <remote url>`
     You can use a number of [remote storage backends](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
 
@@ -219,7 +219,13 @@ from src.data import make_dataset
 ```
 
 
-### Build reproducible environments
+### Data Science has to be reproducible
+Data Science projects are by nature scientific, so one should try to follow scientific principles where ever possible and feasible.
+Reproducibility or repeatability is a major principle underpinning the scientific method.
+Therefore we should be striving for our work to produce computations which can be executed again with identical results.
+
+
+#### Build reproducible environments
 The first step in reproducing an analysis is reproducing the computational environment it was run in.
 You need the same tools, the same libraries, and the same versions to make everything play nicely together.
 For this we use [poetry](https://python-poetry.org/) which can handle your dependencies as well setup your environments.
@@ -234,7 +240,7 @@ Everyone on a Mac who ever got at `requirements.txt` from a colleague on Windows
 This also comes in handy if you want to deploy your code to the cloud.
 
 + Differentiate between different categories of dependencies:
-Because you deployment in the cloud does not need a jupyter kernel or a code formatter.
+Because your deployment in the cloud does not need a code formatter and when building your docs there is (probably) no use for a jupyter kernel.
 For more details see poetry's [dependency groups](https://python-poetry.org/docs/managing-dependencies/#dependency-groups).
 
 
@@ -261,7 +267,7 @@ database_url = os.environ.get("DATABASE_URL")
 ```
 
 
-### FOSS first
+### Open by design
 This project is built on top of free and open source software and this is by explicit choice.
 The idea is that no project should be locked into a specific software vendor by default.
 In this way we want to put the least amount of limits on you and avoid unecessary costs.
@@ -270,3 +276,14 @@ If your project uses proprietary software, go ahead - but we did not want to che
 
 This need for flexibility is one of the reasons for choosing [dvc](https://dvc.org/) for data version control and experiment tracking.
 It is open source and supports all major cloud providers as [remote storage backends](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+
+In the same spirit this structure is not intended to be rigid.
+The intention is to provide a starting point for your next project from which you can build.
+
+
+## Acknowledgements
+Main influnces when defining this structure were:
+
++ [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) for structure and some opinions
+
++ [iterative/example-get-started](https://github.com/iterative/example-get-started) for workflows best practices
