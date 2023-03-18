@@ -1,5 +1,8 @@
 # Model Architecture
+
+## Mathematical Model
 Formulate the business problem as a machine learning problem.
+
 $$
 y_i = f(\vec{x}_i)
 $$
@@ -16,6 +19,6 @@ Show an example of the dataset.
 
 |label|feature_0|feature_1|...|feature_n|
 |-|-|-|-|-|
-|0|1|"red"|...|0.73|
-|1|0|"green"|...|0.42|
+|False|1|"red"|...|0.73|
+|True|0|"green"|...|0.42|
 
