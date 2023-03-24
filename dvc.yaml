@@ -1,0 +1,38 @@
+# defines the pipeline from data to model training
+stages:
+  prepare:
+    cmd: poetry run src/data/make_dataset.py
+    deps:
+      - src/data/make_dataset.py
+      - data/raw
+    outs:
+      - data/interim
+
+  feature_engineering:
+  cmd: poetry run src/data/build_features.py
+    deps:
+      - src/features/build_features.py
+      - data/interim
+    outs:
+      - data/processed/data.pq
+
+  train:
+  cmd: poetry run src/data/train_model.py
+    deps:
+      - src/data/train_model.py
+      - data/processed/data.pq
+    outs:
+      - models/model.cldpkl
+
+  evaluate:
+  cmd: poetry run src/visualization/plot_metrics.py
+    deps:
+      - src/visualization/plot_metrics.py
+      - data/processed/data.pq
+      - models/model.cldpkl
+    outs:
+      - reports
+
+# unless you want to add multiple parameters files, you don't need to edit this
+params:
+  - params.yaml
