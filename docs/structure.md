@@ -73,6 +73,8 @@ This is your first overview how to find your way around this project.
 │   ├── models         <- Scripts for training and prediction
 │   └── visualization  <- Scripts to create visualizations
 │
+├── dvc.yaml           <- Define all steps of you pipeline.
+│
 ├── poetry.lock        <- Full dependency list. Managed by poetry, do no touch.
 ├── pyproject.toml     <- Project configuration, define dependencies here.
 │
@@ -244,6 +246,23 @@ This also comes in handy if you want to deploy your code to the cloud.
 + Differentiate between different categories of dependencies:
 Because your deployment in the cloud does not need a code formatter and when building your docs there is (probably) no use for a jupyter kernel.
 For more details see poetry's [dependency groups](https://python-poetry.org/docs/managing-dependencies/#dependency-groups).
+
+
+#### Deliver reproducible results
+Some challenges arise when trying to combine the advandtages of a version control system with the experimental nature of a data science project.
+To solve the most common ones this template uses [dvc](https://dvc.org/) to:
+
++ [**Define reproducible pipelines**](https://dvc.org/doc/user-guide/pipelines/defining-pipelines):
+Pipelines represent data workflows that you want to reproduce reliably — so the results are consistent.
+All workflows are defined in a human readable format within a `dvc.yaml` file.
+
++ [**Version control datas and models**](https://dvc.org/doc/use-cases/versioning-data-and-models#versioning-data-and-models): 
+Keeping large data and models files alongside code and share via [cloud storage](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+In combination with the aforementioned pipelines you have full transparency which version of code produced which version of an artefact (eg. dataset, model, report, ...).
+
++ [**Track experiments**](https://dvc.org/doc/use-cases/experiment-tracking):
+Quickly iterate on experiment ideas, with automatic bookkeeping of data dependencies, code, parameters, artifacts, ML models, and their metrics.
+Compare metrics and plots between experiment directly within [VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
 
 ### No secrets in version control
