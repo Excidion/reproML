@@ -1,0 +1,25 @@
+name: Publish docs via GitHub Pages
+on:
+  push:
+    branches:
+      - copier-integration
+
+jobs:
+  build:
+    name: Deploy docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v2
+
+      - name: Move README to docs
+        run: mv README.md docs/index.md
+
+      - name: Setup environment
+        run: pip install poetry && poetry install --only docs
+
+      - name: Generate badges
+        run: poetry run interrogate
+
+      - name: Deploy docs
+        run: poetry run mkdocs gh-deploy --force

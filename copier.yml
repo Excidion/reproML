@@ -50,7 +50,8 @@ remote_type:
 remote_location:
   type: str
   help: Supply remote storage location. Keep empty to skip. 
-  placeholder: "{% if remote_type == 's3' %}s3://bucket/key{% endif %}{% if remote_type == 'azure' %}azure://mycontainer/path{% endif %}{% if remote_type == 'gs' %}gs://mybucket/path{% endif %}{% if remote_type == 'ssh' %}ssh://user@example.com:2222/path{% endif %}"
+  placeholder: "{{ remote_type }}://"
+  when: "{% if remote_type == 'all' %} false {% endif %}"
 
 # commands to run post generation
 _tasks:
@@ -74,4 +75,5 @@ _exclude:
   - ".git" # template history
   - "copier.yml" # template definition
   - "LICENSE.md" # has to be chosen project specific
+  - ".github/workflows/build_pages.yml" # for pages of the template itself
   - "poetry.lock" # force fresh resolving of deps
