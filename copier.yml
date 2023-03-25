@@ -49,7 +49,7 @@ remote_type:
 
 remote_location:
   type: str
-  help: Supply remote storage location. Keep empty to skip. 
+  help: Supply remote storage location. Keep empty to skip.
   placeholder: "{{ remote_type }}://"
   when: "{% if remote_type == 'all' %} false {% endif %}"
 
