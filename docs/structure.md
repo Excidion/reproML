@@ -79,6 +79,8 @@ This is your first overview how to find your way around this project.
 ├── .github/workflows  <- CICD code for GitHub
 ├── .gitlab-ci.yml     <- CICD code for GitLab
 │
+├── .copier-answers.yml <- Settings given at project init, do not touch.
+│
 └── README.md          <- The top-level README for developers using this project.
 ```
 All folders marked with `<dvc>` are versioned via dvc and so are their subfolders.

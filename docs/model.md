@@ -21,4 +21,3 @@ Show an example of the dataset.
 |-|-|-|-|-|
 |False|1|"red"|...|0.73|
 |True|0|"green"|...|0.42|
-

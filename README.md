@@ -1,49 +1,20 @@
-# Data Science Project Template
-A toolset for collaboritive development and reproducible results in data science projects.
-For details take look at the [documentation](#look-at-the-documentation).
+# reproML
+A toolset for collaboritive development and reproducible results in data science and machine learning projects.
 
-## Setup
-### Prerequesites
-What you need installed on your system:
-+ [Python](https://www.python.org/downloads/) (3.8 or higher) added to PATH
-+ [git](https://git-scm.com/downloads)
-
-Make sure poetry is installed on your system.
+## Prerequsites
+This project template requires Python 3.8+
+Make sure you have `poetry` and `copier` installed.
 ```
-pip install poetry
+pip install poetry copier
 ```
 It is advised to create project environments in the same place as the code.
 The following command will configure poetry such that they always will be created there.
 ```
 poetry config virtualenvs.in-project true
 ```
-### Installation
-Navigate to the project directory and install all dependencies.
-This command will also create a virtual environment for the project.
-```
-poetry install
-```
-In case you have multiple Python versions installed on your system and want to use a specific one, you can follow [these instructions](https://python-poetry.org/docs/managing-environments/#switching-between-environments).
 
-To activate the virtual environment run the following command.
-(Most Terminals from within IDEs activate the environment automatically.)
+## Usage
+Initialize a project from the command line:
 ```
-poetry shell
+copier https://github.com/Excidion/reproML my_new_project
 ```
-With an activated environment, make sure that pre-commits are enabled.
-```
-pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
-```
-And make sure that you have all the necessary data available.
-```
-dvc pull
-```
-Now you can start coding.
-
-## Look at the Documentation
-For more detailed information about the project checkout the documentation.
-Use the following command to run the documentation webserver.
-```
-mkdocs serve
-```
-The server will automatically reload on any change to the markdown files in the `docs` directory.
