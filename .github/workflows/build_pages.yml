@@ -1,0 +1,34 @@
+name: Publish docs via GitHub Pages
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Deploy docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v2
+
+      - name: Move README to docs
+        run: cp README.md docs/index.md
+
+      - name: Install jinja
+        run: pip install jinja2-cli
+
+      - name: Render pyproject.toml
+        run: jinja2 pyproject.toml.jinja -D author=Excidion -D author_email=none@none.org > pyproject.toml
+
+      - name: Render mkdocs.yml
+        run: jinja2 mkdocs.yml.jinja -D project_name=reproML -D repo_url=https://github.com/Excidion/reproML/ > mkdocs.yml
+
+      - name: Setup environment
+        run: pip install poetry && poetry install --only docs
+
+      - name: Generate badges
+        run: poetry run interrogate
+
+      - name: Deploy docs
+        run: poetry run mkdocs gh-deploy --force

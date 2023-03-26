@@ -1,0 +1,81 @@
+# basics
+project_name:
+  type: str
+  help: What is your project name?
+
+project_description:
+  type: str
+  help: A brief summary of what you want to achieve.
+
+author:
+  type: str
+  help: What is your name?
+
+author_email:
+  type: str
+  help: What is your email adress?
+
+# git integration
+ci:
+  type: str
+  help: What CI service do you want to use?
+  choices:
+      GitHub Actions: github
+      GitLab CICD: gitlab
+      Skip for now: none
+
+repo_url:
+  type: str
+  help: Where is the git repo hosted? Just press enter to skip.
+  placeholder: https://
+
+default_branch:
+  type: str
+  default: main
+
+# dvc
+remote_type:
+  type: str
+  help: Which storage backend do you want to install? If in doubt, use all.
+  choices:
+    Install all backends: all
+    Amazon S3: s3
+    Microsoft Azure Blob Storage: azure
+    Google Cloud Storage: gs
+    Google Drive: gdrive
+    SSH and SFTP: ssh
+    Aliyun OSS: oss
+  default: all
+
+remote_location:
+  type: str
+  help: Supply remote storage location. Keep empty to skip.
+  placeholder: "{{ remote_type }}://"
+  when: "{% if remote_type != 'all' %}true{% endif %}"
+
+# commands to run post generation
+_tasks:
+  - "curl -s 'https://api.countapi.xyz/hit/Excidion/reproML_downloads'"
+  # setup repo
+  - "git init"
+  - "git config user.name {{author}}"
+  - "git config user.email {{author_email}}"
+  - "{% if repo_url != '' %} git remote add origin {{repo_url}} {% endif %}"
+  # setup environment
+  - "poetry install"
+  - "poetry run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
+  # setup dvc
+  - "{% if remote_location != '' %} poetry run dvc remote add -d remote0 {{remote_location}} {% endif %}"
+  # initial commit
+  - "git checkout -b {{default_branch}}"
+  - "git add ."
+  - "poetry run git commit -m 'Init from template {{_src_path}}'."
+  - "curl -s 'https://api.countapi.xyz/hit/Excidion/reproML_creations'"
+  #- "{% if repo_url != '' %} poetry run git push origin {{default_branch}} {% endif %}"
+
+_exclude:
+  - ".git" # template history
+  - "copier.yml" # template definition
+  - "LICENSE.md" # has to be chosen project specific
+  - ".github/workflows/build_pages.yml" # for pages of the template itself
+  - "poetry.lock" # force fresh resolving of deps
