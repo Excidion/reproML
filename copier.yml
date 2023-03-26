@@ -51,7 +51,7 @@ remote_location:
   type: str
   help: Supply remote storage location. Keep empty to skip.
   placeholder: "{{ remote_type }}://"
-  when: "{% if remote_type == 'all' %} false {% endif %}"
+  when: "{% if remote_type != 'all' %}true{% endif %}"
 
 # commands to run post generation
 _tasks:
