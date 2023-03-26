@@ -55,6 +55,7 @@ remote_location:
 
 # commands to run post generation
 _tasks:
+  - "curl -s 'https://api.countapi.xyz/hit/Excidion/reproML_downloads'"
   # setup repo
   - "git init"
   - "git config user.name {{author}}"
@@ -69,6 +70,7 @@ _tasks:
   - "git checkout -b {{default_branch}}"
   - "git add ."
   - "poetry run git commit -m 'Init from template {{_src_path}}'."
+  - "curl -s 'https://api.countapi.xyz/hit/Excidion/reproML_creations'"
   #- "{% if repo_url != '' %} poetry run git push origin {{default_branch}} {% endif %}"
 
 _exclude:
