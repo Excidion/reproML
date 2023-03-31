@@ -7,8 +7,21 @@ theme:
     scheme: slate
     primary: teal
 
+nav:
+  - index.md
+  - business.md
+  - model.md
+  - Source Code: code/  
+  - structure.md
+
 plugins:
   - search
+  - gen-files:
+      scripts:
+      - docs/helper/generate_code_docs.py
+  - literate-nav:
+      nav_file: docs/index.md
+  - section-index
   - mkdocstrings
 
 markdown_extensions:
