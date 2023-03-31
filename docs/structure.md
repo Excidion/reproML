@@ -73,7 +73,8 @@ This is your first overview how to find your way around this project.
 │   ├── models         <- Scripts for training and prediction
 │   └── visualization  <- Scripts to create visualizations
 │
-├── dvc.yaml           <- Define all steps of you pipeline.
+├── dvc.yaml           <- Define all steps of the pipeline.
+├── params.yaml        <- Define settings for the pipeline.
 │
 ├── poetry.lock        <- Full dependency list. Managed by poetry, do no touch.
 ├── pyproject.toml     <- Project configuration, define dependencies here.
