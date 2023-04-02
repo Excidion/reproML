@@ -1,5 +1,3 @@
-"""Generate the code pages and navigation."""
-
 from pathlib import Path
 
 import mkdocs_gen_files
@@ -7,11 +5,9 @@ import mkdocs_gen_files
 nav = mkdocs_gen_files.Nav()
 
 for path in sorted(Path("src").rglob("*.py")):
-
     module_path = path.relative_to("src").with_suffix("")
     doc_path = path.relative_to("src").with_suffix(".md")
     full_doc_path = Path("code", doc_path)
-
     parts = tuple(module_path.parts)
 
     if parts[-1] == "__init__":
@@ -32,7 +28,7 @@ for path in sorted(Path("src").rglob("*.py")):
 with mkdocs_gen_files.open("code/index.md", "w") as nav_file:
     header = [
         "# Overview",
-        "[![interrogate](../helper/interrogate_badge.svg)](https://interrogate.readthedocs.io/)",
+        "![interrogate](../helper/interrogate_badge.svg)",
     ]
     sep = "\n\n"
     nav_file.write(sep.join(header) + sep)

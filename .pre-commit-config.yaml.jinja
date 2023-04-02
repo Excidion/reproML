@@ -53,6 +53,7 @@ repos:
   - id: forbid-binary
     stages:
     - commit
+{%- if use_dvc %}
 - repo: https://github.com/iterative/dvc
   rev: 2.45.1
   hooks:
@@ -69,3 +70,4 @@ repos:
     stages:
     - post-checkout
     always_run: true
+{%- endif %}

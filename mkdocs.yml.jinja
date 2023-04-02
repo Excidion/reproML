@@ -1,5 +1,7 @@
 site_name: {{project_name}}
-{% if repo_url != '' %}repo_url: {{repo_url}}{% endif %}
+{%- if repo_url != '' %}
+repo_url: {{repo_url}}
+{%- endif %}
 
 theme:
   name: "material"
@@ -11,7 +13,7 @@ nav:
   - index.md
   - business.md
   - model.md
-  - Source Code: code/  
+  - Source Code: code/
   - structure.md
 
 plugins:

@@ -34,6 +34,11 @@ default_branch:
   default: main
 
 # dvc
+use_dvc:
+  type: bool
+  help: Dou you want to use data version control?
+  default: true
+
 remote_type:
   type: str
   help: Which storage backend do you want to install? If in doubt, use all.
@@ -46,12 +51,14 @@ remote_type:
     SSH and SFTP: ssh
     Aliyun OSS: oss
   default: all
+  when: "{{ use_dvc }}"
 
 remote_location:
   type: str
   help: Supply remote storage location. Keep empty to skip.
   placeholder: "{{ remote_type }}://"
-  when: "{% if remote_type != 'all' %}true{% endif %}"
+  default: ""
+  when: "{% if remote_type != 'all' %}{{ use_dvc }}{% endif %}"
 
 # commands to run post generation
 _tasks:

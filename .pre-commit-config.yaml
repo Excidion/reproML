@@ -10,11 +10,9 @@ repos:
     stages:
     - commit
   - id: end-of-file-fixer
-    exclude: "{{_copier_conf.answers_file}}" # auto-generated
     stages:
     - commit
   - id: trailing-whitespace
-    exclude: "{{_copier_conf.answers_file}}" # auto-generated
     stages:
     - commit
   - id: debug-statements
