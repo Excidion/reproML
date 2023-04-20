@@ -155,7 +155,7 @@ These observations lead to three decisions that keep documentation close to the 
 
 + Document in simple markdown files to keep effort low.
 Markdown can be rendered to beautiful web pages (like this one) via [mkdocs-material](https://squidfunk.github.io/mkdocs-material/).
-If you use GitHub ~~or GitLab~~, this template comes with code to automatically [publish your site](https://squidfunk.github.io/mkdocs-material/publishing-your-site/).
+If you use GitHub or GitLab, this template comes with code to automatically publish your site.
 If you are feeling fancy you can even define
 [diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage),
 [tables](https://squidfunk.github.io/mkdocs-material/reference/data-tables/#usage),
