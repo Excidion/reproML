@@ -18,5 +18,8 @@ jobs:
       - name: Generate badges
         run: poetry run interrogate
 
+      - name: Check licenses
+        run: poetry run licensecheck
+
       - name: Deploy docs
         run: poetry run mkdocs gh-deploy --force

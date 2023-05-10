@@ -10,11 +10,19 @@ repos:
     stages:
     - commit
   - id: end-of-file-fixer
-    exclude: "{{_copier_conf.answers_file}}" # auto-generated
+    exclude: |
+        (?x)^(
+            {{_copier_conf.answers_file}}|
+            docs/licenses.md
+        )$
     stages:
     - commit
   - id: trailing-whitespace
-    exclude: "{{_copier_conf.answers_file}}" # auto-generated
+    exclude: |
+        (?x)^(
+            {{_copier_conf.answers_file}}|
+            docs/licenses.md
+        )$
     stages:
     - commit
   - id: debug-statements

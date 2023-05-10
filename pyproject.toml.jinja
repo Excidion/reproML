@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "{{ project_description }}"
 authors = ["{{ author }} <{{ author_email }}>"]
 readme = "README.md"
+license = "{{ license }}"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -25,6 +26,7 @@ mkdocs-literate-nav = "^0.6.0"
 mkdocs-section-index = "^0.3.5"
 mkdocs-material = "^8.5.8"
 interrogate = "^1.5.0"
+licensecheck = "^2023.1.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -42,3 +44,8 @@ badge-format = "svg"
 [tool.flake8]
 max-line-length = 88
 extend-ignore = "E203"
+
+[tool.licensecheck]
+using = "poetry:dev;docs"
+format = "markdown"
+file = "docs/licenses.md"

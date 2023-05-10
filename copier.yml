@@ -7,6 +7,11 @@ project_description:
   type: str
   help: A brief summary of what you want to achieve.
 
+license:
+  str:
+  help: How this code should be licensed, if at all.
+  default: NO_LICENSE
+
 author:
   type: str
   help: What is your name?
