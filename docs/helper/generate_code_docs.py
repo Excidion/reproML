@@ -22,6 +22,7 @@ for path in sorted(Path("src").rglob("*.py")):
     with mkdocs_gen_files.open(full_doc_path, "w") as fd:
         ident = ".".join(parts)
         fd.write(f"::: src.{ident}")
+        fd.write("\n\toptions:\n\t\tmembers_order: 'source'")  # order docs like source
 
     mkdocs_gen_files.set_edit_path(full_doc_path, path)
 
