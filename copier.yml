@@ -10,7 +10,32 @@ project_description:
 license:
   str:
   help: How this code should be licensed, if at all.
-  default: NO_LICENSE
+  choices:
+    - PROPRIETARY
+    - PUBLIC DOMAIN
+    - UNLICENSE
+    - BOOST
+    - MIT
+    - BSD
+    - ISC
+    - NCSA
+    - PYTHON
+    - APACHE
+    - ECLIPSE
+    - AFL
+    - AGPL
+    - LGPL
+    - LGPLV2
+    - LGPLV2+
+    - LGPLV3
+    - LGPLV3+
+    - GPL
+    - GPLV2
+    - GPLV2+
+    - GPLV3
+    - GPLV3+
+    - MPL
+    - EUPL
 
 author:
   type: str
