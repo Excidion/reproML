@@ -5,7 +5,7 @@
 A toolset for collaborative development and reproducible results in data science and machine learning projects.
 
 ## Prerequsites
-Make sure you have `poetry` and `copier` installed.
+Make sure you have `[poetry](https://github.com/python-poetry/poetry)` and `[copier](https://github.com/copier-org/copier)` installed.
 ```
 pip install poetry copier
 ```
