@@ -99,7 +99,7 @@ _tasks:
   - "git config user.email {{author_email}}"
   - "{% if repo_url != '' %} git remote add origin {{repo_url}} {% endif %}"
   # setup environment
-  - "poetry install"
+  - "poetry install --all-extras"
   - "poetry run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
   # setup dvc
   - "{% if remote_location != '' %} poetry run dvc remote add -d remote0 {{remote_location}} {% endif %}"
