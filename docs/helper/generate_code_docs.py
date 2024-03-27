@@ -29,8 +29,9 @@ for path in sorted(Path("src").rglob("*.py")):
 with mkdocs_gen_files.open("code/index.md", "w") as nav_file:
     header = [
         "# Overview",
+        "[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)",
         "![interrogate](../helper/interrogate_badge.svg)",
     ]
-    sep = "\n\n"
-    nav_file.write(sep.join(header) + sep)
+    sep = "\n"
+    nav_file.write(sep.join(header) + sep * 2)
     nav_file.writelines(nav.build_literate_nav())

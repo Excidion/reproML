@@ -90,3 +90,6 @@ target/
 site/
 # GitLab
 public/
+
+# ruff
+.ruff_cache

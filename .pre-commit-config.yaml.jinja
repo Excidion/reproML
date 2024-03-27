@@ -28,41 +28,26 @@ repos:
   - id: debug-statements
     stages:
     - commit
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.3.4
+  hooks:
+  - id: ruff
+    args: [ --fix ]
+    stages:
+    - commit
+  - id: ruff-format
+    stages:
+    - commit
 - repo: https://github.com/pre-commit/pygrep-hooks
   rev: v1.10.0
   hooks:
   - id: python-no-eval
     stages:
     - commit
-- repo: https://github.com/psf/black
-  rev: 23.1.0
-  hooks:
-  - id: black
-    stages:
-    - commit
-  - id: black-jupyter
-    stages:
-    - commit
 - repo: https://github.com/econchick/interrogate
   rev: 1.5.0
   hooks:
   - id: interrogate
-    stages:
-    - commit
-- repo: https://github.com/pycqa/isort
-  rev: 5.12.0
-  hooks:
-  - id: isort
-    stages:
-    - commit
-- repo: https://github.com/pycqa/flake8
-  rev: 6.0.0
-  hooks:
-  - id: flake8
-    additional_dependencies: [
-      Flake8-pyproject, # read options from pyproject.toml
-      flake8-functions, # keep functions simple
-    ]
     stages:
     - commit
 - repo: https://github.com/jumanjihouse/pre-commit-hooks

@@ -14,8 +14,7 @@ dvc = {version = "^2.45.1", extras = ["{{ remote_type }}"]}
 {%- endif %}
 
 [tool.poetry.group.dev.dependencies]
-black = "^23.1.0"
-isort = "^5.10.1"
+ruff = "^0.3.4"
 pre-commit = "^2.20.0"
 ipykernel = "^6.17.0"
 
@@ -40,13 +39,6 @@ fail-under = 80
 verbose = 1
 generate-badge = "docs/helper"
 badge-format = "svg"
-
-[tool.flake8]
-max-line-length = 88
-extend-ignore = "E203"
-
-[tool.isort]
-profile = "black"
 
 [tool.licensecheck]
 using = "poetry:dev;docs"
