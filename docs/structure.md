@@ -192,11 +192,11 @@ You shouldn't have to run all of the steps every time you want to make a new fig
 ??? question "What if my data changes over time?"
 
     Imagine the scenario where you pull your data from an SQL database into `data/raw`.
-    Since you (probalby) only have limited control over that database, the data a new download would produce might change in the future.
-    This is not ideal, but can be accounted for:
+    A new download at a later time might change the dataset you get.
+    This is can be accounted for in two ways:
 
     + If possible, include statements in your SQL query that limit the time window of data.
-    + The `data/raw` folder is still versioned by `dvc` and thus changing raw data can be accounted for.
+    + The `data/raw` folder is versioned by `dvc` and thus changes in raw data can be tracked.
 
 
 ### Notebooks are for exploration and communication only
@@ -215,10 +215,8 @@ For example, if it's a data preprocessing task, put it in a script in `src/data/
 
 Since the project is structured like a Python package you can import your code and use it in notebooks with a cell like the following:
 ```python
-# OPTIONAL: Load the "autoreload" extension so that code can change
+# always reload modules so that as you change code in src, it gets loaded
 %load_ext autoreload
-
-# OPTIONAL: always reload modules so that as you change code in src, it gets loaded
 %autoreload 2
 
 from src.data import make_dataset
@@ -239,10 +237,10 @@ This has a couple of advantages over the classic `requirements.txt`:
 
 + Resolve dependencies automatically:
 If one of your used packages requires `numpy>1.10` and another `numpy<1.24` poetry will figure out a version of numpy that satisfies both.
-For more details see [version constraints](https://python-poetry.org/docs/dependency-specification/#version-constraints)
+For more details see [version constraints](https://python-poetry.org/docs/dependency-specification/#version-constraints).
 
 + Less headache when collaborating over different operating systems:
-Everyone on a Mac who ever got at `requirements.txt` from a colleague on Windows will understand.
+Everyone on a Mac who ever got at `pip freeze > requirements.txt` from a colleague using Windows will understand.
 This also comes in handy if you want to deploy your code to the cloud.
 
 + Differentiate between different categories of dependencies:
@@ -290,6 +288,6 @@ The intention is to provide a starting point for your next project from which yo
 ## Acknowledgements
 Main influnces when defining this structure were:
 
-+ [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) for structure and some opinions
++ [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) for structure and opinions
 
-+ [iterative/example-get-started](https://github.com/iterative/example-get-started) for workflows best practices
++ [iterative/example-get-started](https://github.com/iterative/example-get-started) for workflow best practices
