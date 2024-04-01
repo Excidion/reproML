@@ -27,7 +27,11 @@ plugins:
   - literate-nav:
       nav_file: docs/index.md
   - section-index
-  - mkdocstrings
+  - mkdocstrings:
+      handlers:
+          python:
+            options:
+              members_order: 'source'
 
 watch:
   - src # update on changes to code
