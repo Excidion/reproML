@@ -1,4 +1,0 @@
-# make sure folder exists but is empty
-# since all code docs are created at runtime
-*
-!.gitignore
