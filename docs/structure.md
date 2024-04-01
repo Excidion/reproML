@@ -118,18 +118,17 @@ All folders marked with `<dvc>` are versioned via dvc and so are their subfolder
     Instead of tracking a file (eg. `data.csv`) directly, you track it's `data.csv.dvc` file with git.
     To create this file and therefore start tracking the original file with dvc execute:
     ```
-    dvc add data `data.csv`
+    dvc add `data.csv`
     ```
     If you change `data.csv` later can simply add the chages again with the same command.
 
     You can always check on the status of all your tracked files with
     ```
-    dvc data status
+    dvc status
     ```
-    If you want to stop tracking a file you can just delete the file and it's dvc file.
-    Then commit the deletion of the dvc file:
+    If you want to stop tracking a file you can just delete the file and commit the deletion of the dvc file:
     ```
-    git add data.csv.dvc
+    git rm data.csv.dvc
     ```
 
 ## Opinions
