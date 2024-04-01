@@ -1,6 +1,7 @@
 # Technical Structure
 This section contains information how the projects files are organized and which tools are used.
 Furthermore it gives directions on how to use both tools and structure.
+This project was generated from the [reproML](https://github.com/Excidion/reproML) copier template.
 
 ??? question "Why use this project structure?"
 
