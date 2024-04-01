@@ -248,6 +248,24 @@ Because your deployment in the cloud does not need a code formatter and when bui
 For more details see poetry's [dependency groups](https://python-poetry.org/docs/managing-dependencies/#dependency-groups).
 
 
+#### Deliver reproducible results
+Some challenges arise when trying to combine the advandtages of version control with the experimental nature of data science projects.
+To solve the most common ones this template uses [dvc](https://dvc.org/) to:
+
++ [Version datasets, models and more](https://dvc.org/doc/use-cases/versioning-data-and-models#versioning-data-and-models):
+Keep large files alongside code and share them via [cloud storage](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+Fully integrated into the git workflow, no manual copying or downloading necessary.
+
++ [Define reproducible pipelines](https://dvc.org/doc/user-guide/pipelines/defining-pipelines):
+Pipelines represent data workflows that you want to reproduce reliably — so the results are consistent.
+All workflows are defined in a human readable format within a `dvc.yaml` file.
+In combination with the aforementioned versioning you will have full transparency which version of code produced which version of an artefact (eg. dataset, model, report, ...).
+
++ [Track experiments](https://dvc.org/doc/use-cases/experiment-tracking):
+Quickly iterate on experiment ideas, with automatic bookkeeping of data dependencies, code, parameters, artifacts, ML models, and their metrics.
+Compare metrics and plots between experiment directly within [VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
+
+
 ### No secrets in version control
 You really don't want to leak your AWS secret key or Postgres username and password on Github.
 To ensure this we use `python-dotenv`.
