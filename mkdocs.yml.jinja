@@ -15,9 +15,10 @@ nav:
   - index.md
   - business.md
   - model.md
-  - Source Code: code/
+  - Analyses: notebooks/
   - structure.md
-  - Licenses: licenses.md
+  - Source Code: code/
+  - licenses.md
 
 plugins:
   - search
@@ -33,6 +34,9 @@ plugins:
             options:
               members_order: 'source'
               show_if_no_docstring: false
+  - mkdocs-jupyter:
+          include_requirejs: true  # plotly support
+          include: ["notebooks/*.ipynb"]
 
 watch:
   - src # update on changes to code

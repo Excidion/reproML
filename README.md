@@ -1,5 +1,5 @@
 # reproML
-![python](https://img.shields.io/badge/Python-3.8+-blue)
+![python](https://img.shields.io/badge/Python-3.9+-blue)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 A toolset for collaborative development and reproducible results in data science and machine learning projects.
