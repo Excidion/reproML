@@ -171,12 +171,10 @@ A pre-commit hook with [interrogate](https://interrogate.readthedocs.io/) ensure
 Even though code quality is important - nobody likes debating about indentation aesthetics or pedantic formatting standards.
 This is why this template comes with one predefined.
 
-This template uses an automatic code formatter ([black](https://black.readthedocs.io/en/stable/)) and enforces it's style via pre-commit hooks.
-This style is compliant with [flake8](https://flake8.pycqa.org) and any settings can be configured via the `pyproject.toml`.
-Although it is advised to keep them as is.
+This template uses an automatic code formatter ([ruff](https://docs.astral.sh/ruff/)) and enforces it's style via pre-commit hooks.
+This style is compliant with [black](https://black.readthedocs.io/en/stable/) and [flake8](https://flake8.pycqa.org) and any settings can be configured via the `pyproject.toml`.
+See [here](https://docs.astral.sh/ruff/configuration/) for more details.
 
-By using [flake8-functions](https://github.com/best-doctor/flake8-functions) hooks this template also enforces some simple clean code standards for function definitions.
-These include limits on function length and complexity, guiding your towards [KISS](https://en.wikipedia.org/wiki/KISS_principle).
 
 ### Raw data should be immutable
 Don't ever edit your **raw data**, especially not manually, and especially not in Excel.
