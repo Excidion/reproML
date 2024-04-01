@@ -265,9 +265,9 @@ In your code you can access these screts like this:
 import os
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path)
+load_dotenv()
 
-database_url = os.environ.get("DATABASE_URL")
+database_url = os.getenv("DATABASE_URL")
 ```
 
 
