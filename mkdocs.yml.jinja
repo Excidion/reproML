@@ -18,7 +18,9 @@ nav:
   - Analyses: notebooks/
   - structure.md
   - Source Code: code/
+{%- if license != 'NO_LICENSE' %}
   - licenses.md
+{%- endif %}
 
 plugins:
   - search
@@ -33,7 +35,7 @@ plugins:
           python:
             options:
               members_order: 'source'
-              show_if_no_docstring: false
+              show_if_no_docstring: true
   - mkdocs-jupyter:
           include_requirejs: true  # plotly support
           include: ["notebooks/*.ipynb"]

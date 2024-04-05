@@ -11,6 +11,7 @@ license:
   str:
   help: How this code should be licensed, if at all.
   choices:
+    - None (licensecheck disabled): NO_LICENSE
     - PROPRIETARY
     - PUBLIC DOMAIN
     - UNLICENSE
@@ -103,6 +104,8 @@ _tasks:
   - "poetry run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
   # setup dvc
   - "{% if remote_location != '' %} poetry run dvc remote add -d remote0 {{remote_location}} {% endif %}"
+  # check licenses
+  - "{% if license != 'NO_LICENSE' %} poetry run licensecheck {% endif %}"
   # initial commit
   - "git checkout -b {{default_branch}}"
   - "git add ."

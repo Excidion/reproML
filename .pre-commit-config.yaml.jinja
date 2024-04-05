@@ -47,6 +47,14 @@ repos:
   - id: forbid-binary
     stages:
     - commit
+{%- if license != 'NO_LICENSE' %}
+- repo: https://github.com/FHPythonUtils/LicenseCheck
+  rev: '2024.1.5'
+  hooks:
+  - id: licensecheck
+    stages:
+    - commit
+{%- endif %}
 {%- if use_dvc %}
 - repo: https://github.com/iterative/dvc
   rev: 2.45.1
