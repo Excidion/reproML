@@ -25,13 +25,10 @@ jobs:
         run: jinja2 mkdocs.yml.jinja -D project_name=reproML -D repo_url=https://github.com/Excidion/reproML/ > mkdocs.yml
 
       - name: Setup environment
-        run: pip install poetry && poetry install --only docs
+        run: pip install poetry && poetry install --only dev,docs
 
-      - name: Generate badges
-        run: poetry run interrogate
-
-      - name: Check licenses
-        run: poetry run licensecheck
+      - name: Run checks
+        run: poetry run pre-commit run --all-files
 
       - name: Deploy docs
         run: poetry run mkdocs gh-deploy --force

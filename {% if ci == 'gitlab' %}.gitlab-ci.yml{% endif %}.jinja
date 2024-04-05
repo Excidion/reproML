@@ -2,9 +2,8 @@ image: python:3.9-buster
 
 before_script:
   - pip install poetry
-  - poetry install --only docs
-  - poetry run interrogate
-  - poetry run licensecheck
+  - poetry install --only dev,docs
+  - poetry run pre-commit run --all-files
 
 test:
   stage: test
