@@ -25,50 +25,67 @@ repos:
         )$
     stages:
     - commit
-- repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.3.4
-  hooks:
-  - id: ruff
-    args: [ --fix ]
-    stages:
-    - commit
-  - id: ruff-format
-    stages:
-    - commit
-- repo: https://github.com/econchick/interrogate
-  rev: 1.5.0
-  hooks:
-  - id: interrogate
-    stages:
-    - commit
 - repo: https://github.com/jumanjihouse/pre-commit-hooks
   rev: '3.0.0'
   hooks:
   - id: forbid-binary
     stages:
     - commit
-{%- if license != 'NO_LICENSE' %}
-- repo: https://github.com/FHPythonUtils/LicenseCheck
-  rev: '2024.2'
+- repo: local
   hooks:
+  - id: ruff
+    name: ruff
+    entry: poetry run ruff
+    args: [ --fix ]
+    language: system
+    types: [file, python]
+    stages:
+    - commit
+  - id: ruff-format
+    name: ruff-format
+    entry: poetry run ruff format
+    language: system
+    types: [file, python]
+    stages:
+    - commit
+  - id: interrogate
+    name: interrogate
+    entry: poetry run interrogate
+    language: system
+    types: [file, python]
+    stages:
+    - commit
+{%- if license != 'NO_LICENSE' %}
   - id: licensecheck
+    name: licensecheck
+    entry: poetry run licensecheck
+    args: [ --zero ]
+    language: system
+    pass_filenames: false
     stages:
     - commit
 {%- endif %}
 {%- if use_dvc %}
-- repo: https://github.com/iterative/dvc
-  rev: 2.45.1
-  hooks:
   - id: dvc-pre-commit
-    language_version: python3
+    name: DVC pre-commit
+    entry: poetry run dvc git-hook pre-commit
+    language: system
+    require_serial: true
+    verbose: true
     stages:
     - commit
   - id: dvc-pre-push
-    language_version: python3
+    name: DVC pre-push
+    entry: poetry run dvc git-hook pre-push
+    language: system
+    require_serial: true
     stages:
     - push
   - id: dvc-post-checkout
-    language_version: python3
+    name: DVC post-checkout
+    entry: poetry run dvc git-hook post-checkout
+    language: system
+    require_serial: true
     stages:
     - post-checkout
     always_run: true

@@ -17,6 +17,10 @@ dvc = {version = "^2.45.1", extras = ["{{ remote_type }}"]}
 ruff = "^0.3.4"
 pre-commit = "^2.20.0"
 ipykernel = "^6.17.0"
+interrogate = "^1.5.0"
+{%- if license != 'NO_LICENSE' %}
+licensecheck = "^2024.2"
+{%- endif %}
 
 [tool.poetry.group.docs.dependencies]
 mkdocstrings = {extras = ["python"], version = "^0.20.0"}
@@ -24,10 +28,6 @@ mkdocs-gen-files = "^0.4.0"
 mkdocs-literate-nav = "^0.6.0"
 mkdocs-section-index = "^0.3.5"
 mkdocs-material = "^9.0.0"
-interrogate = "^1.5.0"
-{%- if license != 'NO_LICENSE' %}
-licensecheck = "2024.2"
-{%- endif %}
 mkdocs-jupyter = "^0.24.6"
 
 [build-system]

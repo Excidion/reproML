@@ -25,31 +25,41 @@ repos:
         )$
     stages:
     - commit
-- repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.3.4
-  hooks:
-  - id: ruff
-    args: [ --fix ]
-    stages:
-    - commit
-  - id: ruff-format
-    stages:
-    - commit
-- repo: https://github.com/econchick/interrogate
-  rev: 1.5.0
-  hooks:
-  - id: interrogate
-    stages:
-    - commit
 - repo: https://github.com/jumanjihouse/pre-commit-hooks
   rev: '3.0.0'
   hooks:
   - id: forbid-binary
     stages:
     - commit
-- repo: https://github.com/FHPythonUtils/LicenseCheck
-  rev: '2024.2'
+- repo: local
   hooks:
+  - id: ruff
+    name: ruff
+    entry: poetry run ruff
+    args: [ --fix ]
+    language: system
+    types: [file, python]
+    stages:
+    - commit
+  - id: ruff-format
+    name: ruff-format
+    entry: poetry run ruff format
+    language: system
+    types: [file, python]
+    stages:
+    - commit
+  - id: interrogate
+    name: interrogate
+    entry: poetry run interrogate
+    language: system
+    types: [file, python]
+    stages:
+    - commit
   - id: licensecheck
+    name: licensecheck
+    entry: poetry run licensecheck
+    args: [ --zero ]
+    language: system
+    pass_filenames: false
     stages:
     - commit
