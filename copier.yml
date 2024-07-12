@@ -81,6 +81,8 @@ remote_type:
     Google Cloud Storage: gs
     Google Drive: gdrive
     SSH and SFTP: ssh
+    HDFS: hdfs
+    WebDAV: webdav
     Aliyun OSS: oss
   default: all
   when: "{{ use_dvc }}"
