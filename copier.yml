@@ -7,6 +7,15 @@ project_description:
   type: str
   help: A brief summary of what you want to achieve.
 
+python_version:
+  type: str
+  help: Which Python version do you want to use?
+  choices:
+    - "3.9"
+    - "3.10"
+    - "3.11"
+    - "3.12"
+
 license:
   str:
   help: How this code should be licensed, if at all.
@@ -75,7 +84,7 @@ remote_type:
   type: str
   help: Which storage backend do you want to install? If in doubt, use all.
   choices:
-    Install all backends: all
+    Install no backend: ""
     Amazon S3: s3
     Microsoft Azure Blob Storage: azure
     Google Cloud Storage: gs
@@ -84,7 +93,8 @@ remote_type:
     HDFS: hdfs
     WebDAV: webdav
     Aliyun OSS: oss
-  default: all
+    Install all backends: all
+  default: ""
   when: "{{ use_dvc }}"
 
 remote_location:
@@ -92,7 +102,7 @@ remote_location:
   help: Supply remote storage location. Keep empty to skip.
   placeholder: "{{ remote_type }}://"
   default: ""
-  when: "{% if remote_type != 'all' %}{{ use_dvc }}{% endif %}"
+  when: "{% if remote_type != '' %}{% if remote_type != 'all' %}{{ use_dvc }}{% endif %}{% endif %}"
 
 # commands to run post generation
 _tasks:
@@ -102,16 +112,16 @@ _tasks:
   - "git config user.email {{author_email}}"
   - "{% if repo_url != '' %} git remote add origin {{repo_url}} {% endif %}"
   # setup environment
-  - "poetry install --all-extras"
-  - "poetry run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
+  - "uv sync --all-extras"
+  - "uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
   # setup dvc
-  - "{% if remote_location != '' %} poetry run dvc remote add -d remote0 {{remote_location}} {% endif %}"
+  - "{% if remote_location != '' %} uv run dvc remote add -d remote0 {{remote_location}} {% endif %}"
   # check licenses
-  - "{% if license != 'NO_LICENSE' %} poetry run licensecheck {% endif %}"
+  - "{% if license != 'NO_LICENSE' %} uv run licensecheck {% endif %}"
   # initial commit
   - "git checkout -b {{default_branch}}"
   - "git add ."
-  - "poetry run git commit -m 'Init from template {{_src_path}}'."
+  - "git commit -m 'Init from template {{_src_path}}'."
   #- "{% if repo_url != '' %} poetry run git push origin {{default_branch}} {% endif %}"
 
 _exclude:
@@ -119,4 +129,4 @@ _exclude:
   - "copier.yml" # template definition
   - "LICENSE.md" # has to be chosen project specific
   - ".github/workflows/build_pages.yml" # for pages of the template itself
-  - "poetry.lock" # force fresh resolving of deps
+  - "uv.lock" # force fresh resolving of deps

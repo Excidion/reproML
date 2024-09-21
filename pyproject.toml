@@ -1,25 +1,14 @@
 [project]
-name = "src"
+name = "reproML"
 version = "0.1.0"
-description = "{{ project_description }}"
-authors = ["{{ author }} <{{ author_email }}>"]
+description = "A template for collaborative development and reproducible results in data science and machine learning projects."
+authors = ["Excidion <36995046+Excidion@users.noreply.github.com>"]
 readme = "README.md"
-license = "{{ license }}"
-requires-python = ">={{ python_version }}"
+license = "Apache 2.0"
+requires-python = ">=3.9"
 dependencies = [
-{%- if use_dvc %}
-    "dvc[{{ remote_type }}]>=3.55.2",
-{%- endif %}
-    "python-dotenv>=1.0.1",
-]
-
-[tool.uv]
-dev-dependencies = [
     "interrogate>=1.7.0",
-    "ipykernel>=6.29.5",
-{%- if license != 'NO_LICENSE' %}
     "licensecheck>=2024.3",
-{%- endif %}
     "mkdocs-gen-files>=0.5.0",
     "mkdocs-jupyter>=0.25.0",
     "mkdocs-literate-nav>=0.6.1",

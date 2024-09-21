@@ -29,6 +29,5 @@ public/
 # ruff
 .ruff_cache
 
-# poetry
+# uv
 .venv
-#poetry.lock  # try ignore if installs make troubles

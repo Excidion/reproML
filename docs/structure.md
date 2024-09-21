@@ -3,6 +3,9 @@ This section contains information how the projects files are organized and which
 Furthermore it gives directions on how to use both tools and structure.
 This project was generated from the [reproML](https://github.com/Excidion/reproML) copier template.
 
+Most thoughts are not my own, see [acknowledgements](#acknowledgements).
+
+
 ??? question "Why use this project structure?"
 
     When we think about data analysis, we often think just about the resulting reports, insights, or visualizations. While these end products are generally the main event, it's easy to focus on making the products look nice and ignore the quality of the code that generates them. Because these end products are created programmatically, code quality is still important — ultimately, data science code quality is about correctness and reproducibility.
@@ -76,8 +79,8 @@ This is your first overview how to find your way around this project.
 │   ├── models         <- Scripts for training and prediction
 │   └── visualization  <- Scripts to create visualizations
 │
-├── poetry.lock        <- Full dependency list. Managed by poetry, do no touch.
-├── pyproject.toml     <- Project configuration, define dependencies here.
+├── pyproject.toml     <- Project configuration and dependencies.
+├── uv.lock            <- Full dependency list. Managed by uv, do no touch.
 │
 ├── .github/workflows  <- CICD code for GitHub
 ├── .gitlab-ci.yml     <- CICD code for GitLab
@@ -103,11 +106,11 @@ All folders marked with `<dvc>` are versioned via dvc and so are their subfolder
 
 
 ??? question "How do I install new packages?"
-    You can [install packages via poetry](https://python-poetry.org/docs/basic-usage/#specifying-dependencies)
+    You can [install packages via uv](https://docs.astral.sh/uv/concepts/projects/#managing-dependencies)
     ```
-    poetry add <package-name>
+    uv add <package-name>
     ```
-    The packages is then installed and added to the `pyproject.toml` and `poetry.lock`.
+    The packages is then installed and added to the `pyproject.toml` and `uv.lock`.
     Commit these changes so everyone else that uses your code will have the same dependencies installed.
 
 
@@ -212,7 +215,7 @@ There are two hints for using notebooks effectively:
 
 + Refactor the good parts into `.py` files.
 Don't write code to do the same task in multiple notebooks.
-For example, if it's a data preprocessing task, put it in a script in `src/data/` and load data from `data/interim`.
+For example, if it's a data preprocessing task, put it in a script in `src/data/`.
 
 Since the project is structured like a Python package you can import your code and use it in notebooks with a cell like the following:
 ```python
@@ -223,7 +226,7 @@ Since the project is structured like a Python package you can import your code a
 from src.data import make_dataset
 ```
 Treat the notebooks as kind of an explratory *playground* but nothing more.
-They can be great to test ideas, but are never considered to be delivered software.
+They can be great to test ideas, but are **never considered to be delivered software**.
 
 ??? tip "Integrate Notebooks into the documentation"
     Maybe you have one analysis in one of your notebooks that you are really proud of.
@@ -242,20 +245,22 @@ Therefore we should be striving for our work to produce computations which can b
 #### Build reproducible environments
 The first step in reproducing an analysis is reproducing the computational environment it was run in.
 You need the same tools, the same libraries, and the same versions to make everything play nicely together.
-For this we use [poetry](https://python-poetry.org/) which can handle your dependencies as well setup your environments.
+For this we use [uv](https://docs.astral.sh/uv/) which can handle your dependencies as well setup your environments.
 This has a couple of advantages over the classic `requirements.txt`:
 
++ Manage Python installations and environments:
+Because different projects will require different versions of the same packages and/or even different python versions it's best practice to use (virtual) [environments](https://docs.astral.sh/uv/pip/environments/). Furthermore uv can also manage [python versions](https://docs.astral.sh/uv/concepts/python-versions/) for you.
+
 + Resolve dependencies automatically:
-If one of your used packages requires `numpy>1.10` and another `numpy<1.24` poetry will figure out a version of numpy that satisfies both.
-For more details see [version constraints](https://python-poetry.org/docs/dependency-specification/#version-constraints).
+If one of your used packages requires `numpy>1.10` and another `numpy<1.24` uv can figure out a version of numpy that satisfies both.
 
 + Less headache when collaborating over different operating systems:
 Everyone on a Mac who ever got at `pip freeze > requirements.txt` from a colleague using Windows will understand.
 This also comes in handy if you want to deploy your code to the cloud.
 
 + Differentiate between different categories of dependencies:
-Because your deployment in the cloud does not need a code formatter and when building your docs there is (probably) no use for a jupyter kernel.
-For more details see poetry's [dependency groups](https://python-poetry.org/docs/managing-dependencies/#dependency-groups).
+Because your deployment in the cloud does not need a code formatter.
+For more details see uv's [development](https://docs.astral.sh/uv/concepts/dependencies/#development-dependencies) and [optional](https://docs.astral.sh/uv/concepts/dependencies/#optional-dependencies) dependencies.
 
 
 #### Deliver reproducible results
@@ -317,6 +322,11 @@ The intention is to provide a starting point for your next project from which yo
 ## Acknowledgements
 Main influnces when defining this structure were:
 
-+ [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) for structure and opinions
++ [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) for a baseline structure to get started with and many good opinions.
+You'll find many (in-)direct quotes especially on this page.
 
 + [iterative/example-get-started](https://github.com/iterative/example-get-started) for workflow best practices
+
++ [docs-as-code](https://www.writethedocs.org/guide/docs-as-code/) for opinions on documentation
+
++ [psf/black](https://black.readthedocs.io/en/stable/) for opinions on code formatting

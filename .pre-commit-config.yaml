@@ -35,7 +35,7 @@ repos:
   hooks:
   - id: ruff
     name: ruff
-    entry: poetry run ruff
+    entry: uv run ruff check
     args: [ --fix ]
     language: system
     types: [file, python]
@@ -43,21 +43,21 @@ repos:
     - commit
   - id: ruff-format
     name: ruff-format
-    entry: poetry run ruff format
+    entry: uv run ruff format
     language: system
     types: [file, python]
     stages:
     - commit
   - id: interrogate
     name: interrogate
-    entry: poetry run interrogate
+    entry: uv run interrogate
     language: system
     types: [file, python]
     stages:
     - commit
   - id: licensecheck
     name: licensecheck
-    entry: poetry run licensecheck
+    entry: uv run licensecheck
     args: [ --zero ]
     language: system
     pass_filenames: false

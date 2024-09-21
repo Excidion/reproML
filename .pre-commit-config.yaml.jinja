@@ -35,7 +35,7 @@ repos:
   hooks:
   - id: ruff
     name: ruff
-    entry: poetry run ruff
+    entry: uv run ruff check
     args: [ --fix ]
     language: system
     types: [file, python]
@@ -43,14 +43,14 @@ repos:
     - commit
   - id: ruff-format
     name: ruff-format
-    entry: poetry run ruff format
+    entry: uv run ruff format
     language: system
     types: [file, python]
     stages:
     - commit
   - id: interrogate
     name: interrogate
-    entry: poetry run interrogate
+    entry: uv run interrogate
     language: system
     types: [file, python]
     stages:
@@ -58,7 +58,7 @@ repos:
 {%- if license != 'NO_LICENSE' %}
   - id: licensecheck
     name: licensecheck
-    entry: poetry run licensecheck
+    entry: uv run licensecheck
     args: [ --zero ]
     language: system
     pass_filenames: false
@@ -68,7 +68,7 @@ repos:
 {%- if use_dvc %}
   - id: dvc-pre-commit
     name: DVC pre-commit
-    entry: poetry run dvc git-hook pre-commit
+    entry: uv run dvc git-hook pre-commit
     language: system
     require_serial: true
     verbose: true
@@ -76,14 +76,14 @@ repos:
     - commit
   - id: dvc-pre-push
     name: DVC pre-push
-    entry: poetry run dvc git-hook pre-push
+    entry: uv run dvc git-hook pre-push
     language: system
     require_serial: true
     stages:
     - push
   - id: dvc-post-checkout
     name: DVC post-checkout
-    entry: poetry run dvc git-hook post-checkout
+    entry: uv run dvc git-hook post-checkout
     language: system
     require_serial: true
     stages:

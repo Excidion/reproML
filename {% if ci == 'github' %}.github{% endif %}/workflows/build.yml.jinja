@@ -12,11 +12,16 @@ jobs:
       - name: Checkout {{default_branch}}
         uses: actions/checkout@v2
 
+      - name: "Set up Python"
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: ".python-version"
+
       - name: Setup environment
-        run: pip install poetry && poetry install --only dev,docs
+        run: pip install uv && uv sync --all-extras --dev
 
       - name: Run checks
-        run: poetry run pre-commit run --all-files
+        run: uv run pre-commit run --all-files
 
       - name: Deploy docs
-        run: poetry run mkdocs gh-deploy --force
+        run: uv run mkdocs gh-deploy --force

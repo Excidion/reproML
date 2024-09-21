@@ -1,14 +1,14 @@
 image: python:3.9-buster
 
 before_script:
-  - pip install poetry
-  - poetry install --only dev,docs
-  - poetry run pre-commit run --all-files
+  - pip install uv
+  - uv sync --all-extras
+  - uv run pre-commit run --all-files
 
 test:
   stage: test
   script:
-  - poetry run mkdocs build --strict --verbose --site-dir test
+  - uv run mkdocs build --strict --verbose --site-dir test
   artifacts:
     paths:
     - test
@@ -18,7 +18,7 @@ test:
 pages:
   stage: deploy
   script:
-  - poetry run mkdocs build --strict --verbose --site-dir public
+  - uv run mkdocs build --strict --verbose --site-dir public
   artifacts:
     paths:
     - public
