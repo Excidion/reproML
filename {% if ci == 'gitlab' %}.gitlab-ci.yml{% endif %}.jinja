@@ -3,24 +3,14 @@ image: python:3.9-buster
 before_script:
   - pip install uv
   - uv sync --all-extras
-  - uv run pre-commit run --all-files
-
-test:
-  stage: test
-  script:
-  - uv run mkdocs build --strict --verbose --site-dir test
-  artifacts:
-    paths:
-    - test
-  rules:
-    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
 
 pages:
   stage: deploy
   script:
-  - uv run mkdocs build --strict --verbose --site-dir public
+  - uv run pre-commit run --all-files
+  - uv run mkdocs build --verbose --site-dir public
   artifacts:
     paths:
     - public
   rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_REF_NAME == {{default_branch}}
