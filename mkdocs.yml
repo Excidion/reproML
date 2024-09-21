@@ -1,4 +1,5 @@
 site_name: reproML
+repo_name: Excidion/reproML
 repo_url: https://github.com/Excidion/reproML/
 
 theme:
@@ -6,6 +7,8 @@ theme:
   palette:
     scheme: slate
     primary: teal
+  icon:
+    repo: fontawesome/brands/github
 
 nav:
   - index.md
