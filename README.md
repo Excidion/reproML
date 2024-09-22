@@ -7,7 +7,7 @@
 
 A toolset for collaborative development and reproducible results in data science and machine learning projects.
 
-## Prerequsites
+## Prerequisites
 Make sure you have [`uv`](https://docs.astral.sh/uv/) installed.
 ```
 pip install uv
