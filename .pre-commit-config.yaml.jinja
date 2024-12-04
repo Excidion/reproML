@@ -5,10 +5,10 @@ repos:
   - id: check-yaml
     args: ['--unsafe'] # avoid problems with mkdocs mermaid extension
     stages:
-    - commit
+    - pre-commit
   - id: check-toml
     stages:
-    - commit
+    - pre-commit
   - id: end-of-file-fixer
     exclude: |
         (?x)^(
@@ -16,7 +16,7 @@ repos:
             docs/licenses.md
         )$
     stages:
-    - commit
+    - pre-commit
   - id: trailing-whitespace
     exclude: |
         (?x)^(
@@ -24,13 +24,13 @@ repos:
             docs/licenses.md
         )$
     stages:
-    - commit
+    - pre-commit
 - repo: https://github.com/jumanjihouse/pre-commit-hooks
   rev: '3.0.0'
   hooks:
   - id: forbid-binary
     stages:
-    - commit
+    - pre-commit
 - repo: local
   hooks:
   - id: ruff
@@ -40,21 +40,21 @@ repos:
     language: system
     types: [file, python]
     stages:
-    - commit
+    - pre-commit
   - id: ruff-format
     name: ruff-format
     entry: uv run ruff format
     language: system
     types: [file, python]
     stages:
-    - commit
+    - pre-commit
   - id: interrogate
     name: interrogate
     entry: uv run interrogate
     language: system
     types: [file, python]
     stages:
-    - commit
+    - pre-commit
 {%- if license != 'NO_LICENSE' %}
   - id: licensecheck
     name: licensecheck
@@ -63,7 +63,7 @@ repos:
     language: system
     pass_filenames: false
     stages:
-    - commit
+    - pre-commit
 {%- endif %}
 {%- if use_dvc %}
   - id: dvc-pre-commit
@@ -73,14 +73,14 @@ repos:
     require_serial: true
     verbose: true
     stages:
-    - commit
+    - pre-commit
   - id: dvc-pre-push
     name: DVC pre-push
     entry: uv run dvc git-hook pre-push
     language: system
     require_serial: true
     stages:
-    - push
+    - pre-push
   - id: dvc-post-checkout
     name: DVC post-checkout
     entry: uv run dvc git-hook post-checkout
