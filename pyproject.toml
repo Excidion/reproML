@@ -25,10 +25,10 @@ ignore-init-module = true
 ignore-module = true
 fail-under = 100
 verbose = 1
-generate-badge = "docs/helper"
+generate-badge = "reproML/docs/helper"
 badge-format = "svg"
 
 [tool.licensecheck]
 using = "PEP631"
 format = "markdown"
-file = "docs/licenses.md"
+file = "reproML/docs/licenses.md"

@@ -1,3 +1,5 @@
+_subdirectory: reproML
+
 # basics
 project_name:
   type: str

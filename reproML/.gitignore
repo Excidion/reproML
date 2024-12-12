@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# secrets
+.env
+
+# IDEs
+# Pycharm
+.idea
+# VS Code
+.vscode/
+# Spyder
+.spyproject/
+# Jupyter NB Checkpoints
+.ipynb_checkpoints/
+# Mac OS-specific storage files
+.DS_Store
+# vim
+*.swp
+*.swo
+
+# mkdocs build artifacts
+# default
+site/
+# GitLab
+public/
+
+# ruff
+.ruff_cache
+
+# uv
+.venv
