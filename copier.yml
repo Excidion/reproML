@@ -125,9 +125,4 @@ _tasks:
   #- "{% if repo_url != '' %} poetry run git push origin {{default_branch}} {% endif %}"
 
 _exclude:
-  - ".git" # template history
-  - "copier.yml" # template definition
-  - "LICENSE.md" # has to be chosen project specific
-  - ".github/workflows/build_pages.yml" # for pages of the template itself
-  - "uv.lock" # force fresh resolving of deps
   - docs/reproML.md # only for docs of template itself
