@@ -114,7 +114,7 @@ _tasks:
   - "git config user.email {{author_email}}"
   - "{% if repo_url != '' %} git remote add origin {{repo_url}} {% endif %}"
   # setup environment
-  - "uv sync --group dev"
+  - "uv sync --all-groups --all-extras"
   - "uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
   # setup dvc
   - "{% if remote_location != '' %} uv run dvc remote add -d remote0 {{remote_location}} {% endif %}"

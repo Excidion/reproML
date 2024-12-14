@@ -25,16 +25,18 @@ pip install uv
 Navigate to the project directory and install all dependencies.
 This command will also create a virtual environment for the project.
 ```
-uv sync --all-extras
+uv sync --all-groups --all-extras
 ```
 Make sure that pre-commits are enabled.
 ```
 uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
 ```
+{%- if use_dvc %}
 And make sure that you have all the necessary data available.
 ```
 uv run dvc pull
 ```
+{%- endif %}
 Now you can start coding.
 
 ## Look at the Documentation

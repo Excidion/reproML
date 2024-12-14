@@ -17,9 +17,6 @@ jobs:
         with:
           python-version-file: ".python-version"
 
-      - name: Move README to docs
-        run: cp README.md reproML/docs/index.md
-
       - name: Setup environment
         run: pip install uv && uv sync --all-extras
 
