@@ -20,14 +20,11 @@ __pycache__/
 *.swp
 *.swo
 
-# mkdocs build artifacts
-# default
-site/
-# GitLab
-public/
-
 # ruff
 .ruff_cache
 
 # uv
 .venv
+
+# ctt
+.ctt
