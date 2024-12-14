@@ -22,6 +22,12 @@ pip install uv
 ```
 
 ### Installation
+{%- if repo_url != '' %}
+Clone the project with:
+```
+git clone {{ repo_url }}
+```
+{%- endif %}
 Navigate to the project directory and install all dependencies.
 This command will also create a virtual environment for the project.
 ```

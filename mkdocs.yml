@@ -12,7 +12,7 @@ theme:
     repo: fontawesome/brands/github
 
 nav:
-  - index.md
+  - reproML.md
   - business.md
   - model.md
   - Analyses: notebooks/

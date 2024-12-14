@@ -1,2 +1,45 @@
 # {{project_name}}
+![python](https://img.shields.io/badge/Python-{{ python_version }}-blue)
+[![reproML](https://img.shields.io/badge/Based_on-reproML-brightgreen)](https://github.com/Excidion/reproML)
+[![Copier](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-black.json)](https://github.com/copier-org/copier)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![mkdocs-material](https://img.shields.io/badge/Material_for_MkDocs-526CFE?logo=MaterialForMkDocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
+![interrogate](helper/interrogate_badge.svg)
+
 {{project_description}}
+
+## Setup
+### Prerequisites
+What you need installed on your system:
++ [Python](https://www.python.org/downloads/) added to PATH
++ [git](https://git-scm.com/downloads)
+
+Make sure `uv` is installed on your system.
+```
+pip install uv
+```
+
+### Installation
+{%- if repo_url != '' %}
+Clone the project with:
+```
+git clone {{ repo_url }}
+```
+{%- endif %}
+Navigate to the project directory and install all dependencies.
+This command will also create a virtual environment for the project.
+```
+uv sync --all-groups --all-extras
+```
+Make sure that pre-commits are enabled.
+```
+uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
+```
+{%- if use_dvc %}
+And make sure that you have all the necessary data available.
+```
+uv run dvc pull
+```
+{%- endif %}
+Now you can start coding.

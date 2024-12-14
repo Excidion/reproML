@@ -130,3 +130,4 @@ _exclude:
   - "LICENSE.md" # has to be chosen project specific
   - ".github/workflows/build_pages.yml" # for pages of the template itself
   - "uv.lock" # force fresh resolving of deps
+  - docs/reproML.md # only for docs of template itself
