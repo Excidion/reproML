@@ -8,27 +8,32 @@ jobs:
   test-template:
     name: Test template
     strategy:
+      fail-fast: false
       matrix:
         os:
           - ubuntu-latest
-        python_version: # 3.9 is not supported by ctt
+          - macos-latest
+          #- windows-latest "Write test config" fails
+        python_version:
+          #- "3.9" is not supported by ctt
           - "3.10"
-          #- "3.11"
-          #- "3.12"
+          - "3.11"
+          - "3.12"
         use_dvc:
-          #- true
+          - true
           - false
         remote_type:
           - ""
-          #- all
+          - all
         license:
+          - NO_LICENSE
           - PROPRIETARY
-          - APACHE
-          #- GPL
         # don't use those combinations to create a job
         exclude:
           - use_dvc: false
             remote_type: all
+          - use_dvc: true
+            license: PROPRIETARY
 
     runs-on: ${{ matrix.os }}
 
