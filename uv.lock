@@ -1624,11 +1624,13 @@ dependencies = [
     { name = "mkdocs-material" },
     { name = "mkdocs-section-index" },
     { name = "mkdocstrings", extra = ["python"] },
-    { name = "pre-commit" },
-    { name = "ruff" },
 ]
 
 [package.dev-dependencies]
+dev = [
+    { name = "pre-commit" },
+    { name = "ruff" },
+]
 test = [
     { name = "copier-template-tester" },
 ]
@@ -1643,11 +1645,13 @@ requires-dist = [
     { name = "mkdocs-material", specifier = ">=9.5.35" },
     { name = "mkdocs-section-index", specifier = ">=0.3.9" },
     { name = "mkdocstrings", extras = ["python"], specifier = ">=0.26.1" },
-    { name = "pre-commit", specifier = ">=4.0.1" },
-    { name = "ruff", specifier = ">=0.6.6" },
 ]
 
 [package.metadata.requires-dev]
+dev = [
+    { name = "pre-commit", specifier = ">=4.0.1" },
+    { name = "ruff", specifier = ">=0.6.6" },
+]
 test = [{ name = "copier-template-tester", specifier = ">=2.1.4" }]
 
 [[package]]
