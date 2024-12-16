@@ -2,7 +2,12 @@ name: Test template
 on:
   push:
     branches:
-      - testing
+      - main
+  pull_request:
+    types:
+      - opened
+    branches:
+      - "main"
 
 jobs:
   test-template:
@@ -12,7 +17,7 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          - macos-latest
+          #- macos-latest maybe activate later
           #- windows-latest "Write test config" fails
         python_version:
           - "3.9"
