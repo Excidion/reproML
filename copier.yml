@@ -1,3 +1,5 @@
+_subdirectory: reproML
+
 # basics
 project_name:
   type: str
@@ -112,7 +114,7 @@ _tasks:
   - "git config user.email {{author_email}}"
   - "{% if repo_url != '' %} git remote add origin {{repo_url}} {% endif %}"
   # setup environment
-  - "uv sync --group dev"
+  - "uv sync --python {{python_version}} --all-groups --all-extras"
   - "uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
   # setup dvc
   - "{% if remote_location != '' %} uv run dvc remote add -d remote0 {{remote_location}} {% endif %}"
@@ -123,8 +125,4 @@ _tasks:
   #- "{% if repo_url != '' %} poetry run git push origin {{default_branch}} {% endif %}"
 
 _exclude:
-  - ".git" # template history
-  - "copier.yml" # template definition
-  - "LICENSE.md" # has to be chosen project specific
-  - ".github/workflows/build_pages.yml" # for pages of the template itself
-  - "uv.lock" # force fresh resolving of deps
+  - docs/reproML.md # only for docs of template itself

@@ -1,6 +1,7 @@
 site_name: reproML
 repo_name: Excidion/reproML
 repo_url: https://github.com/Excidion/reproML/
+docs_dir: reproML/docs
 
 theme:
   name: "material"
@@ -11,7 +12,7 @@ theme:
     repo: fontawesome/brands/github
 
 nav:
-  - index.md
+  - reproML.md
   - business.md
   - model.md
   - Analyses: notebooks/
@@ -23,9 +24,9 @@ plugins:
   - search
   - gen-files:
       scripts:
-      - docs/helper/generate_code_docs.py
+      - reproML/docs/helper/generate_code_docs.py
   - literate-nav:
-      nav_file: docs/index.md
+      nav_file: reproML/docs/index.md
   - section-index
   - mkdocstrings:
       handlers:
@@ -38,7 +39,7 @@ plugins:
           include: ["notebooks/*.ipynb"]
 
 watch:
-  - src # update on changes to code
+  - reproML/src # update on changes to code
 
 markdown_extensions:
   - footnotes

@@ -1,0 +1,71 @@
+name: Test template
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+    branches:
+      - "main"
+
+jobs:
+  test-template:
+    name: Test template
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          #- macos-latest maybe activate later
+          #- windows-latest "Write test config" fails
+        python_version:
+          - "3.9"
+          - "3.10"
+          - "3.11"
+          - "3.12"
+        use_dvc:
+          - true
+          - false
+        remote_type:
+          - ""
+          - all
+        license:
+          - NO_LICENSE
+          - PROPRIETARY
+        # don't use those combinations to create a job
+        exclude:
+          - use_dvc: false
+            remote_type: all
+          - use_dvc: true
+            license: PROPRIETARY
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Export test values
+        uses: easyware-io/export-to-env@v1
+        with:
+          vars: ${{ toJSON(matrix) }}
+          prefix: MATRIX_
+
+      - name: Write test config
+        run: |
+            envsubst < "ctt.toml.template" > "ctt.toml"
+            cat ctt.toml
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v2
+
+      - name: Install dependencies
+        run: uv sync --only-group test
+
+      - name: Test template
+        run: uv run ctt
+
+      - name: Test docs build
+        working-directory: .ctt/test/
+        run: uv run mkdocs build --strict

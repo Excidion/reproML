@@ -5,7 +5,7 @@ description = "A template for collaborative development and reproducible results
 authors = ["Excidion <36995046+Excidion@users.noreply.github.com>"]
 readme = "README.md"
 license = "Apache 2.0"
-requires-python = ">=3.9"
+requires-python = ">=3.10.9"
 dependencies = [
     "interrogate>=1.7.0",
     "licensecheck>=2024.3",
@@ -15,8 +15,15 @@ dependencies = [
     "mkdocs-material>=9.5.35",
     "mkdocs-section-index>=0.3.9",
     "mkdocstrings[python]>=0.26.1",
+]
+
+[dependency-groups]
+dev = [
     "pre-commit>=4.0.1",
     "ruff>=0.6.6",
+]
+test = [
+    "copier-template-tester>=2.1.4",
 ]
 
 [tool.interrogate]
@@ -25,10 +32,10 @@ ignore-init-module = true
 ignore-module = true
 fail-under = 100
 verbose = 1
-generate-badge = "docs/helper"
+generate-badge = "reproML/docs/helper"
 badge-format = "svg"
 
 [tool.licensecheck]
 using = "PEP631"
 format = "markdown"
-file = "docs/licenses.md"
+file = "reproML/docs/licenses.md"

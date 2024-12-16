@@ -4,9 +4,16 @@ import mkdocs_gen_files
 
 nav = mkdocs_gen_files.Nav()
 
-for path in sorted(Path("src").rglob("*.py")):
-    module_path = path.relative_to("src").with_suffix("")
-    doc_path = path.relative_to("src").with_suffix(".md")
+source_path = "src"
+paths = sorted(Path(source_path).rglob("*.py"))
+
+if len(paths) == 0:  # when documenting template itself
+    source_path = "reproML/src"
+    paths = sorted(Path(source_path).rglob("*.py"))
+
+for path in paths:
+    module_path = path.relative_to(source_path).with_suffix("")
+    doc_path = path.relative_to(source_path).with_suffix(".md")
     full_doc_path = Path("code", doc_path)
     parts = tuple(module_path.parts)
 
@@ -19,9 +26,12 @@ for path in sorted(Path("src").rglob("*.py")):
 
     nav[parts] = doc_path.as_posix()
 
-    with mkdocs_gen_files.open(full_doc_path, "w") as fd:
+    with mkdocs_gen_files.open(full_doc_path, "a") as fd:
         ident = ".".join(parts)
-        fd.write(f"::: src.{ident}")
+        if source_path == "src":
+            fd.write(f"::: src.{ident}")
+        elif source_path == "reproML/src":
+            fd.write(f"::: reproML.src.{ident}")
 
     mkdocs_gen_files.set_edit_path(full_doc_path, path)
 
