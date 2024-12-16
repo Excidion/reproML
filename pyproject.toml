@@ -5,7 +5,7 @@ description = "A template for collaborative development and reproducible results
 authors = ["Excidion <36995046+Excidion@users.noreply.github.com>"]
 readme = "README.md"
 license = "Apache 2.0"
-requires-python = ">=3.9"
+requires-python = ">=3.10.9"
 dependencies = [
     "interrogate>=1.7.0",
     "licensecheck>=2024.3",
@@ -17,6 +17,11 @@ dependencies = [
     "mkdocstrings[python]>=0.26.1",
     "pre-commit>=4.0.1",
     "ruff>=0.6.6",
+]
+
+[dependency-groups]
+test = [
+    "copier-template-tester>=2.1.4",
 ]
 
 [tool.interrogate]

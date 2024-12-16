@@ -15,7 +15,7 @@ jobs:
           - macos-latest
           #- windows-latest "Write test config" fails
         python_version:
-          #- "3.9" is not supported by ctt
+          - "3.9"
           - "3.10"
           - "3.11"
           - "3.12"
@@ -55,8 +55,11 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v2
 
+      - name: Install dependencies
+        run: uv sync --only-group test
+
       - name: Test template
-        run: uv run --python ${{ matrix.python_version }} --with copier-template-tester ctt
+        run: uv run ctt
 
       - name: Test docs build
         working-directory: .ctt/test/
