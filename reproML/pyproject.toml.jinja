@@ -7,7 +7,12 @@ authors = [
 ]
 readme = "README.md"
 {%- if license != 'NO_LICENSE' %}
+{%- if license != 'PROPRIETARY' %}
 license = "{{ license }}"
+{%- endif %}
+{%- if license == 'PROPRIETARY' %}
+license-files = ["LICENSE.md"]
+{%- endif %}
 {%- endif %}
 requires-python = ">={{ python_version }}"
 dependencies = [
