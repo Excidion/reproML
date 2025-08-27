@@ -10,19 +10,11 @@ repos:
     stages:
     - pre-commit
   - id: end-of-file-fixer
-    exclude: |
-        (?x)^(
-            {{_copier_conf.answers_file}}|
-            docs/licenses.md
-        )$
+    exclude: {{_copier_conf.answers_file}}
     stages:
     - pre-commit
   - id: trailing-whitespace
-    exclude: |
-        (?x)^(
-            {{_copier_conf.answers_file}}|
-            docs/licenses.md
-        )$
+    exclude: {{_copier_conf.answers_file}}
     stages:
     - pre-commit
 - repo: https://github.com/jumanjihouse/pre-commit-hooks
@@ -55,16 +47,6 @@ repos:
     types: [file, python]
     stages:
     - pre-commit
-{%- if license != 'NO_LICENSE' %}
-  - id: licensecheck
-    name: licensecheck
-    entry: uv run licensecheck
-    args: [ --zero ]
-    language: system
-    pass_filenames: false
-    stages:
-    - pre-commit
-{%- endif %}
 {%- if use_dvc %}
   - id: dvc-pre-commit
     name: DVC pre-commit

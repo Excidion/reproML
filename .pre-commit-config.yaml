@@ -10,19 +10,9 @@ repos:
     stages:
     - pre-commit
   - id: end-of-file-fixer
-    exclude: |
-        (?x)^(
-            {{_copier_conf.answers_file}}|
-            docs/licenses.md
-        )$
     stages:
     - pre-commit
   - id: trailing-whitespace
-    exclude: |
-        (?x)^(
-            {{_copier_conf.answers_file}}|
-            docs/licenses.md
-        )$
     stages:
     - pre-commit
 - repo: https://github.com/jumanjihouse/pre-commit-hooks
@@ -53,13 +43,5 @@ repos:
     entry: uv run interrogate
     language: system
     types: [file, python]
-    stages:
-    - pre-commit
-  - id: licensecheck
-    name: licensecheck
-    entry: uv run licensecheck
-    args: [ --zero ]
-    language: system
-    pass_filenames: false
     stages:
     - pre-commit

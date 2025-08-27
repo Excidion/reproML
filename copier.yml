@@ -19,37 +19,6 @@ python_version:
     - "3.12"
     - "3.13"
 
-license:
-  str:
-  help: How this code should be licensed, if at all.
-  choices:
-    - NO_LICENSE
-    - PROPRIETARY
-    - PUBLIC DOMAIN
-    - UNLICENSE
-    - BOOST
-    - MIT
-    - BSD
-    - ISC
-    - NCSA
-    - PYTHON
-    - APACHE
-    - ECLIPSE
-    - AFL
-    - AGPL
-    - LGPL
-    - LGPLV2
-    - LGPLV2+
-    - LGPLV3
-    - LGPLV3+
-    - GPL
-    - GPLV2
-    - GPLV2+
-    - GPLV3
-    - GPLV3+
-    - MPL
-    - EUPL
-
 author:
   type: str
   help: What is your name?

@@ -6,9 +6,6 @@ authors = [
     {name = "{{ author }}", email = "{{ author_email }}"},
 ]
 readme = "README.md"
-{%- if license != 'NO_LICENSE' %}
-license-files = ["LICENSE.md"]
-{%- endif %}
 requires-python = ">={{ python_version }}"
 dependencies = [
 {%- if use_dvc %}
@@ -21,9 +18,6 @@ dependencies = [
 dev = [
     "interrogate>=1.7.0",
     "ipykernel>=6.29.5",
-{%- if license != 'NO_LICENSE' %}
-    "licensecheck>=2024.3",
-{%- endif %}
     "mkdocs-gen-files>=0.5.0",
     "mkdocs-jupyter>=0.25.0",
     "mkdocs-literate-nav>=0.6.1",
@@ -42,12 +36,6 @@ fail-under = 100
 verbose = 1
 generate-badge = "docs/helper"
 badge-format = "svg"
-
-[tool.licensecheck]
-license = "{{ license }}"
-using = "PEP631"
-format = "markdown"
-file = "docs/licenses.md"
 
 [build-system]
 requires = ["uv_build>=0.8.10,<0.9.0"]

@@ -31,15 +31,10 @@ jobs:
         remote_type:
           - ""
           - all
-        license:
-          - NO_LICENSE
-          - PROPRIETARY
         # don't use those combinations to create a job
         exclude:
           - use_dvc: false
             remote_type: all
-          - use_dvc: true
-            license: PROPRIETARY
 
     runs-on: ${{ matrix.os }}
 

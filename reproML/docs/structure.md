@@ -59,7 +59,6 @@ This is your first overview how to find your way around this project.
 │   ├── notebooks      <- Your most polished notebooks can go here.
 │   ├── index.md       <- Landing page, describe the project and team.
 │   ├── business.md    <- Document business context and goals.
-│   ├── licenses.md    <- Generated report of dependency licenses. Do not touch.
 │   ├── model.md       <- Document modeling from data to ML.
 │   └── structure.md   <- Document tools and technical organization. You are here.
 │
