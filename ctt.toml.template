@@ -2,9 +2,9 @@
 project_name = "project"
 project_description = "Not much."
 author = "Excidion"
-author_email = "none@none.org"
+author_email = "36995046+Excidion@users.noreply.github.com"
 ci = "none"
-repo_url = "https://github.com"
+repo_url = "https://github.com/Excidion/reproML"
 
 [output.".ctt/test"]
 license = "$MATRIX_license"

@@ -54,9 +54,9 @@ This is your first overview how to find your way around this project.
 │   └── raw            <- The original, unedited data dump.
 │
 ├── docs               <- Project documentation.
-│   ├── code           <- Generated at build time. Do not touch.
+│   ├── code/          <- Automatically generated code documentation.
 │   ├── helper         <- Helper files for docs deployment. You can ignore these.
-│   ├── notebooks      <- Your most polished notebooks can go here.
+│   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
 │   ├── index.md       <- Landing page, describe the project and team.
 │   ├── business.md    <- Document business context and goals.
 │   ├── model.md       <- Document modeling from data to ML.
@@ -81,8 +81,8 @@ This is your first overview how to find your way around this project.
 ├── pyproject.toml     <- Project configuration and dependencies.
 ├── uv.lock            <- Full dependency list. Managed by uv, do no touch.
 │
-├── .github/workflows  <- CICD code for GitHub
-├── .gitlab-ci.yml     <- CICD code for GitLab
+├── .github/workflows  <- CICD code for GitHub (optional).
+├── .gitlab-ci.yml     <- CICD code for GitLab (optional).
 │
 ├── .copier-answers.yml <- Settings given at project init, do not touch.
 │

@@ -21,14 +21,13 @@ uv run --with copier copier copy --trust https://github.com/Excidion/reproML my_
 This will generate a structure that looks - depending on your answers - something like this:
 ```
 ├── data               <- All data files belong into one of this folders subfolder
+│   ├── raw            <- The original, unedited data dump
 │   ├── interim        <- Intermediate data that has been or is being transformed
-│   ├── processed      <- The final data sets for modeling
-│   └── raw            <- The original, unedited data dump
+│   └── processed      <- The data sets used for modeling
 │
 ├── docs               <- Project documentation
-│   ├── code           <- Generated at build time
-│   ├── helper         <- Helper files for docs deployment
-│   ├── notebooks      <- Your most polished notebooks, integrated into the docs
+│   ├── code/          <- Automatically generated code documentation.
+│   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
 │   ├── index.md       <- Landing page, describe the project and team
 │   ├── business.md    <- Document business context and goals
 │   ├── ethics.md      <- Ethics checklist (optional).
