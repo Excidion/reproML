@@ -7,7 +7,6 @@ ci = "none"
 repo_url = "https://github.com/Excidion/reproML"
 
 [output.".ctt/test"]
-license = "$MATRIX_license"
 python_version = "$MATRIX_python_version"
 use_dvc = $MATRIX_use_dvc
 remote_type = "$MATRIX_remote_type"
