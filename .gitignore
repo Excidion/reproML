@@ -28,3 +28,4 @@ __pycache__/
 
 # ctt
 .ctt
+ctt.toml
