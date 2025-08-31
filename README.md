@@ -31,7 +31,7 @@ This will generate a structure that looks - depending on your answers - somethin
 │   ├── notebooks      <- Your most polished notebooks, integrated into the docs
 │   ├── index.md       <- Landing page, describe the project and team
 │   ├── business.md    <- Document business context and goals
-│   ├── licenses.md    <- Generated report of dependency licenses
+│   ├── ethics.md      <- Ethics checklist (optional).
 │   ├── model.md       <- Document modeling from data to ML
 │   └── structure.md   <- Document tools and technical organization
 │

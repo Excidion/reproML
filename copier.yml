@@ -76,6 +76,12 @@ remote_location:
   default: ""
   when: "{% if remote_type != '' %}{% if remote_type != 'all' %}{{ use_dvc }}{% endif %}{% endif %}"
 
+# extra documentation
+ethics_checklist:
+  type: bool
+  help: Do you want to add the deon ethics checklist to your documentation?
+  default: true
+
 # commands to run post generation
 _tasks:
   # setup repo
@@ -88,6 +94,8 @@ _tasks:
   - "uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
   # setup dvc
   - "{% if remote_location != '' %} uv run dvc remote add -d remote0 {{remote_location}} {% endif %}"
+  # extra documentation
+  - "{% if ethics_checklist %} uv run --with deon deon -o docs/ethics.md {% endif %}"
   # initial commit
   - "git checkout -b {{default_branch}}"
   - "git add ."
