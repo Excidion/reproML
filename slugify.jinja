@@ -1,0 +1,8 @@
+{%- macro slugify(value) %}
+{%- set value = value | lower %}
+{%- set value = value | replace(' ', '-') %}
+{%- set value = value | regex_replace('[^a-z0-9-]', '') %}
+{%- set value = value | regex_replace('-+', '-') %}
+{%- set value = value | trim('-') %}
+{{- value | trim }}
+{%- endmacro %}

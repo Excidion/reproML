@@ -5,6 +5,12 @@ project_name:
   type: str
   help: What is your project name?
 
+project_name_slug:
+    type: str
+    help: A slug of the name
+    default: "{% from 'slugify.jinja' import slugify %}{{ slugify(project_name) }}"
+    validator: "{% from 'slugify.jinja' import slugify %}{% if project_name_slug != slugify(project_name_slug) %}Invalid slug.{% endif %}"
+
 project_description:
   type: str
   help: A brief summary of what you want to achieve.
