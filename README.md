@@ -14,11 +14,13 @@ pip install uv
 ```
 
 ## Usage
-Initialize a project from the command line:
+You can initialize a project from the command line.
+Just replace `my_new_project` with the name of the folder that the project should be created in.
 ```
-uv run --with copier copier copy --trust https://github.com/Excidion/reproML my_new_project
+uv run --with copier copier copy --trust gh:Excidion/reproML my_new_project
 ```
-This will generate a structure that looks - depending on your answers - something like this:
+You wil then be guided through a short questionaire.
+Depending on your choices, it will generate a structure that looks something like this:
 ```
 ├── data               <- All data files belong into one of this folders subfolder
 │   ├── raw            <- The original, unedited data dump
