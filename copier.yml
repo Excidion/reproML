@@ -50,7 +50,7 @@ default_branch:
 use_dvc:
   type: bool
   help: Dou you want to use data version control?
-  default: true
+  default: false
 
 remote_type:
   type: str
