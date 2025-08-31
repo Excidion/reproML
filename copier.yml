@@ -4,6 +4,7 @@ _subdirectory: reproML
 project_name:
   type: str
   help: What is your project name?
+  default: "{{ _folder_name }}"
 
 project_name_slug:
     type: str
