@@ -10,11 +10,11 @@ repos:
     stages:
     - pre-commit
   - id: end-of-file-fixer
-    exclude: {{_copier_conf.answers_file}}|docs/ethics.md
+    exclude: docs/ethics.md
     stages:
     - pre-commit
   - id: trailing-whitespace
-    exclude: {{_copier_conf.answers_file}}|docs/ethics.md
+    exclude: docs/ethics.md
     stages:
     - pre-commit
 - repo: https://github.com/jumanjihouse/pre-commit-hooks
