@@ -1,8 +1,8 @@
-image: python:3.9-buster
+image: python:{{python_version}}
 
 before_script:
   - pip install uv
-  - uv sync --all-extras
+  - uv sync --group dev --all-extras
 
 pages:
   stage: deploy
