@@ -51,7 +51,9 @@ repo_url:
 
 default_branch:
   type: str
+  help: What do you want to name your default branch?
   default: main
+  validator: "{% from 'slugify.jinja' import slugify %}{% if default_branch != slugify(default_branch) %}Invalid branch name.{% endif %}"
 
 # dvc
 use_dvc:
