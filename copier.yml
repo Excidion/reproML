@@ -7,10 +7,10 @@ project_name:
   default: "{{ _folder_name }}"
 
 project_name_slug:
-    type: str
-    help: A slug of the name
-    default: "{% from 'slugify.jinja' import slugify %}{{ slugify(project_name) }}"
-    validator: "{% from 'slugify.jinja' import slugify %}{% if project_name_slug != slugify(project_name_slug) %}Invalid slug.{% endif %}"
+  type: str
+  help: A slug of the name
+  default: "{% from 'slugify.jinja' import slugify %}{{ slugify(project_name) }}"
+  validator: "{% from 'slugify.jinja' import slugify %}{% if project_name_slug != slugify(project_name_slug) %}Invalid slug.{% endif %}"
 
 project_description:
   type: str
@@ -39,9 +39,9 @@ ci:
   type: str
   help: What CI service do you want to use?
   choices:
-      GitHub Actions: github
-      GitLab CICD: gitlab
-      Skip for now: none
+    GitHub Actions: github
+    GitLab CICD: gitlab
+    Skip for now: none
 
 repo_url:
   type: str
