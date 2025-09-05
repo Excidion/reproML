@@ -5,12 +5,13 @@ project_name:
   type: str
   help: What is your project name?
   default: "{{ _folder_name }}"
+  validator: "{% if project_name|length < 1 %}Can not be empty.{% endif %}"
 
 project_name_slug:
   type: str
   help: A slug of the name
   default: "{% from 'slugify.jinja' import slugify %}{{ slugify(project_name) }}"
-  validator: "{% from 'slugify.jinja' import slugify %}{% if project_name_slug != slugify(project_name_slug) %}Invalid slug.{% endif %}"
+  validator: "{% if project_name_slug|length < 1 %}Can not be empty.{% endif %}{% from 'slugify.jinja' import slugify %}{% if project_name_slug != slugify(project_name_slug) %}Invalid slug.{% endif %}"
 
 project_description:
   type: str
@@ -45,7 +46,7 @@ ci:
 
 repo_url:
   type: str
-  help: Where is the git repo hosted? Just press enter to skip.
+  help: Where is the git repo hosted? Keep empty to skip.
   placeholder: https://
   default: ""
 
