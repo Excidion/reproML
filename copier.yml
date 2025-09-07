@@ -104,8 +104,8 @@ _tasks:
   - command: "git config user.email {{author_email}}"
     when: "{{ _copier_operation == 'copy' }}"
 
-  - command: "{% if repo_url != '' %} git remote add origin {{repo_url}} {% endif %}"
-    when: "{{ _copier_operation == 'copy' }}"
+  - command: "git remote add origin {{repo_url}}"
+    when: "{{ repo_url != '' and _copier_operation == 'copy' }}"
 
   # setup environment
   - "uv sync --python {{python_version}} --all-groups --all-extras"
@@ -114,12 +114,12 @@ _tasks:
     when: "{{ _copier_operation == 'copy' }}"
 
   # setup dvc
-  - command: "{% if remote_location != '' %} uv run dvc remote add -d remote0 {{remote_location}} {% endif %}"
-    when: "{{ _copier_operation == 'copy' }}"
+  - command: "uv run dvc remote add -d remote0 {{remote_location}}"
+    when: "{{ remote_location != '' and _copier_operation == 'copy' }}"
 
   # extra documentation
-  - command: "{% if ethics_checklist %} uv run --with deon deon -o docs/ethics.md {% endif %}"
-    when: "{{ _copier_operation == 'copy' }}"
+  - command: "uv run --with deon deon -o docs/ethics.md"
+    when: "{{ ethics_checklist and _copier_operation == 'copy' }}"
 
   # initial commit
   - command: "git checkout -b {{default_branch}}"
