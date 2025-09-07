@@ -60,3 +60,9 @@ Depending on your choices, it will generate a structure that looks something lik
 │
 └── README.md          <- The top-level README for developers using this project.
 ```
+
+### Upgrading and changing settings
+If you want to upgrade to the newest version of the template or change any of the settings given at generation, simply run:
+```
+uv run --with copier copier update --trust
+```

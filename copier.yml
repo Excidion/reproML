@@ -106,6 +106,8 @@ _tasks:
 
   - command: "git remote add origin {{repo_url}}"
     when: "{{ repo_url != '' and _copier_operation == 'copy' }}"
+  - command: "git remote set-url origin {{repo_url}}"
+    when: "{{ repo_url != '' and _copier_operation == 'update' }}"
 
   # setup environment
   - "uv sync --python {{python_version}} --all-groups --all-extras"
@@ -116,6 +118,8 @@ _tasks:
   # setup dvc
   - command: "uv run dvc remote add -d remote0 {{remote_location}}"
     when: "{{ remote_location != '' and _copier_operation == 'copy' }}"
+  - command: "uv run dvc remote modify remote0 url {{remote_location}}"
+    when: "{{ remote_location != '' and _copier_operation == 'update' }}"
 
   # extra documentation
   - command: "uv run --with deon deon -o docs/ethics.md"
