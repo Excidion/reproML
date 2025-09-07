@@ -40,9 +40,9 @@ ci:
   type: str
   help: What CI service do you want to use?
   choices:
+    Skip for now: none
     GitHub Actions: github
     GitLab CICD: gitlab
-    Skip for now: none
 
 repo_url:
   type: str
