@@ -95,21 +95,42 @@ ethics_checklist:
 # commands to run post generation
 _tasks:
   # setup repo
-  - "git init"
-  - "git config user.name {{author}}"
-  - "git config user.email {{author_email}}"
-  - "{% if repo_url != '' %} git remote add origin {{repo_url}} {% endif %}"
+  - command: "git init"
+    when: "{{ _copier_operation == 'copy' }}"
+
+  - command: "git config user.name {{author}}"
+    when: "{{ _copier_operation == 'copy' }}"
+
+  - command: "git config user.email {{author_email}}"
+    when: "{{ _copier_operation == 'copy' }}"
+
+  - command: "{% if repo_url != '' %} git remote add origin {{repo_url}} {% endif %}"
+    when: "{{ _copier_operation == 'copy' }}"
+
   # setup environment
   - "uv sync --python {{python_version}} --all-groups --all-extras"
-  - "uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
+
+  - command: "uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
+    when: "{{ _copier_operation == 'copy' }}"
+
   # setup dvc
-  - "{% if remote_location != '' %} uv run dvc remote add -d remote0 {{remote_location}} {% endif %}"
+  - command: "{% if remote_location != '' %} uv run dvc remote add -d remote0 {{remote_location}} {% endif %}"
+    when: "{{ _copier_operation == 'copy' }}"
+
   # extra documentation
-  - "{% if ethics_checklist %} uv run --with deon deon -o docs/ethics.md {% endif %}"
+  - command: "{% if ethics_checklist %} uv run --with deon deon -o docs/ethics.md {% endif %}"
+    when: "{{ _copier_operation == 'copy' }}"
+
   # initial commit
-  - "git checkout -b {{default_branch}}"
-  - "git add ."
-  - "git commit -m 'Init from template: github.com/Excidion/reproML'."
+  - command: "git checkout -b {{default_branch}}"
+    when: "{{ _copier_operation == 'copy' }}"
+
+  - command: "git add ."
+    when: "{{ _copier_operation == 'copy' }}"
+
+  - command: "git commit -m 'Init from template: github.com/Excidion/reproML'."
+    when: "{{ _copier_operation == 'copy' }}"
+
   #- "{% if repo_url != '' %} poetry run git push origin {{default_branch}} {% endif %}"
 
 _exclude:
