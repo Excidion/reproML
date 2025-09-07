@@ -96,16 +96,16 @@ ethics_checklist:
 _tasks:
   # setup repo
   - command: "git init"
-    when: "{{ _copier_operation == 'copy' }}"
+    when: "{{ _copier_operation != 'update' }}"
 
   - command: "git config user.name {{author}}"
-    when: "{{ _copier_operation == 'copy' }}"
+    when: "{{ _copier_operation != 'update' }}"
 
   - command: "git config user.email {{author_email}}"
-    when: "{{ _copier_operation == 'copy' }}"
+    when: "{{ _copier_operation != 'update' }}"
 
   - command: "git remote add origin {{repo_url}}"
-    when: "{{ repo_url != '' and _copier_operation == 'copy' }}"
+    when: "{{ repo_url != '' and _copier_operation != 'update' }}"
   - command: "git remote set-url origin {{repo_url}}"
     when: "{{ repo_url != '' and _copier_operation == 'update' }}"
 
@@ -113,27 +113,27 @@ _tasks:
   - "uv sync --python {{python_version}} --all-groups --all-extras"
 
   - command: "uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit"
-    when: "{{ _copier_operation == 'copy' }}"
+    when: "{{ _copier_operation != 'update' }}"
 
   # setup dvc
   - command: "uv run dvc remote add -d remote0 {{remote_location}}"
-    when: "{{ remote_location != '' and _copier_operation == 'copy' }}"
+    when: "{{ remote_location != '' and _copier_operation != 'update' }}"
   - command: "uv run dvc remote modify remote0 url {{remote_location}}"
     when: "{{ remote_location != '' and _copier_operation == 'update' }}"
 
   # extra documentation
   - command: "uv run --with deon deon -o docs/ethics.md"
-    when: "{{ ethics_checklist and _copier_operation == 'copy' }}"
+    when: "{{ ethics_checklist and _copier_operation != 'update' }}"
 
   # initial commit
   - command: "git checkout -b {{default_branch}}"
-    when: "{{ _copier_operation == 'copy' }}"
+    when: "{{ _copier_operation != 'update' }}"
 
   - command: "git add ."
-    when: "{{ _copier_operation == 'copy' }}"
+    when: "{{ _copier_operation != 'update' }}"
 
   - command: "git commit -m 'Init from template: github.com/Excidion/reproML'."
-    when: "{{ _copier_operation == 'copy' }}"
+    when: "{{ _copier_operation != 'update' }}"
 
   #- "{% if repo_url != '' %} poetry run git push origin {{default_branch}} {% endif %}"
 
