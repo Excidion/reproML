@@ -36,6 +36,14 @@ author_email:
   help: What is your email adress?
 
 # git integration
+git_config:
+  type: bool
+  help: "Do you want to use these details for the initial commit?"
+  default: true
+  choices:
+    "Yes, use '{{author}}' and '{{author_email}}'.": true
+    No, use global git defaults.: false
+
 ci:
   type: str
   help: What CI service do you want to use?
@@ -99,10 +107,10 @@ _tasks:
     when: "{{ _copier_operation != 'update' }}"
 
   - command: "git config user.name {{author}}"
-    when: "{{ _copier_operation != 'update' }}"
+    when: "{{ git_config and _copier_operation != 'update' }}"
 
   - command: "git config user.email {{author_email}}"
-    when: "{{ _copier_operation != 'update' }}"
+    when: "{{ git_config and _copier_operation != 'update' }}"
 
   - command: "git remote add origin {{repo_url}}"
     when: "{{ repo_url != '' and _copier_operation != 'update' }}"
@@ -135,7 +143,6 @@ _tasks:
   - command: "git commit -m 'Init from template: github.com/Excidion/reproML'."
     when: "{{ _copier_operation != 'update' }}"
 
-  #- "{% if repo_url != '' %} poetry run git push origin {{default_branch}} {% endif %}"
 
 _exclude:
   - docs/reproML.md # only for docs of template itself
