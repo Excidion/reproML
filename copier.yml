@@ -104,7 +104,7 @@ ethics_checklist:
 # commands to run post generation
 _tasks:
   # setup repo
-  - command: "git init"
+  - command: "git init -b {{default_branch}}"
     when: "{{ _copier_operation != 'update' }}"
 
   - command: "git config user.name {{author}}"
@@ -135,9 +135,6 @@ _tasks:
     when: "{{ ethics_checklist and _copier_operation != 'update' }}"
 
   # initial commit
-  - command: "git checkout -b {{default_branch}}"
-    when: "{{ _copier_operation != 'update' }}"
-
   - command: "git add ."
     when: "{{ _copier_operation != 'update' }}"
 
