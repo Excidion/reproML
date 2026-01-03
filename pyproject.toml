@@ -19,17 +19,23 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pre-commit>=4.0.1",
+    "pydoclint>=0.8.3",
     "ruff>=0.6.6",
+    "ty>=0.0.7",
 ]
 test = [
     "copier-template-tester>=2.1.4",
 ]
 
 [tool.interrogate]
-ignore-init-method = true
+style = "google"
 ignore-init-module = true
 ignore-module = true
 fail-under = 100
 verbose = 1
 generate-badge = "reproML/docs/helper"
 badge-format = "svg"
+
+[tool.pydoclint]
+style = "google"
+skip-checking-short-docstrings = false

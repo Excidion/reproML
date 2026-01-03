@@ -53,3 +53,10 @@ repos:
     types: [file, python]
     stages:
     - pre-commit
+  - id: pydoclint
+    name: pydoclint
+    entry: uv run pydoclint
+    language: system
+    types: [file, python]
+    stages:
+    - pre-commit

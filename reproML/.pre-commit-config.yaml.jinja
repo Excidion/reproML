@@ -48,9 +48,23 @@ repos:
     types: [file, python]
     stages:
     - pre-commit
+  - id: ty-check
+    name: ty-check
+    entry: uv run ty check
+    language: system
+    types: [file, python]
+    stages:
+    - pre-commit
   - id: interrogate
     name: interrogate
     entry: uv run interrogate
+    language: system
+    types: [file, python]
+    stages:
+    - pre-commit
+  - id: pydoclint
+    name: pydoclint
+    entry: uv run pydoclint
     language: system
     types: [file, python]
     stages:
