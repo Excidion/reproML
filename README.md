@@ -3,6 +3,7 @@
 [![Copier](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-black.json)](https://github.com/copier-org/copier)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![ty](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json)](https://github.com/astral-sh/ty)
 [![mkdocs-material](https://img.shields.io/badge/Material_for_MkDocs-526CFE?logo=MaterialForMkDocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
 
 A toolset for collaborative development and reproducible results in data science and machine learning projects.
@@ -47,16 +48,13 @@ Depending on your choices, it will generate a structure that looks something lik
 │   └── figures        <- Generated graphics and figures to be used in reports
 │
 ├── src                <- Source code for use in this project.
-│   ├── data           <- Scripts to download or generate data
-│   ├── features       <- Scripts to turn raw data into features for modeling
-│   ├── models         <- Scripts for training and prediction
+│   ├── data           <- Scripts to download, process or generate data
+│   ├── features       <- Functions to turn data into features
+│   ├── model          <- Scripts for training and prediction
 │   └── visualization  <- Scripts to create visualizations
 │
 ├── pyproject.toml     <- Project configuration and dependencies.
 ├── uv.lock            <- Full dependency lockfile
-├── .python-version    <- Specifies Python version
-│
-├── .copier-answers.yml <- Settings given at project init
 │
 └── README.md          <- The top-level README for developers using this project.
 ```

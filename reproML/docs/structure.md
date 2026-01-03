@@ -73,9 +73,9 @@ This is your first overview how to find your way around this project.
 │   └── figures        <- Generated graphics and figures to be used in reports
 │
 ├── src                <- Source code for use in this project.
-│   ├── data           <- Scripts to download or generate data
-│   ├── features       <- Scripts to turn raw data into features for modeling
-│   ├── models         <- Scripts for training and prediction
+│   ├── data           <- Scripts to download, process or generate data
+│   ├── features       <- Functions to turn data into features
+│   ├── model          <- Scripts for training and prediction
 │   └── visualization  <- Scripts to create visualizations
 │
 ├── pyproject.toml     <- Project configuration and dependencies.
@@ -167,16 +167,20 @@ and [checklists](https://squidfunk.github.io/mkdocs-material/reference/lists/#us
 inside markdown.
 
 + Source code documentation is automatically generated from [docstrings](https://peps.python.org/pep-0257/#what-is-a-docstring) with [mkdocstrings-python](https://mkdocstrings.github.io/python/).
-A pre-commit hook with [interrogate](https://interrogate.readthedocs.io/) ensures that enough docstrings exist.
+A pre-commit hook using [interrogate](https://interrogate.readthedocs.io/) checks if a docstring exist.
+Another pre-commit hook using [pydoclint](https://github.com/jsh9/pydoclint) ensures that the docstring fits the actual function definition.
 
 
 ### Code styles are not worth fighting over
 Even though code quality is important - nobody likes debating about indentation aesthetics or pedantic formatting standards.
 This is why this template comes with one predefined.
 
-This template uses an automatic code formatter ([ruff](https://docs.astral.sh/ruff/)) and enforces it's style via pre-commit hooks.
+We use an automatic code formatter ([ruff](https://docs.astral.sh/ruff/)) to enforce it's style via pre-commit hooks.
 This style is compliant with [black](https://black.readthedocs.io/en/stable/) and [flake8](https://flake8.pycqa.org) and any settings can be configured via the `pyproject.toml`.
 See [here](https://docs.astral.sh/ruff/configuration/) for more details.
+
+In the same spirit, we picked the *google*-style for docstrings.
+It's what we like, but most importantly, it's (the only one) supported by all of `mkdocstrings-python`, `interrogate` and `pydoclint`.
 
 
 ### Raw data should be immutable

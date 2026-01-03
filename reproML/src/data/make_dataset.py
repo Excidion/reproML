@@ -1,3 +1,3 @@
 def main():
-    """Creates the dataset from all collected data"""
+    """Creates the dataset used for modeling."""
     pass
