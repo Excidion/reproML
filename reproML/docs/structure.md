@@ -58,7 +58,7 @@ This is your first overview how to find your way around this project.
 │   ├── helper         <- Helper files for docs deployment. You can ignore these.
 │   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
 │   ├── index.md       <- Landing page, describe the project and team.
-│   ├── business.md    <- Document business context and goals.
+│   ├── context.md     <- Document context and goals.
 │   ├── model.md       <- Document modeling from data to ML.
 │   └── structure.md   <- Document tools and technical organization. You are here.
 │

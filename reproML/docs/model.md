@@ -1,7 +1,7 @@
-# Model Architecture
+# Model
 
 ## Mathematical Model
-Formulate the business problem as a machine learning problem.
+Formulate the [central question](context.md#central-question) problem as a machine learning problem.
 
 $$
 y_i = f(\vec{x}_i)

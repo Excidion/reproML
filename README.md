@@ -32,7 +32,7 @@ Depending on your choices, it will generate a structure that looks something lik
 │   ├── code/          <- Automatically generated code documentation.
 │   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
 │   ├── index.md       <- Landing page, describe the project and team
-│   ├── business.md    <- Document business context and goals
+│   ├── context.md     <- Document context and goals
 │   ├── ethics.md      <- Ethics checklist (optional).
 │   ├── model.md       <- Document modeling from data to ML
 │   └── structure.md   <- Document tools and technical organization

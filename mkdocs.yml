@@ -13,11 +13,11 @@ theme:
 
 nav:
   - reproML.md
-  - business.md
+  - context.md
   - model.md
   - Analyses: notebooks/
-  - structure.md
   - Source Code: code/
+  - structure.md
 
 plugins:
   - search
