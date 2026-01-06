@@ -9,7 +9,8 @@
 A toolset for collaborative development and reproducible results in data science and machine learning projects.
 
 ## Prerequisites
-Make sure you have [`uv` installed](https://docs.astral.sh/uv/getting-started/installation/).
+Make sure you have `uv` [installed](https://docs.astral.sh/uv/getting-started/installation/).
+For example:
 ```
 pip install uv
 ```
@@ -18,7 +19,7 @@ pip install uv
 You can initialize a project from the command line.
 Just replace `my_new_project` with the name of the folder that should be created for the project.
 ```
-uv run --with copier copier copy --trust gh:Excidion/reproML my_new_project
+uvx copier copy --trust gh:Excidion/reproML my_new_project
 ```
 You wil then be guided through a short questionaire.
 Depending on your choices, it will generate a structure that looks something like this:
@@ -62,5 +63,5 @@ Depending on your choices, it will generate a structure that looks something lik
 ### Upgrading and changing settings
 If you want to upgrade to the newest version of the template or change any of the settings given at generation, simply run:
 ```
-uv run --with copier copier update --trust
+uvx copier update --trust
 ```
