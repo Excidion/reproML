@@ -10,7 +10,7 @@ A toolset for collaborative development and reproducible results in data science
 
 ## Prerequisites
 Make sure you have `uv` [installed](https://docs.astral.sh/uv/getting-started/installation/).
-For example:
+For example via pip:
 ```
 pip install uv
 ```
