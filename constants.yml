@@ -1,0 +1,39 @@
+text_project_setup:
+  type: str
+  when: false
+  default: |
+    ## Setup
+    ### Prerequisites
+    What you need installed on your system:
+    + [Python](https://www.python.org/downloads/) added to PATH
+    + [git](https://git-scm.com/downloads)
+
+    Make sure `uv` is installed on your system.
+    For example via pip:
+    ```
+    pip install uv
+    ```
+
+    ### Installation
+    {%- if repo_url != '' %}
+    Clone the project with:
+    ```
+    git clone {{ repo_url }}
+    ```
+    {%- endif %}
+    Navigate to the project directory and install all dependencies.
+    This command will also create a virtual environment for the project.
+    ```
+    uv sync --all-groups --all-extras
+    ```
+    Make sure that pre-commits are enabled.
+    ```
+    uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
+    ```
+    {%- if use_dvc %}
+    And make sure that you have all the necessary data available.
+    ```
+    uv run dvc pull
+    ```
+    {%- endif %}
+    Now you can start coding.
