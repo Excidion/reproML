@@ -49,17 +49,18 @@ This is your first overview how to find your way around this project.
 ├── .dvc               <- Metadata managed by dvc, do not touch.
 │
 ├── data <dvc>         <- All data files belong into one of this folders subfolder
-│   ├── interim        <- Intermediate data that has been or is being transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, unedited data dump.
+│   ├── raw            <- The original, unedited data dump
+│   ├── interim        <- Intermediate data that has been or is being transformed
+│   └── processed      <- The data sets used for modeling
 │
 ├── docs               <- Project documentation.
-│   ├── code/          <- Automatically generated code documentation.
 │   ├── helper         <- Helper files for docs deployment. You can ignore these.
-│   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
 │   ├── index.md       <- Landing page, describe the project and team.
 │   ├── context.md     <- Document context and goals.
 │   ├── model.md       <- Document modeling from data to ML.
+│   ├── ethics.md      <- Ethics checklist (optional)
+│   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
+│   ├── code/          <- Automatically generated code documentation.
 │   └── structure.md   <- Document tools and technical organization. You are here.
 │
 ├── models <dvc>       <- Trained and serialized models and other artifacts
@@ -79,10 +80,10 @@ This is your first overview how to find your way around this project.
 │   └── visualization  <- Scripts to create visualizations
 │
 ├── pyproject.toml     <- Project configuration and dependencies.
-├── uv.lock            <- Full dependency list. Managed by uv, do no touch.
+├── uv.lock            <- Full dependency list. Managed by uv, do not touch.
 │
-├── .github/workflows  <- CICD code for GitHub (optional).
-├── .gitlab-ci.yml     <- CICD code for GitLab (optional).
+├── .github/workflows  <- CICD code for GitHub (optional)
+├── .gitlab-ci.yml     <- CICD code for GitLab (optional)
 │
 ├── .copier-answers.yml <- Settings given at project init, do not touch.
 │
