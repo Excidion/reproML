@@ -34,7 +34,6 @@ Depending on your choices, it will generate a structure that looks something lik
 │   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
 │   ├── index.md       <- Landing page, describe the project and team
 │   ├── context.md     <- Document context and goals
-│   ├── ethics.md      <- Ethics checklist (optional).
 │   ├── model.md       <- Document modeling from data to ML
 │   └── structure.md   <- Document tools and technical organization
 │
@@ -58,10 +57,4 @@ Depending on your choices, it will generate a structure that looks something lik
 ├── uv.lock            <- Full dependency lockfile
 │
 └── README.md          <- The top-level README for developers using this project.
-```
-
-### Upgrading and changing settings
-If you want to upgrade to the newest version of the template or change any of the settings given at generation, simply run:
-```
-uvx copier update --trust
 ```
