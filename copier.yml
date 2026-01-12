@@ -99,6 +99,13 @@ remote_location:
   default: ""
   when: "{% if remote_type != '' %}{% if remote_type != 'all' %}{{ use_dvc }}{% endif %}{% endif %}"
 
+remote_name:
+  type: str
+  help: Give the remote location a name. Press enter to accept default.
+  default: "{{ remote_type }}-storage"
+  when: "{{ remote_location != '' }}"
+  validator: "{% if remote_name|length < 1 %}Can not be empty.{% endif %}{% from 'slugify.jinja' import slugify %}{% if remote_name != slugify(remote_name) %}Invalid name.{% endif %}"
+
 # extra documentation
 ethics_checklist:
   type: bool
@@ -129,7 +136,7 @@ _tasks:
     when: "{{ _copier_operation != 'update' }}"
 
   # setup dvc
-  - command: "uv run dvc remote add -d remote0 {{remote_location}}"
+  - command: "uv run dvc remote add -d {{remote_name}} {{remote_location}}"
     when: "{{ remote_location != '' and _copier_operation != 'update' }}"
   - command: "uv run dvc remote modify remote0 url {{remote_location}}"
     when: "{{ remote_location != '' and _copier_operation == 'update' }}"
