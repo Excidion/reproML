@@ -1,18 +1,16 @@
-text_project_setup:
+md_project_setup:
   type: str
   when: false
   default: |
     ## Setup
     ### Prerequisites
-    What you need installed on your system:
-    + [Python](https://www.python.org/downloads/) added to PATH
-    + [git](https://git-scm.com/downloads)
+    + An installation of [git](https://git-scm.com/downloads).
 
-    Make sure `uv` is installed on your system.
-    For example via pip:
-    ```
-    pip install uv
-    ```
+    + Make sure you have `uv` [installed](https://docs.astral.sh/uv/getting-started/installation/).
+      For example via pip:
+      ```
+      pip install uv
+      ```
 
     ### Installation
     {%- if repo_url != '' %}
@@ -21,12 +19,12 @@ text_project_setup:
     git clone {{ repo_url }}
     ```
     {%- endif %}
-    Navigate to the project directory and install all dependencies.
-    This command will also create a virtual environment for the project.
+    Navigate to the project directory and install all dependencies:
     ```
     uv sync --all-groups --all-extras
     ```
-    Make sure that pre-commits are enabled.
+    This command will also create a virtual environment for the project.
+    To make sure that pre-commits are enabled run:
     ```
     uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
     ```
