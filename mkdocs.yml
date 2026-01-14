@@ -10,6 +10,8 @@ theme:
     primary: teal
   icon:
     repo: fontawesome/brands/github
+  features:
+    - navigation.indexes
 
 nav:
   - reproML.md
@@ -24,9 +26,7 @@ plugins:
   - gen-files:
       scripts:
       - reproML/docs/helper/generate_code_docs.py
-  - literate-nav:
-      nav_file: reproML/docs/index.md
-  - section-index
+  - literate-nav
   - mkdocstrings:
       handlers:
           python:

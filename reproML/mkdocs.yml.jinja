@@ -8,6 +8,8 @@ theme:
   palette:
     scheme: slate
     primary: teal
+  features:
+    - navigation.indexes
 
 nav:
   - index.md
@@ -25,9 +27,7 @@ plugins:
   - gen-files:
       scripts:
       - docs/helper/generate_code_docs.py
-  - literate-nav:
-      nav_file: docs/index.md
-  - section-index
+  - literate-nav
   - mkdocstrings:
       handlers:
           python:
