@@ -85,7 +85,10 @@ This is your first overview how to find your way around this project.
 ├── .github/workflows  <- CICD code for GitHub (optional)
 ├── .gitlab-ci.yml     <- CICD code for GitLab (optional)
 │
-├── .copier-answers.yml <- Settings given at project init, do not touch.
+├── .reproML.yml       <- Settings given at project init, do not touch.
+│
+├── pyproject.toml     <- Project configuration and dependencies.
+├── uv.lock            <- Full dependency list. Managed by uv, do not touch.
 │
 └── README.md          <- The top-level README for developers using this project.
 ```
