@@ -1,4 +1,4 @@
-# reproML
+# reproML - Example Project
 ![python](https://img.shields.io/badge/Python-3.9_to_3.14-blue)
 [![Copier](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/copier-org/copier/master/img/badge/badge-black.json)](https://github.com/copier-org/copier)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
@@ -7,6 +7,8 @@
 [![mkdocs-material](https://img.shields.io/badge/Material_for_MkDocs-526CFE?logo=MaterialForMkDocs&logoColor=white)](https://squidfunk.github.io/mkdocs-material/)
 
 A toolset for collaborative development and reproducible results in data science and machine learning projects.
+
+**This documentation is itself a version of the documentation you would get when using this template.**
 
 ## Prerequisites
 Make sure you have `uv` [installed](https://docs.astral.sh/uv/getting-started/installation/).
