@@ -60,7 +60,7 @@ This is your first overview how to find your way around this project.
 │   ├── model.md       <- Document modeling from data to ML.
 │   ├── ethics.md      <- Ethics checklist (optional)
 │   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
-│   ├── code/          <- Automatically generated code documentation.
+│   ├── code/          <- Automatically generated code documentation
 │   └── structure.md   <- Document tools and technical organization. You are here.
 │
 ├── models <dvc>       <- Trained and serialized models and other artifacts
@@ -79,8 +79,9 @@ This is your first overview how to find your way around this project.
 │   ├── model          <- Scripts for training and prediction
 │   └── visualization  <- Scripts to create visualizations
 │
-├── pyproject.toml     <- Project configuration and dependencies.
-├── uv.lock            <- Full dependency list. Managed by uv, do not touch.
+├── .pre-commit-config.yaml <- Automated quality checks
+│
+├── .python-version    <- Exactly what it says, do not touch.
 │
 ├── .github/workflows  <- CICD code for GitHub (optional)
 ├── .gitlab-ci.yml     <- CICD code for GitLab (optional)

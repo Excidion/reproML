@@ -30,12 +30,12 @@ Depending on your choices, it will generate a structure that looks something lik
 │   └── processed      <- The data sets used for modeling
 │
 ├── docs               <- Project documentation
-│   ├── code/          <- Automatically generated code documentation.
+│   ├── index.md       <- Landing page, describe the project and team.
+│   ├── context.md     <- Document context and goals.
+│   ├── model.md       <- Document modeling from data to ML.
 │   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
-│   ├── index.md       <- Landing page, describe the project and team
-│   ├── context.md     <- Document context and goals
-│   ├── model.md       <- Document modeling from data to ML
-│   └── structure.md   <- Document tools and technical organization
+│   ├── code/          <- Automatically generated code documentation
+│   └── structure.md   <- Document tools and technical organization.
 │
 ├── models             <- Trained and serialized models and other artifacts
 │   └── logs           <- Logfiles from training and prediction
@@ -54,7 +54,6 @@ Depending on your choices, it will generate a structure that looks something lik
 │   └── visualization  <- Scripts to create visualizations
 │
 ├── pyproject.toml     <- Project configuration and dependencies.
-├── uv.lock            <- Full dependency lockfile
 │
 └── README.md          <- The top-level README for developers using this project.
 ```
