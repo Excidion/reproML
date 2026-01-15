@@ -3,10 +3,10 @@ project_name = "A new Project"
 project_description = "Not much."
 author = "Excidion"
 author_email = "36995046+Excidion@users.noreply.github.com"
-ci = "none"
 repo_url = "https://github.com/Excidion/reproML"
 
 [output.".ctt/test"]
 python_version = "$MATRIX_python_version"
+ci = "$MATRIX_ci"
 use_dvc = $MATRIX_use_dvc
 remote_type = "$MATRIX_remote_type"

@@ -8,6 +8,10 @@ theme:
   palette:
     scheme: slate
     primary: black
+{%- if ci != '' %}
+  icon:
+    repo: fontawesome/brands/{{ ci }}
+{%- endif %}
   features:
     - navigation.indexes
 

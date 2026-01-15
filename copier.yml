@@ -54,7 +54,7 @@ ci:
   type: str
   help: What CI service do you want to use?
   choices:
-    Skip for now: none
+    Skip for now: ""
     GitHub Actions: github
     GitLab CICD: gitlab
 

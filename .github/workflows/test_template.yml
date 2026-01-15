@@ -26,6 +26,9 @@ jobs:
           - "3.12"
           - "3.13"
           - "3.14"
+        ci:
+          - ""
+          - github
         use_dvc:
           - true
           - false
