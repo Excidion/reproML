@@ -20,7 +20,6 @@ jobs:
           #- macos-latest maybe activate later
           #- windows-latest "Write test config" fails
         python_version:
-          - "3.9"
           - "3.10"
           - "3.11"
           - "3.12"

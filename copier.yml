@@ -26,7 +26,6 @@ python_version:
   type: str
   help: Which Python version do you want to use?
   choices:
-    - "3.9"
     - "3.10"
     - "3.11"
     - "3.12"
