@@ -289,6 +289,51 @@ Quickly iterate on experiment ideas, with automatic bookkeeping of data dependen
 Compare metrics and plots between experiment directly within [VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
 
+### Logging should not obscure logic
+Logging is not part of the logic of the code, but must live near it for obvious reasons.
+Typically this results in logging statements before and after each block (or even line) of code, which does not help readability.
+This is why this template uses the [logdecorator](https://github.com/sighalt/logdecorator) package to implement a custom [log](code/log.md) dectorator which can be used like this:
+(Also  all the imported functions have been decorated with `@log`.)
+```py
+# src/model/train.py
+from src.log import log
+from src.model.io import save_model
+
+
+@log
+def main():
+    """Builds a model and saves it to the file system."""
+    model = 42
+    save_model(model, "model")
+
+
+if __name__ == "__main__":
+    main()
+
+```
+Using this will automatically log the start and end of every function you decorate with it.
+Depening on the log level, you'll even be able to trace arguments and return values.
+```bash
+$ uv run src/model/train.py
+# 2038-01-19 03:14:08,000 INFO    __main__.main START
+# 2038-01-19 03:14:08,001 DEBUG   __main__.main INPUTS:
+# 2038-01-19 03:14:08,002 INFO    src.model.io.save_model START
+# 2038-01-19 03:14:08,003 DEBUG   src.model.io.save_model INPUTS: model=42, model_name='model'
+# 2038-01-19 03:14:08,004 INFO    src.model.io.get_path START
+# 2038-01-19 03:14:08,005 DEBUG   src.model.io.get_path INPUTS: model_name='model'
+# 2038-01-19 03:14:08,006 INFO    src.model.io.get_path END
+# 2038-01-19 03:14:08,007 DEBUG   src.model.io.get_path OUTPUT: 'models/model.cldpkl'
+# 2038-01-19 03:14:08,008 INFO    src.model.io.save_model END
+# 2038-01-19 03:14:08,009 DEBUG   src.model.io.save_model OUTPUT: None
+# 2038-01-19 03:14:08,010 INFO    __main__.main END
+# 2038-01-19 03:14:08,011 DEBUG   __main__.main OUTPUT: None
+```
+Forcing yourself to only log via decorators can have some positive side effects:
+If you feel like you would like to add some logging within a function, this can be an indicator that the code block in question is a candidate to be refactored into a separate function.
+
+See [here](https://www.roessler.dev/remove-visual-noise-of-logging-code-by-using-python-decorators.html) for more detailed illustration and examples.
+
+
 ### No secrets in version control
 You really don't want to leak your AWS secret key or Postgres username and password on Github.
 To ensure this we use `python-dotenv`.
