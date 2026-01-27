@@ -1,9 +1,33 @@
 # Technical Structure
 This section contains information how the projects files are organized and which tools are used.
 Furthermore it gives directions on how to use both tools and structure.
+
 This project was generated from the [reproML](https://github.com/Excidion/reproML) copier template.
 
-Most thoughts are not my own, see [acknowledgements](#acknowledgements).
+??? info "Acknowledgements & Inspirations"
+
+    The main influnces when defining this structure were the following:
+
+    + **drivendata**[^1] for the starting point of this structure and many good opinions.
+    You will find many direct and indirect quotes on this page.
+
+    + **iterative**[^2] for workflow best practices
+
+    + **writethedocs**[^3] for opinions on documentation
+
+    + **black**[^4] for opinions on code formatting
+
+    + **sighalt**[^5] for opinions on logging
+
+    I have referenced the relevant author and/or inspiration with a foodnote whereever applicable.
+    The original content is linked in the footnote.
+
+
+[^1]: Quoted or inspired by [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science)
+[^2]: Inpired by [iterative/example-get-started](https://github.com/iterative/example-get-started)
+[^3]: Inpired by [writethedocs](https://www.writethedocs.org/guide/docs-as-code/)
+[^4]: Inpired by [psf/black](https://black.readthedocs.io/en/stable/)
+[^5]: Inpsired by [sighalt](https://www.roessler.dev/)
 
 
 ??? question "Why use this project structure?"
@@ -370,16 +394,3 @@ It is open source and supports all major cloud providers as [remote storage back
 
 In the same spirit this structure is not intended to be rigid.
 The intention is to provide a starting point for your next project from which you can build.
-
-
-## Acknowledgements
-Main influnces when defining this structure were:
-
-+ [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) for a baseline structure to get started with and many good opinions.
-You'll find many (in-)direct quotes especially on this page.
-
-+ [iterative/example-get-started](https://github.com/iterative/example-get-started) for workflow best practices
-
-+ [docs-as-code](https://www.writethedocs.org/guide/docs-as-code/) for opinions on documentation
-
-+ [psf/black](https://black.readthedocs.io/en/stable/) for opinions on code formatting
