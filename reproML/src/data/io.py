@@ -1,6 +1,9 @@
 from os import path
 
+from src.log import log
 
+
+@log
 def get_path(stage: str, filename: str) -> str:
     """Constructs path for file in the dataset.
 

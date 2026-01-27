@@ -1,6 +1,8 @@
+from src.log import log
 from src.model.io import load_model
 
 
+@log
 def main():
     """Generates predictions based on the previously trained model."""
     model = load_model("model")
