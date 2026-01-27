@@ -1,8 +1,10 @@
 from os import path
 
 from cloudpickle import dump, load
+from src.log import log
 
 
+@log
 def save_model(model: object, model_name: str) -> None:
     """Saves a model artefact to the file system..
 
@@ -15,6 +17,7 @@ def save_model(model: object, model_name: str) -> None:
         dump(model, outfile)
 
 
+@log
 def load_model(model_name: str) -> object:
     """Loads a model from the file system.
 
@@ -29,6 +32,7 @@ def load_model(model_name: str) -> object:
         return load(infile)
 
 
+@log
 def get_path(model_name: str) -> str:
     """Constructs path for a model artefact.
 

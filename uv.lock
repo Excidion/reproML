@@ -651,6 +651,15 @@ wheels = [
 ]
 
 [[package]]
+name = "logdecorator"
+version = "2.5"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/bf/05/d1713bbaff119ee1318f14324f82ba3f82a218bbfa0544b6fa649b425ff3/logdecorator-2.5.tar.gz", hash = "sha256:aa3486b586efa932c56da0b2bfd73d1a93946887220315500bc8e49c55bb864a", size = 7330, upload-time = "2025-02-15T18:22:01.289Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/07/57/fa463fab146c5063ab1f4818bea069eee01c37bd4cf8baadc517eb6b3354/logdecorator-2.5-py3-none-any.whl", hash = "sha256:c893e00866ddb92163e063945412bfadc41207ff1610ef9045df126a00a5c84d", size = 7353, upload-time = "2025-02-15T18:21:57.406Z" },
+]
+
+[[package]]
 name = "markdown"
 version = "3.7"
 source = { registry = "https://pypi.org/simple" }
@@ -1558,6 +1567,7 @@ version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "interrogate" },
+    { name = "logdecorator" },
     { name = "mkdocs-gen-files" },
     { name = "mkdocs-jupyter" },
     { name = "mkdocs-literate-nav" },
@@ -1579,6 +1589,7 @@ test = [
 [package.metadata]
 requires-dist = [
     { name = "interrogate", specifier = ">=1.7.0" },
+    { name = "logdecorator", specifier = ">=2.5" },
     { name = "mkdocs-gen-files", specifier = ">=0.5.0" },
     { name = "mkdocs-jupyter", specifier = ">=0.25.0" },
     { name = "mkdocs-literate-nav", specifier = ">=0.6.1" },
