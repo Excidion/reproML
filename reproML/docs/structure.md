@@ -30,33 +30,44 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
 [^5]: Quoted from and inspired by [sighalt](https://www.roessler.dev/)
 
 
-??? question "Why use this project structure?[^1]"
+??? question "Why use this project structure?"
 
-    When we think about data analysis, we often think just about the resulting reports, insights, or visualizations. While these end products are generally the main event, it's easy to focus on making the products look nice and ignore the quality of the code that generates them. Because these end products are created programmatically, code quality is still important — ultimately, data science code quality is about correctness and reproducibility.
+    Directly quoted from drivendata[^1]:
 
-    It's no secret that good analyses are often the result of very scattershot and serendipitous explorations. Tentative experiments and rapidly testing approaches that might not work out are all part of the process for getting to the good stuff, and there is no magic bullet to turn data exploration into a simple, linear progression.
-
-    That being said, once started it is not a process that lends itself to thinking carefully about the structure of your code or project layout, so it's best to start with a clean, logical structure and stick to it throughout. We think it's a pretty big win all around to use a fairly standardized setup like this one. Here's why:
-
-    **Other people will thank you**
-
-    A well-defined, standard project structure means that a newcomer can begin to understand an analysis without digging in to extensive documentation. It also means that they don't necessarily have to read 100% of the code before knowing where to look for very specific things.
-
-    Well organized code tends to be self-documenting in that the organization itself provides context for your code without much overhead. People will thank you for this because they can:
-
-    + Collaborate more easily with you on this analysis
-    + Learn from your analysis about the process and the domain
-    + Feel confident in the conclusions at which the analysis arrives
-
-    **Your future self will thank you**
-
-    Ever tried to reproduce an analysis that you did a few months ago or even a few years ago? You may have written the code, but it's now impossible to decipher whether you should use `make_figures.py.old`, `make_figures_working.py` or `new_make_figures01.py` to get things done. Here are some questions we've learned to ask with a sense of existential dread:
-
-    + Are we supposed to go in and join the column X to the data before we get started or did that come from one of the notebooks?
-    + Come to think of it, which notebook do we have to run first before running the plotting code: was it "process data" or "clean data"?
-    + Where did the shapefiles get downloaded from for the geographic plots?
-
-    These types of questions are painful and are symptoms of a disorganized project. A good project structure encourages practices that make it easier to come back to old work, for example separation of concerns, abstracting analysis as a pipelines, and engineering best practices like version control.
+    > When we think about data analysis, we often think just about the resulting reports, insights, or visualizations.
+    > While these end products are generally the main event, it's easy to focus on making the products look nice and ignore the quality of the code that generates them.
+    > Because these end products are created programmatically, code quality is still important!
+    > And we're not talking about bikeshedding the indentation aesthetics or pedantic formatting standards — ultimately, data science code quality is about correctness and reproducibility.
+    >
+    > It's no secret that good analyses are often the result of very scattershot and serendipitous explorations.
+    > Tentative experiments and rapidly testing approaches that might not work out are all part of the process for getting to the good stuff, and there is no magic bullet to turn data exploration into a simple, linear progression.
+    >
+    > That being said, once started it is not a process that lends itself to thinking carefully about the structure of your code or project layout, so it's best to start with a clean, logical structure and stick to it throughout.
+    > We think it's a pretty big win all around to use a fairly standardized setup like this one.
+    > Here's why:
+    >
+    > **Other people will thank you**
+    >
+    > A well-defined, standard project structure means that a newcomer can begin to understand an analysis without digging in to extensive documentation. It also means that they don't necessarily have to read 100% of the code before knowing where to look for very specific things.
+    >
+    > Well organized code tends to be self-documenting in that the organization itself provides context for your code without much overhead. People will thank you for this because they can:
+    >
+    > + Collaborate more easily with you on this analysis
+    > + Learn from your analysis about the process and the domain
+    > + Feel confident in the conclusions at which the analysis arrives
+    >
+    > **You will thank you**
+    >
+    >Ever tried to reproduce an analysis that you did a few months ago or even a few years ago?
+    > You may have written the code, but it's now impossible to decipher whether you should use `make_figures.py.old`, `make_figures_working.py` or `new_make_figures01.py` to get things done.
+    > Here are some questions we've learned to ask with a sense of existential dread:
+    >
+    > + Are we supposed to go in and join the column X to the data before we get started or did that come from one of the notebooks?
+    > + Come to think of it, which notebook do we have to run first before running the plotting code: was it "process data" or "clean data"?
+    > + Where did the shapefiles get downloaded from for the geographic plots?
+    >
+    > These types of questions are painful and are symptoms of a disorganized project.
+    > A good project structure encourages practices that make it easier to come back to old work, for example separation of concerns, abstracting analysis as a DAG, and engineering best practices like version control.
 
 
 ## Directory structure
