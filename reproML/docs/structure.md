@@ -23,14 +23,14 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
     The original content is linked in the footnote.
 
 
-[^1]: Quoted or inspired by [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science)
-[^2]: Inpired by [iterative/example-get-started](https://github.com/iterative/example-get-started)
-[^3]: Inpired by [writethedocs](https://www.writethedocs.org/guide/docs-as-code/)
-[^4]: Inpired by [psf/black](https://black.readthedocs.io/en/stable/)
-[^5]: Inpsired by [sighalt](https://www.roessler.dev/)
+[^1]: Quoted from and inspired by [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) and their [opinions](https://cookiecutter-data-science.drivendata.org/opinions/).
+[^2]: Quoted from and inspired by [iterative/example-get-started](https://github.com/iterative/example-get-started)
+[^3]: Quoted from and inspired by [writethedocs](https://www.writethedocs.org/guide/docs-as-code/)
+[^4]: Quoted from and inspired by [psf/black](https://black.readthedocs.io/en/stable/)
+[^5]: Quoted from and inspired by [sighalt](https://www.roessler.dev/)
 
 
-??? question "Why use this project structure?"
+??? question "Why use this project structure?[^1]"
 
     When we think about data analysis, we often think just about the resulting reports, insights, or visualizations. While these end products are generally the main event, it's easy to focus on making the products look nice and ignore the quality of the code that generates them. Because these end products are created programmatically, code quality is still important — ultimately, data science code quality is about correctness and reproducibility.
 
@@ -57,14 +57,6 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
     + Where did the shapefiles get downloaded from for the geographic plots?
 
     These types of questions are painful and are symptoms of a disorganized project. A good project structure encourages practices that make it easier to come back to old work, for example separation of concerns, abstracting analysis as a pipelines, and engineering best practices like version control.
-
-
-??? tip "Nothing here is binding!"
-    Disagree with a couple of the default folder names? Working on a project that's a little nonstandard and doesn't exactly fit with the current structure? Prefer to use a different package than one of the (few) defaults?
-
-    Go for it! This is a lightweight structure, and is intended to be a good starting point for many projects.
-
-    If there is something you notice yourself always changing, maybe even let us know!
 
 
 ## Directory structure
@@ -172,13 +164,12 @@ The following section contains some of the thoughts which this project is built 
 If you care to add your own, please reach out to share them.
 
 
-### Automate the boring stuff
-Things like quality checks are important but tedious.
-We can use [pre-commit](https://pre-commit.com/) hooks to automatically run most checks before comitting or pushing changes.
-Becasue every part of the workflow that can be automated, should be.
+### Automate as many qualitiy checks as possible
+We use [pre-commit](https://pre-commit.com/) hooks to automatically run extensive checks before comitting changes.
+Becasue every part of quality assurance that can be automated, should be.
 
 
-### Documentation should be close to code
+### Documentation should be close to code[^3]
 Having no documentation is bad.
 Having Documentation that is out of date is even worse.
 If documenting takes too much effort, your documentation is doomed to be out of date.
@@ -200,7 +191,7 @@ A pre-commit hook using [interrogate](https://interrogate.readthedocs.io/) check
 Another pre-commit hook using [pydoclint](https://github.com/jsh9/pydoclint) ensures that the docstring fits the actual function definition.
 
 
-### Code styles are not worth fighting over
+### Code styles are not worth fighting over[^4]
 Even though code quality is important - nobody likes debating about indentation aesthetics or pedantic formatting standards.
 This is why this template comes with one predefined.
 
@@ -212,7 +203,7 @@ In the same spirit, we picked the *google*-style for docstrings.
 It's what we like, but most importantly, it's (the only one) supported by all of `mkdocstrings-python`, `interrogate` and `pydoclint`.
 
 
-### Raw data should be immutable
+### Raw data should be immutable[^1]
 Don't ever edit your **raw data**, especially not manually, and especially not in Excel.
 Don't overwrite your raw data.
 Don't save multiple versions of the raw data.
@@ -236,7 +227,7 @@ You shouldn't have to run all of the steps every time you want to make a new fig
     + The `data/raw` folder is versioned by `dvc` and thus changes in raw data can be tracked.
 
 
-### Notebooks are for exploration and communication only
+### Notebooks are for exploration and communication only[^1]
 Jupyter Notebooks are very effective for exploratory data analysis.
 However, these tools can not be effective as reproducible pieces of software.
 
@@ -268,7 +259,7 @@ They can be great to test ideas, but are **never considered to be delivered soft
     Then it will become rendered as a subpage of [this](/notebooks/).
 
 
-### Data Science has to be reproducible
+### Data Science has to be reproducible[^1]
 Data Science projects are by nature scientific, so one should try to follow scientific principles where ever possible and feasible.
 Reproducibility or repeatability is a major principle underpinning the scientific method.
 Therefore we should be striving for our work to produce computations which can be executed again with identical results.
@@ -313,7 +304,7 @@ Quickly iterate on experiment ideas, with automatic bookkeeping of data dependen
 Compare metrics and plots between experiment directly within [VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
 
 
-### Logging should not obscure logic
+### Logging should not obscure logic[^5]
 Logging is not part of the logic of the code, but must live near it for obvious reasons.
 Typically this results in logging statements before and after each block (or even line) of code, which does not help readability.
 This is why this template uses the [logdecorator](https://github.com/sighalt/logdecorator) package to implement a custom [log](code/log.md) dectorator which can be used like this:
@@ -358,7 +349,7 @@ If you feel like you would like to add some logging within a function, this can 
 See [here](https://www.roessler.dev/remove-visual-noise-of-logging-code-by-using-python-decorators.html) for more detailed illustration and examples.
 
 
-### No secrets in version control
+### No secrets in version control[^1]
 You really don't want to leak your AWS secret key or Postgres username and password on Github.
 To ensure this we use `python-dotenv`.
 Create a file named `.env` in the project root folder.
