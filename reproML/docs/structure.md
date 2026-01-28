@@ -19,11 +19,10 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
 
     + **sighalt**[^5] for opinions on logging
 
-    I have referenced the relevant author and/or inspiration with a foodnote whereever applicable.
-    The original content is linked in the footnote.
+    I have referenced the relevant author(s) and/or source of inspiration wherever relevant and with a link to the original content in the footnote.
 
 
-[^1]: Quoted from and inspired by [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science) and their [opinions](https://cookiecutter-data-science.drivendata.org/opinions/).
+[^1]: Quoted from and inspired by [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science), their [opinions](https://cookiecutter-data-science.drivendata.org/opinions/) and [motivation](https://cookiecutter-data-science.drivendata.org/why/).
 [^2]: Quoted from and inspired by [iterative/example-get-started](https://github.com/iterative/example-get-started)
 [^3]: Quoted from and inspired by [writethedocs](https://www.writethedocs.org/guide/docs-as-code/)
 [^4]: Quoted from and inspired by [psf/black](https://black.readthedocs.io/en/stable/)
