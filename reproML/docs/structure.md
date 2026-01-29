@@ -317,7 +317,7 @@ Compare metrics and plots between experiment directly within [VS Code](https://m
 ### Logging should not obscure logic[^5]
 Logging is not part of the logic of the code, but must live near it for obvious reasons.
 Typically this results in logging statements before and after each block (or even line) of code, which does not help readability.
-This is why this template uses the [logdecorator](https://github.com/sighalt/logdecorator) package to implement a custom [log](code/log.md) dectorator which can be used like this:
+This is why this template uses the [logdecorator](https://github.com/sighalt/logdecorator) package to implement a custom [log](code/src/log.md) dectorator which can be used like this:
 (Also  all the imported functions have been decorated with `@log`.)
 ```py
 # src/model/train.py
