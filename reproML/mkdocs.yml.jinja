@@ -14,6 +14,9 @@ theme:
 {%- endif %}
   features:
     - navigation.indexes
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - toc.integrate
 
 nav:
   - index.md
@@ -21,16 +24,13 @@ nav:
 {%- if ethics_checklist %}
   - Data Science Ethics Checklist: ethics.md
 {%- endif %}
-  - model.md
   - Analyses: notebooks/
-  - Source Code: code/
+  - model.md
+  - Source Code
   - structure.md
 
 plugins:
   - search
-  - gen-files:
-      scripts:
-      - docs/helper/generate_code_docs.py
   - literate-nav
   - mkdocstrings:
       handlers:
@@ -39,6 +39,11 @@ plugins:
               docstring_style: google
               members_order: 'source'
               show_if_no_docstring: true
+  - api-autonav:
+      modules: ['reproML/src/']
+      nav_section_title: "Source Code"
+      api_root_uri: "code"
+      nav_item_prefix: ""
   - mkdocs-jupyter:
           include_requirejs: true  # plotly support
           include: ["notebooks/*.ipynb"]

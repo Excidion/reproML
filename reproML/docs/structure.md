@@ -196,8 +196,8 @@ If you are feeling fancy you can even define
 and [checklists](https://squidfunk.github.io/mkdocs-material/reference/lists/#using-task-lists)
 inside markdown.
 
-+ Source code documentation is automatically generated from [docstrings](https://peps.python.org/pep-0257/#what-is-a-docstring) with [mkdocstrings-python](https://mkdocstrings.github.io/python/).
-A pre-commit hook using [interrogate](https://interrogate.readthedocs.io/) checks if a docstring exist.
++ Source code documentation is automatically generated from [docstrings](https://peps.python.org/pep-0257/#what-is-a-docstring) with [mkdocstrings-python](https://mkdocstrings.github.io/python/) and [mkdocs-api-autonav](https://github.com/tlambert03/mkdocs-api-autonav).
+A pre-commit hook using [interrogate](https://interrogate.readthedocs.io/) checks if the docstrings exist.
 Another pre-commit hook using [pydoclint](https://github.com/jsh9/pydoclint) ensures that the docstring fits the actual function definition.
 
 

@@ -2,14 +2,16 @@
 name = "reproML"
 version = "0.1.0"
 description = "A template for collaborative development and reproducible results in data science and machine learning projects."
-authors = ["Excidion <36995046+Excidion@users.noreply.github.com>"]
+authors = [
+    {name = "Excidion", email = "36995046+Excidion@users.noreply.github.com"},
+]
 readme = "README.md"
-license = "Apache 2.0"
+license = "Apache-2.0"
 requires-python = ">=3.10.9"
 dependencies = [
     "interrogate>=1.7.0",
     "logdecorator>=2.5",
-    "mkdocs-gen-files>=0.5.0",
+    "mkdocs-api-autonav>=0.4.0",
     "mkdocs-jupyter>=0.25.0",
     "mkdocs-literate-nav>=0.6.1",
     "mkdocs-material>=9.5.35",
@@ -39,3 +41,12 @@ badge-format = "svg"
 [tool.pydoclint]
 style = "google"
 skip-checking-short-docstrings = false
+
+[build-system]
+requires = ["uv_build>=0.8.10,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "src"
+module-root = "reproML"
+namespace = true
