@@ -4,6 +4,27 @@ Furthermore it gives directions on how to use both tools and structure.
 
 This project was generated from the [reproML](https://github.com/Excidion/reproML) copier template.
 
+??? note "Guiding Principles"
+
+    + **Reproducibility is everything**:
+    You should always be able to reproduce identical results just based on the same raw data and source code.
+    Ideally you will never have to hear these words:
+    "Well, it worked on my machine."
+
+    + **Start small and grow**:
+    This structure will help you get a head-start when your are starting a project with just yourself, your laptop and the best of intentions.
+    But it will also make things easier when that project grows into a team with a cloud budget and great ambitions.
+
+    + **FOSS first**:
+    This project is built on top of free and open source software and this is by explicit choice.
+    New Projects should not be locked into a specific software vendor by default.
+    If your project uses proprietary software, go ahead - but I did not want to cherry-pick a specific vendor for everyone.
+
+    + **Minimal & flexible**:
+    In the same spirit, this structure is not intended to be rigid.
+    The intention is to provide a dependable foundation for your next project to build from.
+
+
 ??? info "Acknowledgements & Inspirations"
 
     The main influnces when defining this structure were the following:
@@ -380,18 +401,3 @@ load_dotenv()
 
 database_url = os.getenv("DATABASE_URL")
 ```
-
-
-### Open by design
-This project is built on top of free and open source software and this is by explicit choice.
-The idea is that no project should be locked into a specific software vendor by default.
-In this way we want to put the least amount of limits on you and avoid unecessary costs.
-
-If your project uses proprietary software, go ahead - but we did not want to cherry-pick a specific vendor for everyone.
-
-This need for flexibility is one of the reasons for choosing [dvc](https://dvc.org/) for data version control and experiment tracking.
-It is open source and supports all major cloud providers as [remote storage backends](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
-(Or you can just use any local folder or drive.)
-
-In the same spirit this structure is not intended to be rigid.
-The intention is to provide a starting point for your next project from which you can build.
