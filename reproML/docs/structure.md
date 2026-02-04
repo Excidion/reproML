@@ -6,23 +6,21 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
 
 ??? note "Guiding Principles"
 
-    + **Reproducibility is everything**:
+    + **Reproducibility**:
     You should always be able to reproduce identical results just based on the same raw data and source code.
     Ideally you will never have to hear these words:
     "Well, it worked on my machine."
 
-    + **Start small and grow**:
+    + **Adaptability**:
     This structure will help you get a head-start when your are starting a project with just yourself, your laptop and the best of intentions.
     But it will also make things easier when that project grows into a team with a cloud budget and great ambitions.
+    In the same spirit, this structure is not intended to be rigid.
+    The intention is to provide a dependable foundation for your next project to build from.
 
     + **FOSS first**:
     This project is built on top of free and open source software and this is by explicit choice.
     New Projects should not be locked into a specific software vendor by default.
     If your project uses proprietary software, go ahead - but I did not want to cherry-pick a specific vendor for everyone.
-
-    + **Minimal & flexible**:
-    In the same spirit, this structure is not intended to be rigid.
-    The intention is to provide a dependable foundation for your next project to build from.
 
 
 ??? info "Acknowledgements & Inspirations"
@@ -235,7 +233,7 @@ It's what we like, but most importantly, it's (the only one) supported by all of
 
 
 ### Raw data should be immutable[^1]
-Don't ever edit your **raw data**, especially not manually, and especially not in Excel.
+Don't ever edit your raw data, especially not manually, and especially not in Excel.
 Don't overwrite your raw data.
 Don't save multiple versions of the raw data.
 Treat the data (and its format) as immutable as possible.
