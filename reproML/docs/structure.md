@@ -44,7 +44,7 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
 [^1]: Quoted from and inspired by [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science), their [opinions](https://cookiecutter-data-science.drivendata.org/opinions/) and [motivation](https://cookiecutter-data-science.drivendata.org/why/).
 [^2]: Quoted from and inspired by [iterative/example-get-started](https://github.com/iterative/example-get-started)
 [^3]: Quoted from "Write The Docs"' [principles](https://www.writethedocs.org/guide/writing/docs-principles/#documentation-principles) and inpsired by their [opinions on tooling](https://www.writethedocs.org/guide/docs-as-code/)
-[^4]: Quoted from and inspired by [psf/black](https://black.readthedocs.io/en/stable/)
+[^4]: Quoted from [psf/black](https://black.readthedocs.io/en/stable/)
 [^5]: Inspired by [sighalt's opinion on logging](https://www.roessler.dev/remove-visual-noise-of-logging-code-by-using-python-decorators.html)
 
 
@@ -154,25 +154,24 @@ We use [pre-commit](https://pre-commit.com/) hooks to automatically run extensiv
 Becasue every part of quality assurance that can be automated, should be.
 
 
-### Documentation should be close to code[^3]
+### Documentation should be close to code
 
-> Consider incorrect documentation to be worse than missing documentation.
-> - [Write The Docs Community](https://www.writethedocs.org/guide/writing/docs-principles/#current)
+> "Consider incorrect documentation to be worse than missing documentation."
+> - Write The Docs Community[^3], principle ["current"](https://www.writethedocs.org/guide/writing/docs-principles/#current)
 
 Having no documentation slows you down.
 Having documentation that is wrong leads might lead you onto the wrong path, which is worse.
 
-> Store sources as close as possible to the code which they document.
-> - [Write The Docs Community](https://www.writethedocs.org/guide/writing/docs-principles/#nearby)
+> "Store sources as close as possible to the code which they document."
+> - Write The Docs Community[^3], principle ["nearby"](https://www.writethedocs.org/guide/writing/docs-principles/#nearby)
 
 If documenting takes too much effort, your documentation is doomed to be out of date.
 These observations lead to three decisions that keep documentation close to the code and easy to maintain.
 
 + Documentation is versioned within the repository.
 
-+ Document in simple markdown files to keep effort low.
-Markdown can be rendered to beautiful web pages (like this one) via [mkdocs-material](https://squidfunk.github.io/mkdocs-material/).
-If you use GitHub or GitLab, this template comes with code to automatically publish your site.
++ Documention is written in simple markdown files so you don't even have to leave your code editor.
+Markdown is rendered to beautiful web pages (like this one) via [mkdocs-material](https://squidfunk.github.io/mkdocs-material/).
 If you are feeling fancy you can even define
 [diagrams](https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage),
 [tables](https://squidfunk.github.io/mkdocs-material/reference/data-tables/#usage),
@@ -184,16 +183,17 @@ A pre-commit hook using [interrogate](https://interrogate.readthedocs.io/) check
 Another pre-commit hook using [pydoclint](https://github.com/jsh9/pydoclint) ensures that the docstring fits the actual function definition.
 
 
-### Code styles are not worth fighting over[^4]
-Even though code quality is important - nobody likes debating about indentation aesthetics or pedantic formatting standards.
-This is why this template comes with one predefined.
+### Code styles are not worth fighting over
+Everybody likes debating about code aesthetics or pedantic standards, but you should
+> "agree to cede control over (...) formatting" and
+> "save time and mental energy for more important matters". - black[^4]
 
-We use an automatic code formatter ([ruff](https://docs.astral.sh/ruff/)) to enforce it's style via pre-commit hooks.
-This style is compliant with [black](https://black.readthedocs.io/en/stable/) and [flake8](https://flake8.pycqa.org) and any settings can be configured via the `pyproject.toml`.
-See [here](https://docs.astral.sh/ruff/configuration/) for more details.
+This is why this template comes with an automatic code formatter ([ruff](https://docs.astral.sh/ruff/)) and enforces it via pre-commit hooks.
+Per default, ruff is [mostly](https://docs.astral.sh/ruff/formatter/black/) compliant with black and any [rules](https://docs.astral.sh/ruff/rules/) can be [configured](https://docs.astral.sh/ruff/configuration/) via the `pyproject.toml`.
+The defaults are great and ensure the diffs for merges and code reviews are as small as possible.
 
-In the same spirit, we picked the *google*-style for docstrings.
-It's what we like, but most importantly, it's (the only one) supported by all of `mkdocstrings-python`, `interrogate` and `pydoclint`.
+In the same spirit, just use  the *google*-style for docstrings.
+It's elegant, but most importantly, it's (the only one) supported by all of `mkdocstrings-python`, `interrogate` and `pydoclint`, which is required for [this](#documentation-should-be-close-to-code).
 
 
 ### Raw data should be immutable[^1]
