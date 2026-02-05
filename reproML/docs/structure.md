@@ -206,10 +206,10 @@ You shouldn't have to run all of the steps every time you want to make a new fig
 
     Imagine the scenario where you pull your data from an SQL database into `data/raw`.
     A new download at a later time might change the dataset you get.
-    This is can be accounted for in two ways:
+    This is can be accounted for in multiple ways, for exmaple:
 
-    + If possible, include statements in your SQL query that limit the time window of data.
-    + The `data/raw` folder is versioned by `dvc` and thus changes in raw data can be tracked.
+    + If possible, include statements in your SQL query that limit the time window of the downloaded data.
+    + Version the `data/raw` folder with `dvc` and allow changes in raw data to be tracked.
 
 
 ### Notebooks are for exploration and communication only[^1]
