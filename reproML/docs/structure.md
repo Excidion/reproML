@@ -141,50 +141,6 @@ This is your first overview how to find your way around this project.
 All folders marked with `<dvc>` are versioned via dvc and so are their subfolders.
 
 
-## FAQ
-??? error "ERROR: failed to push data to the cloud - config file error: no remote specified"
-    When pushing your first commits to the remote you might encounter the error message above.
-    The reason behind this that dvc wants to push your data, just as git pushes your code.
-    By default, no remote data storage is configured and therefore dvc complains.
-
-    To fix this use the [this command](https://dvc.org/doc/command-reference/remote/add#remote-add):
-    `dvc remote add -d <remote name> <remote url>`
-    You can use a number of [remote storage backends](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
-
-    If you don't want to add a remote storage (yet), you can also use `git push --no-verify` to skip the synchronization.
-
-
-??? question "How do I install new packages?"
-    You can [install packages via uv](https://docs.astral.sh/uv/concepts/projects/#managing-dependencies)
-    ```
-    uv add <package-name>
-    ```
-    The packages is then installed and added to the `pyproject.toml` and `uv.lock`.
-    Commit these changes so everyone else that uses your code will have the same dependencies installed.
-
-
-??? question "How do I make a diagrams and flowchart?"
-    You can design flowcharts in you markdown files.
-    You can find some examples [here](https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage) and more advanced syntax [here](https://mermaid.js.org/syntax/flowchart.html)
-
-
-??? question "How do I use dvc with git?"
-    Instead of tracking a file (eg. `data.csv`) directly, you track it's `data.csv.dvc` file with git.
-    To create this file and therefore start tracking the original file with dvc execute:
-    ```
-    dvc add `data.csv`
-    ```
-    If you change `data.csv` later can simply add the chages again with the same command.
-
-    You can always check on the status of all your tracked files with
-    ```
-    dvc status
-    ```
-    If you want to stop tracking a file you can just delete the file and commit the deletion of the dvc file:
-    ```
-    git rm data.csv.dvc
-    ```
-
 ## Opinions
 There are some opinions and assumptions implicit in the project structure.
 These are derived from experience gained with past data science projects.
@@ -399,3 +355,47 @@ load_dotenv()
 
 database_url = os.getenv("DATABASE_URL")
 ```
+
+## FAQ
+??? error "ERROR: failed to push data to the cloud - config file error: no remote specified"
+    When pushing your first commits to the remote you might encounter the error message above.
+    The reason behind this that dvc wants to push your data, just as git pushes your code.
+    By default, no remote data storage is configured and therefore dvc complains.
+
+    To fix this use the [this command](https://dvc.org/doc/command-reference/remote/add#remote-add):
+    `dvc remote add -d <remote name> <remote url>`
+    You can use a number of [remote storage backends](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+
+    If you don't want to add a remote storage (yet), you can also use `git push --no-verify` to skip the synchronization.
+
+
+??? question "How do I install new packages?"
+    You can [install packages via uv](https://docs.astral.sh/uv/concepts/projects/#managing-dependencies)
+    ```
+    uv add <package-name>
+    ```
+    The packages is then installed and added to the `pyproject.toml` and `uv.lock`.
+    Commit these changes so everyone else that uses your code will have the same dependencies installed.
+
+
+??? question "How do I make a diagrams and flowchart?"
+    You can design flowcharts in you markdown files.
+    You can find some examples [here](https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage) and more advanced syntax [here](https://mermaid.js.org/syntax/flowchart.html)
+
+
+??? question "How do I use dvc with git?"
+    Instead of tracking a file (eg. `data.csv`) directly, you track it's `data.csv.dvc` file with git.
+    To create this file and therefore start tracking the original file with dvc execute:
+    ```
+    dvc add `data.csv`
+    ```
+    If you change `data.csv` later can simply add the chages again with the same command.
+
+    You can always check on the status of all your tracked files with
+    ```
+    dvc status
+    ```
+    If you want to stop tracking a file you can just delete the file and commit the deletion of the dvc file:
+    ```
+    git rm data.csv.dvc
+    ```
