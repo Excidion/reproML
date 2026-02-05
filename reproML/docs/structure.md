@@ -32,20 +32,20 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
 
     + **iterative**[^2] for workflow best practices
 
-    + **writethedocs**[^3] for opinions on documentation
+    + **writethedocs**[^3] for opinions on documentation and tooling
 
     + **black**[^4] for opinions on code formatting
 
-    + **sighalt**[^5] for opinions on logging
+    + **sighalt**[^5] for his opinion on logging
 
-    I have referenced the relevant author(s) and/or source of inspiration wherever relevant and with a link to the original content in the footnote.
+    I have referenced the relevant author(s) and/or source of inspiration wherever relevant and with a link to the original content in the footnote or text.
 
 
 [^1]: Quoted from and inspired by [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science), their [opinions](https://cookiecutter-data-science.drivendata.org/opinions/) and [motivation](https://cookiecutter-data-science.drivendata.org/why/).
 [^2]: Quoted from and inspired by [iterative/example-get-started](https://github.com/iterative/example-get-started)
-[^3]: Quoted from and inspired by [writethedocs](https://www.writethedocs.org/guide/docs-as-code/)
+[^3]: Quoted from "Write The Docs"' [principles](https://www.writethedocs.org/guide/writing/docs-principles/#documentation-principles) and inpsired by their [opinions on tooling](https://www.writethedocs.org/guide/docs-as-code/)
 [^4]: Quoted from and inspired by [psf/black](https://black.readthedocs.io/en/stable/)
-[^5]: Quoted from and inspired by [sighalt](https://www.roessler.dev/)
+[^5]: Inspired by [sighalt's opinion on logging](https://www.roessler.dev/remove-visual-noise-of-logging-code-by-using-python-decorators.html)
 
 
 ??? question "Why use this project structure?"
@@ -155,8 +155,16 @@ Becasue every part of quality assurance that can be automated, should be.
 
 
 ### Documentation should be close to code[^3]
-Having no documentation is bad.
-Having Documentation that is out of date is even worse.
+
+> Consider incorrect documentation to be worse than missing documentation.
+> - [Write The Docs Community](https://www.writethedocs.org/guide/writing/docs-principles/#current)
+
+Having no documentation slows you down.
+Having documentation that is wrong leads might lead you onto the wrong path, which is worse.
+
+> Store sources as close as possible to the code which they document.
+> - [Write The Docs Community](https://www.writethedocs.org/guide/writing/docs-principles/#nearby)
+
 If documenting takes too much effort, your documentation is doomed to be out of date.
 These observations lead to three decisions that keep documentation close to the code and easy to maintain.
 
@@ -172,7 +180,7 @@ and [checklists](https://squidfunk.github.io/mkdocs-material/reference/lists/#us
 inside markdown.
 
 + Source code documentation is automatically generated from [docstrings](https://peps.python.org/pep-0257/#what-is-a-docstring) with [mkdocstrings-python](https://mkdocstrings.github.io/python/) and [mkdocs-api-autonav](https://github.com/tlambert03/mkdocs-api-autonav).
-A pre-commit hook using [interrogate](https://interrogate.readthedocs.io/) checks if the docstrings exist.
+A pre-commit hook using [interrogate](https://interrogate.readthedocs.io/) checks if [all](https://www.writethedocs.org/guide/writing/docs-principles/#complete) docstrings exist.
 Another pre-commit hook using [pydoclint](https://github.com/jsh9/pydoclint) ensures that the docstring fits the actual function definition.
 
 
