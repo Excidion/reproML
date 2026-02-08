@@ -259,24 +259,25 @@ Therefore we should be striving for our work to produce computations which can b
 
 
 #### Build reproducible environments
-The first step in reproducing an analysis is reproducing the computational environment it was run in.
-You need the same tools, the same libraries, and the same versions to make everything play nicely together.
-For this we use [uv](https://docs.astral.sh/uv/) which can handle your dependencies as well setup your environments.
-This has a couple of advantages over the classic `requirements.txt`:
+> The first step in reproducing an analysis is always replicating the computational environment it was run in.
+> You need the same tools, the same libraries, and the same versions to make everything play nicely together.[^1]
 
-+ Manage Python installations and environments:
-Because different projects will require different versions of the same packages and/or even different python versions it's best practice to use (virtual) [environments](https://docs.astral.sh/uv/pip/environments/). Furthermore uv can also manage [python versions](https://docs.astral.sh/uv/concepts/python-versions/) for you.
+For this we use [uv](https://docs.astral.sh/uv/) which will handle your dependencies as well as setup your environments.
+This has a couple of advantages over the classic `requirements.txt` + `python -m venv`:
 
-+ Resolve dependencies automatically:
++ **Manage Python installations and environments**:
+Because different projects will require different versions of the same packages or even different python versions it's best practice to use (virtual) [environments](https://docs.astral.sh/uv/pip/environments/). Furthermore uv can also manage different [python versions](https://docs.astral.sh/uv/concepts/python-versions/) for you.
+
++ **Resolve dependencies automatically**:
 If one of your used packages requires `numpy>1.10` and another `numpy<1.24` uv can figure out a version of numpy that satisfies both.
 
-+ Less headache when collaborating over different operating systems:
++ **Less headache when collaborating over different operating systems**:
 Everyone on a Mac who ever got at `pip freeze > requirements.txt` from a colleague using Windows will understand.
 This also comes in handy if you want to deploy your code to the cloud.
 
-+ Differentiate between different categories of dependencies:
-Because your deployment in the cloud does not need a code formatter.
-For more details see uv's [development](https://docs.astral.sh/uv/concepts/dependencies/#development-dependencies) and [optional](https://docs.astral.sh/uv/concepts/dependencies/#optional-dependencies) dependencies.
++ **Differentiate between different groups of dependencies**:
+Because your deployment in the cloud probably does not need a code formatter.
+For more details see uv's [dependency groups](https://docs.astral.sh/uv/concepts/projects/dependencies/#dependency-groups).
 
 
 #### Deliver reproducible results
