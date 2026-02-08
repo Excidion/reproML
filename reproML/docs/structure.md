@@ -38,6 +38,8 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
 
     + **sighalt**[^5] for his opinion on logging
 
+    + **The Twelve-Factor Manifesto**[^6] for opinions on configs
+
     I have referenced the relevant author(s) and/or source of inspiration wherever relevant and with a link to the original content in the footnote or text.
 
 
@@ -46,6 +48,7 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
 [^3]: Quoted from "Write The Docs"' [principles](https://www.writethedocs.org/guide/writing/docs-principles/#documentation-principles) and inpsired by their [opinions on tooling](https://www.writethedocs.org/guide/docs-as-code/)
 [^4]: Quoted from [psf/black](https://black.readthedocs.io/en/stable/)
 [^5]: Inspired by [sighalt's opinion on logging](https://www.roessler.dev/remove-visual-noise-of-logging-code-by-using-python-decorators.html)
+[^6]: Quoted from [The Twelve-Factor Manifesto](https://12factor.net/config)
 
 
 ??? question "Why use this project structure?"
@@ -360,17 +363,18 @@ If you feel like you would like to add some logging within a function, this can 
 See [here](https://www.roessler.dev/remove-visual-noise-of-logging-code-by-using-python-decorators.html) for more detailed illustration and examples.
 
 
-### No secrets in version control[^1]
-You really don't want to leak your AWS secret key or Postgres username and password on Github.
-To ensure this we use `python-dotenv`.
-Create a file named `.env` in the project root folder.
-Thanks to the `.gitignore`, this file should never get committed into the version control repository.
-Here's an example how that file might look like:
+### No configurations in version control
+Ideally none of the projects configuration - hostnames of databases and APIs or secrets like tokens and passwords - should be in the git repository.
+All of these parameters should be handed to the code via environment variables.
+
+> A litmus test for whether an app has all config correctly factored out of the code is whether the codebase could be made open source at any moment, without compromising any credentials.[^6]
+
+That is why this template comes with [`python-dotenv`](https://pypi.org/project/python-dotenv/) pre-installed.
+Simply create a file named `.env` in the project root folder and enter your configration parameters:
 ```ini
-DATABASE_URL=postgres://username:password@localhost:5432/dbname
-AWS_ACCESS_KEY=myaccesskey
-AWS_SECRET_ACCESS_KEY=mysecretkey
-OTHER_VARIABLE=something
+DATABASE_URL=postgres://localhost:1337/dbname
+DATBASE_USER=myusername
+DATABASE_PASSWORD=topsneaky
 ```
 In your code you can access these screts like this:
 ```python
@@ -381,6 +385,7 @@ load_dotenv()
 
 database_url = os.getenv("DATABASE_URL")
 ```
+Thanks to the `.gitignore`, the `.env` file will not get committed into the git repository.
 
 ## First steps
 
