@@ -220,18 +220,20 @@ You shouldn't have to run all of the steps every time you want to make a new fig
     + Version the `data/raw` folder with `dvc` and allow changes in raw data to be tracked.
 
 
-### Notebooks are for exploration and communication only[^1]
-Jupyter Notebooks are very effective for exploratory data analysis.
-However, these tools can not be effective as reproducible pieces of software.
+### Notebooks are not considered delivered results
+> Notebooks (...) are very effective for exploratory data analysis because they enable rapid iteration and visualization of results.
+> However, these tools can be less effective for reproducing an analysis. - driventdata[^1]
 
-Since notebooks are challenging objects for source control (diffs are not human-readable and merging is near impossible), it is recommended not to collaborate directly with others on the same notebook.
-There are two hints for using notebooks effectively:
+Treat notebooks as kind of an explratory *playground* or a but nothing more.
+They can be great to test ideas, but, because of their shortcomings in reproducibility, should never considered to be delivered software.
 
-+ Follow a naming convention that shows the order the analysis was done in. We use the format `<step>-<description>.ipynb` (e.g., `01-visualize-distributions.ipynb`).
+There are two suggestions for using notebooks effectively:
 
-+ Refactor the good parts into `.py` files.
-Don't write code to do the same task in multiple notebooks.
-For example, if it's a data preprocessing task, put it in a script in `src/data/`.
++ Do not to collaborate directly with others on the same notebook.
+The diffs in git are a nightmare to work with.
+
++ If you catch yourself writing the same code in multiple notebooks:
+> Refactor the good parts into source code[^1]
 
 Since the project is structured like a Python package you can import your code and use it in notebooks with a cell like the following:
 ```python
@@ -241,8 +243,6 @@ Since the project is structured like a Python package you can import your code a
 
 from src.data import make_dataset
 ```
-Treat the notebooks as kind of an explratory *playground* but nothing more.
-They can be great to test ideas, but are **never considered to be delivered software**.
 
 ??? tip "Integrate Notebooks into the documentation"
     Maybe you have one analysis in one of your notebooks that you are really proud of.
