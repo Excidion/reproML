@@ -196,19 +196,27 @@ In the same spirit, just use  the *google*-style for docstrings.
 It's elegant, but most importantly, it's (the only one) supported by all of `mkdocstrings-python`, `interrogate` and `pydoclint`, which is required for [this](#documentation-should-be-close-to-code).
 
 
-### Raw data should be immutable[^1]
-Don't ever edit your raw data, especially not manually, and especially not in Excel.
-Don't overwrite your raw data.
-Don't save multiple versions of the raw data.
+### Raw data should be immutable
+> Don't ever edit your raw data, especially not manually, and especially not in Excel.
+> (...)
+> Don't overwrite your raw data.
+> Don't save multiple versions of the raw data.[^1]
+
 Treat the data (and its format) as immutable as possible.
-The code you write should move the raw data through a pipeline to your final analysis.
-You shouldn't have to run all of the steps every time you want to make a new figure, but anyone should be able to reproduce the final products with only the code in `src` and the data in `data/raw`.
+There are multiple good reasons for this:
+
++ It is impossible know which artifacts in the raw data that you want to *clean* right now might later turn out to be relevant information.
+An example could be missing values which hint at an underlying mechanic in the data generation process that you are yet to learn about.
+Even part of the data files metadata could become relevant as part of the analysis.
+
++ Immutable raw data is a requirement if you want to [treat your modeling pipeline as a DAG](#modeling-pipelines-are-directed-acyclic-graphs).
+
 
 ??? tip "Processed and interim data is mutable"
 
     Data in and after processing is very much mutable.
     The suggestions for immutability apply only to the folder `data/raw`.
-    The contents of folders `data/interim` and `data/processed` have to be able to change.
+    The contents of folders `data/interim` and `data/processed` will change based on how your code prosses the raw data.
 
 ??? question "What if my data changes over time?"
 
@@ -222,7 +230,7 @@ You shouldn't have to run all of the steps every time you want to make a new fig
 
 ### Notebooks are not considered delivered results
 > Notebooks (...) are very effective for exploratory data analysis because they enable rapid iteration and visualization of results.
-> However, these tools can be less effective for reproducing an analysis. - driventdata[^1]
+> However, these tools can be less effective for reproducing an analysis.[^1]
 
 Treat notebooks as kind of an explratory *playground* or a but nothing more.
 They can be great to test ideas, but, because of their shortcomings in reproducibility, should never considered to be delivered software.
@@ -252,10 +260,19 @@ from src.data import make_dataset
     Then it will become rendered as a subpage of [this](/notebooks/).
 
 
-### Data Science has to be reproducible[^1]
+### Data Science has to be reproducible
 Data Science projects are by nature scientific, so one should try to follow scientific principles where ever possible and feasible.
 Reproducibility or repeatability is a major principle underpinning the scientific method.
 Therefore we should be striving for our work to produce computations which can be executed again with identical results.
+
+#### Modeling pipelines are directed acyclic graphs
+> The best way to ensure reproducibility is to treat your [modeling] pipeline as a directed acyclic graph ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)).
+> This means each step of your [pipeline] is a node in a directed graph with no loops.
+> You can run through the graph forwards to recreate any analysis output, or you can trace backwards from an output to examine the combination of code and data that created it.[^1]
+
+The code you write should move the raw data through a pipeline to your final outputs.
+You should not have to run all of the steps every time you want to make a new figure, but anyone should be able to reproduce the final products with only the code in `src` and the data in `data/raw`.
+This approach requires that you [treat raw data as immutable](#raw-data-should-be-immutable).
 
 
 #### Build reproducible environments
