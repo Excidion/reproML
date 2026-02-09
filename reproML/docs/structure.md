@@ -277,6 +277,8 @@ Therefore we should be striving for our work to produce computations which can b
 The code you write should move the raw data through a pipeline to your final outputs.
 You should not have to run all of the steps every time you want to make a new figure, but anyone should be able to reproduce the final products with only the code in `src` and the data in `data/raw`.
 This approach requires that you [treat raw data as immutable](#raw-data-should-be-immutable).
+Treating your analysis as a DAG is one of those concepts almost everyone in the data universe seems to agree on, so it should also help you integrate with their[^7] tools and platforms if you desire to do so.
+[^7]: All of [dvc](https://doc.dvc.org/command-reference/dag), [databricks](https://www.databricks.com/glossary/dag), [snowflake](https://docs.snowflake.com/en/user-guide/tasks-graphs), [dbt](https://www.getdbt.com/blog/dag-use-cases-and-best-practices), [airflow](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html) see data pipelines as [directed acyclic graphs](https://en.wikipedia.org/wiki/Directed_acyclic_graph). And probably more.
 
 
 #### Build reproducible environments
