@@ -160,13 +160,13 @@ Becasue every part of quality assurance that can be automated, should be.
 ### Documentation should be close to code
 
 > "Consider incorrect documentation to be worse than missing documentation."
-> - Write The Docs Community[^3], principle ["current"](https://www.writethedocs.org/guide/writing/docs-principles/#current)
+> - Write The Docs[^3] Community's ["current"](https://www.writethedocs.org/guide/writing/docs-principles/#current)-principle
 
 Having no documentation slows you down.
 Having documentation that is wrong leads might lead you onto the wrong path, which is worse.
 
 > "Store sources as close as possible to the code which they document."
-> - Write The Docs Community[^3], principle ["nearby"](https://www.writethedocs.org/guide/writing/docs-principles/#nearby)
+> - Write The Docs[^3] Community's ["nearby"](https://www.writethedocs.org/guide/writing/docs-principles/#nearby)-principle
 
 If documenting takes too much effort, your documentation is doomed to be out of date.
 These observations lead to three decisions that keep documentation close to the code and easy to maintain.
@@ -267,6 +267,7 @@ from src.data import make_dataset
 Data Science projects are by nature scientific, so one should try to follow scientific principles where ever possible and feasible.
 Reproducibility or repeatability is a major principle underpinning the scientific method.
 Therefore we should be striving for our work to produce computations which can be executed again with identical results.
+
 
 #### Modeling pipelines are directed acyclic graphs
 > The best way to ensure reproducibility is to treat your [modeling] pipeline as a directed acyclic graph ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)).
