@@ -5,8 +5,14 @@ author = "Excidion"
 author_email = "36995046+Excidion@users.noreply.github.com"
 repo_url = "https://github.com/Excidion/reproML"
 
-[output.".ctt/test"]
+[output.".ctt/dvc"]
 python_version = "$MATRIX_python_version"
 ci = "$MATRIX_ci"
-use_dvc = $MATRIX_use_dvc
-remote_type = "$MATRIX_remote_type"
+use_dvc = true
+remote_type = "all"
+
+[output.".ctt/no-dvc"]
+python_version = "$MATRIX_python_version"
+ci = "$MATRIX_ci"
+use_dvc = false
+remote_type = ""
