@@ -16,7 +16,7 @@ jobs:
         uses: astral-sh/setup-uv@v7
 
       - name: Setup environment
-        run: uv sync --frozen --no-python-downloads --group dev --all-extras
+        run: uv sync --frozen --group dev --all-extras
 
       - name: Run checks
         run: uv run pre-commit run --all-files

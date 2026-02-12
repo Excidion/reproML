@@ -62,7 +62,7 @@ jobs:
           python-version: ${{ matrix.python_version }}
 
       - name: Install dependencies
-        run: uv sync --frozen --no-python-downloads --only-group test
+        run: uv sync --frozen --only-group test
 
       - name: Test template
         run: uv run ctt
