@@ -300,7 +300,7 @@ Because your deployment in the cloud probably does not need a code formatter.
 For more details see uv's [dependency groups](https://docs.astral.sh/uv/concepts/projects/dependencies/#dependency-groups).
 
 
-#### Deliver reproducible results
+#### Version control everything (that you reasonably can)
 Some challenges arise when trying to combine the advandtages of version control with the experimental nature of data science projects.
 To solve the most common ones this template uses [dvc](https://dvc.org/) to:
 
@@ -313,6 +313,11 @@ Even if you are not allowed to store datasets (e.g. when handling sensitive data
 Pipelines represent data workflows as [DAGs](#modeling-pipelines-are-directed-acyclic-graphs) that can be reproduced reliably.
 Workflows can be defined in a [`dvc.yaml`](https://doc.dvc.org/user-guide/project-structure/dvcyaml-files) file.
 In combination with the aforementioned versioning you will can have full transparency which version of code produced which version of an artifact.
+
++ [Track experiments](https://dvc.org/doc/use-cases/experiment-tracking):
+Quickly iterate on experiment ideas, with automatic bookkeeping of data dependencies, code, parameters, artifacts, models, and metrics.
+Compare metrics and plots between experiment directly within [VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
+
 
 ### Logging should not obscure logic[^5]
 Logging is not part of the logic of the code, but must live near it for obvious reasons.
