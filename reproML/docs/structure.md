@@ -41,8 +41,8 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
     I have referenced the relevant author(s) and/or source of inspiration wherever relevant and with a link to the original content in the footnote or text.
 
 
-[^1]: Quoted from and inspired by [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science), their [opinions](https://cookiecutter-data-science.drivendata.org/opinions/) and [motivation](https://cookiecutter-data-science.drivendata.org/why/).
-[^3]: Quoted from "Write The Docs"' [principles](https://www.writethedocs.org/guide/writing/docs-principles/#documentation-principles) and inpsired by their [opinions on tooling](https://www.writethedocs.org/guide/docs-as-code/)
+[^1]: Quoted from and inspired by [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science), their [opinions](https://cookiecutter-data-science.drivendata.org/opinions/) and [motivation](https://cookiecutter-data-science.drivendata.org/why/)
+[^3]: Quoted from *Write The Docs*' [principles](https://www.writethedocs.org/guide/writing/docs-principles/#documentation-principles) and inpsired by their [opinions on tooling](https://www.writethedocs.org/guide/docs-as-code/)
 [^4]: Quoted from [psf/black](https://black.readthedocs.io/en/stable/)
 [^5]: Inspired by [sighalt's opinion on logging](https://www.roessler.dev/remove-visual-noise-of-logging-code-by-using-python-decorators.html)
 [^6]: Quoted from [The Twelve-Factor Manifesto](https://12factor.net/config)
