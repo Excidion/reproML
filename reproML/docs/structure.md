@@ -150,7 +150,7 @@ If you care to add your own, please reach out to share them.
 
 
 ### Automate as many qualitiy checks as possible
-We use [pre-commit](https://pre-commit.com/) hooks to automatically run extensive checks before comitting changes.
+Use [pre-commit](https://pre-commit.com/) hooks to automatically run checks before comitting changes.
 Becasue every part of quality assurance that can be automated, should be.
 
 
@@ -263,7 +263,7 @@ from src.data import make_dataset
 ### Data Science has to be reproducible
 Data Science projects are by nature scientific, so one should try to follow scientific principles where ever possible and feasible.
 Reproducibility or repeatability is a major principle underpinning the scientific method.
-Therefore we should be striving for our work to produce computations which can be executed again with identical results.
+Therefore one should be striving to produce computations which can be executed again with identical results.
 
 
 #### Modeling pipelines are directed acyclic graphs
@@ -282,7 +282,7 @@ Treating your analysis as a DAG is one of those concepts almost everyone in the 
 > The first step in reproducing an analysis is always replicating the computational environment it was run in.
 > You need the same tools, the same libraries, and the same versions to make everything play nicely together.[^1]
 
-For this we use [uv](https://docs.astral.sh/uv/) which will handle your dependencies as well as setup your environments.
+For this, [uv](https://docs.astral.sh/uv/) handles your dependencies as well as the setup your environments.
 This has a couple of advantages over the classic `requirements.txt` + `python -m venv`:
 
 + **Manage Python installations and environments**:
