@@ -30,8 +30,6 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
     + **drivendata**[^1] for the starting point of this structure and many good opinions.
     You will find many direct and indirect quotes on this page.
 
-    + **iterative**[^2] for workflow best practices
-
     + **writethedocs**[^3] for opinions on documentation and tooling
 
     + **black**[^4] for opinions on code formatting
@@ -44,7 +42,6 @@ This project was generated from the [reproML](https://github.com/Excidion/reproM
 
 
 [^1]: Quoted from and inspired by [drivendata/cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science), their [opinions](https://cookiecutter-data-science.drivendata.org/opinions/) and [motivation](https://cookiecutter-data-science.drivendata.org/why/).
-[^2]: Quoted from and inspired by [iterative/example-get-started](https://github.com/iterative/example-get-started)
 [^3]: Quoted from "Write The Docs"' [principles](https://www.writethedocs.org/guide/writing/docs-principles/#documentation-principles) and inpsired by their [opinions on tooling](https://www.writethedocs.org/guide/docs-as-code/)
 [^4]: Quoted from [psf/black](https://black.readthedocs.io/en/stable/)
 [^5]: Inspired by [sighalt's opinion on logging](https://www.roessler.dev/remove-visual-noise-of-logging-code-by-using-python-decorators.html)
@@ -307,19 +304,15 @@ For more details see uv's [dependency groups](https://docs.astral.sh/uv/concepts
 Some challenges arise when trying to combine the advandtages of version control with the experimental nature of data science projects.
 To solve the most common ones this template uses [dvc](https://dvc.org/) to:
 
-+ [Version datasets, models and more](https://dvc.org/doc/use-cases/versioning-data-and-models#versioning-data-and-models):
-Keep large files alongside code and share them via [cloud storage](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
-Fully integrated into the git workflow, no manual copying or downloading necessary.
++ [Version artifacts](https://dvc.org/doc/use-cases/versioning-data-and-models#versioning-data-and-models) (datasets, models, plots):
+Track revisions of large files efficiently together with the code that produced them, directly integrated into the git workflow.
+Automatically backup and share these artifacts in [cloud storage](https://dvc.org/doc/command-reference/remote/add#supported-storage-types) or on your local drive.
+Even if you are not allowed to store datasets (e.g. when handling sensitive data), keeping just models versioned can help.
 
 + [Define reproducible pipelines](https://dvc.org/doc/user-guide/pipelines/defining-pipelines):
-Pipelines represent data workflows that you want to reproduce reliably — so the results are consistent.
-All workflows are defined in a human readable format within a `dvc.yaml` file.
-In combination with the aforementioned versioning you will have full transparency which version of code produced which version of an artefact (eg. dataset, model, report, ...).
-
-+ [Track experiments](https://dvc.org/doc/use-cases/experiment-tracking):
-Quickly iterate on experiment ideas, with automatic bookkeeping of data dependencies, code, parameters, artifacts, ML models, and their metrics.
-Compare metrics and plots between experiment directly within [VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
-
+Pipelines represent data workflows as [DAGs](#modeling-pipelines-are-directed-acyclic-graphs) that can be reproduced reliably.
+Workflows can be defined in a [`dvc.yaml`](https://doc.dvc.org/user-guide/project-structure/dvcyaml-files) file.
+In combination with the aforementioned versioning you will can have full transparency which version of code produced which version of an artifact.
 
 ### Logging should not obscure logic[^5]
 Logging is not part of the logic of the code, but must live near it for obvious reasons.
