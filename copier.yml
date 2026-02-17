@@ -60,7 +60,6 @@ ci:
 repo_url:
   type: str
   help: Where is the git repo hosted? Keep empty to skip.
-  placeholder: https://
   default: ""
 
 default_branch:
@@ -77,7 +76,7 @@ use_dvc:
 
 remote_type:
   type: str
-  help: Which storage backend do you want to install? If in doubt, use all.
+  help: Which storage backend do you want to install? If in doubt, start without one.
   choices:
     Install no backend: ""
     Amazon S3: s3
