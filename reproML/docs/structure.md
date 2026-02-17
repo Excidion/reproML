@@ -428,7 +428,7 @@ before you:
 ```
 git commit -m "Did the thing."
 ```
-To make sure the quality check are actually run.
+To make sure the quality checks are actually run.
 
 When pushing your first commits to the remote you might encounter the following error message:
 ```bash
