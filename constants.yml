@@ -13,7 +13,7 @@ md_project_setup:
       ```
 
     ### Installation
-    {%- if repo_url != '' %}
+    {%- if repo_url|length > 0 %}
     Clone the project with:
     ```
     git clone {{ repo_url }}
