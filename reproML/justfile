@@ -1,0 +1,18 @@
+set dotenv-load
+
+default:
+  uv run just --list
+
+run SCRIPT *ARGS:
+  uv run typer {{SCRIPT}} run {{ARGS}}
+
+install:
+  uv sync --all-groups --all-extras
+  uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
+
+check:
+  uv run pre-commit run --all-files
+
+docs:
+  -uv run interrogate
+  -uv run mkdocs serve
