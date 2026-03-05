@@ -336,17 +336,13 @@ def main():
     model = 42
     save_model(model, "model")
 
-
-if __name__ == "__main__":
-    main()
-
 ```
 Using this will automatically log the start and end of every function you decorate with it.
 Depening on the log level, you'll even be able to trace arguments and return values.
 ```bash
 $ ./just run src/model/train.py
-# 2038-01-19 03:14:08,000 INFO    __main__.main START
-# 2038-01-19 03:14:08,001 DEBUG   __main__.main INPUTS:
+# 2038-01-19 03:14:08,000 INFO    train.py.main START
+# 2038-01-19 03:14:08,001 DEBUG   train.py.main INPUTS:
 # 2038-01-19 03:14:08,002 INFO    src.model.io.save_model START
 # 2038-01-19 03:14:08,003 DEBUG   src.model.io.save_model INPUTS: model=42, model_name='model'
 # 2038-01-19 03:14:08,004 INFO    src.model.io.get_path START
@@ -355,8 +351,8 @@ $ ./just run src/model/train.py
 # 2038-01-19 03:14:08,007 DEBUG   src.model.io.get_path OUTPUT: 'models/model.cldpkl'
 # 2038-01-19 03:14:08,008 INFO    src.model.io.save_model END
 # 2038-01-19 03:14:08,009 DEBUG   src.model.io.save_model OUTPUT: None
-# 2038-01-19 03:14:08,010 INFO    __main__.main END
-# 2038-01-19 03:14:08,011 DEBUG   __main__.main OUTPUT: None
+# 2038-01-19 03:14:08,010 INFO    train.py.main END
+# 2038-01-19 03:14:08,011 DEBUG   train.py.main OUTPUT: None
 ```
 Forcing yourself to only log via decorators can have some positive side effects:
 If you feel like you would like to add some logging within a function, this can be an indicator that the code block in question is a candidate to be refactored into a separate function.
