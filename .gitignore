@@ -26,6 +26,6 @@ __pycache__/
 # uv
 .venv
 
-# ctt
+# testing ctt and mkdocs build
 .ctt
-ctt.toml
+test
