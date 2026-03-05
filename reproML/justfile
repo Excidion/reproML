@@ -1,18 +1,23 @@
 set dotenv-load
 
+# shows this list
 default:
   uv run just --list
 
+# runs a python script's main method
 run SCRIPT *ARGS:
   uv run typer {{SCRIPT}} run {{ARGS}}
 
+# installs all dependecies and pre-commit hooks
 install:
   uv sync --all-groups --all-extras
   uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
 
+# runs quality checks on all files
 check:
   uv run pre-commit run --all-files
 
+# starts the documentation server
 docs:
   -uv run interrogate
   -uv run mkdocs serve

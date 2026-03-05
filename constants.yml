@@ -20,8 +20,8 @@ md_project_setup:
     ```
     {%- endif %}
     Navigate to the project directory and install all dependencies:
-    ```
-    ./just install
+    ```bash
+    ./just.sh install
     ```
     This will also enable pre-commit hooks.
     {%- if use_dvc %}

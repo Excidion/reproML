@@ -340,7 +340,7 @@ def main():
 Using this will automatically log the start and end of every function you decorate with it.
 Depening on the log level, you'll even be able to trace arguments and return values.
 ```bash
-$ ./just run src/model/train.py
+just run src/model/train.py
 # 2038-01-19 03:14:08,000 INFO    train.py.main START
 # 2038-01-19 03:14:08,001 DEBUG   train.py.main INPUTS:
 # 2038-01-19 03:14:08,002 INFO    src.model.io.save_model START
@@ -373,8 +373,8 @@ DATBASE_USER=myusername
 DATABASE_PASSWORD=topsneaky
 ```
 Scripts run via [`just`](https://github.com/casey/just) automatically load these entries as environment variables.
-```
-./just run src/script.py
+```bash
+just run src/script.py
 ```
 In your code you can access these screts like this:
 ```python
