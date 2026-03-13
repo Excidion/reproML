@@ -8,21 +8,16 @@
 
 A toolset for collaborative development and reproducible results in data science and machine learning projects.
 
-## Prerequisites
+## Initialize a new project
 Make sure you have `uv` [installed](https://docs.astral.sh/uv/getting-started/installation/).
-For example via pip:
-```
-pip install uv
-```
+For exmaple via `pip install uv`.
 
-## Usage
 You can initialize a project from the command line.
-Just replace `my_new_project` with the name of the folder that should be created for the project.
 ```
-uvx copier copy --trust gh:Excidion/reproML my_new_project
+uvx copier copy --trust gh:Excidion/reproML <new_project_directory>
 ```
 You wil then be guided through a short questionaire.
-Depending on your choices, it will generate a structure that looks something like this:
+Depending on your choices, it will generate a structure that looks something like this.
 ```
 ├── data               <- All data files belong into one of this folders subfolder
 │   ├── raw            <- The original, unedited data dump
@@ -57,3 +52,4 @@ Depending on your choices, it will generate a structure that looks something lik
 │
 └── README.md          <- The top-level README for developers using this project.
 ```
+For details check out the [documentation](https://excidion.github.io/reproML/structure/).
