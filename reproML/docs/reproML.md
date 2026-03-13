@@ -10,24 +10,19 @@ A toolset for collaborative development and reproducible results in data science
 
 **This documentation is itself a version of the documentation you would get when using this template.**
 
-## Prerequisites
-Make sure you have `uv` [installed](https://docs.astral.sh/uv/getting-started/installation/).
-For example via pip:
-```
-pip install uv
-```
+## Initialize a new project
+Make sure you have `uv` [installed](https://docs.astral.sh/uv/getting-started/installation/), for example via `pip install uv`.
 
-## Usage
 You can initialize a project from the command line.
-Just replace `my_new_project` with the name of the folder that should be created for the project.
 ```
-uvx copier copy --trust gh:Excidion/reproML my_new_project
+uvx copier copy --trust gh:Excidion/reproML <new_project_directory>
 ```
+You wil then be guided through a short questionaire.
 This will generate a structure that looks - depending on your answers - something like [this](structure.md#directory-structure).
 
 
-### Upgrading and changing settings
-If you want to upgrade to the newest version of the template or change any of the settings given at generation, simply run:
+## Upgrading and changing settings
+If you want to upgrade to the newest version of the template or change any of the settings given at initialization, simply run:
 ```
 uvx copier update --trust
 ```
