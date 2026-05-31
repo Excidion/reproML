@@ -16,6 +16,7 @@ dependencies = [
     "mkdocs-literate-nav>=0.6.1",
     "mkdocs-material>=9.5.35",
     "mkdocstrings[python]>=0.26.1",
+    "rust-just>=1.46.0",
 ]
 
 [dependency-groups]

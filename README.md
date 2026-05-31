@@ -53,6 +53,8 @@ Depending on your choices, it will generate a structure that looks something lik
 │
 ├── pyproject.toml     <- Project configuration and dependencies.
 │
+├── justfile           <- Useful commands
+│
 └── README.md          <- The top-level README for developers using this project.
 ```
 For more details check out the [documentation](https://excidion.github.io/reproML/structure/).

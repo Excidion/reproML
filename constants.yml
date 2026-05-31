@@ -20,14 +20,10 @@ md_project_setup:
     ```
     {%- endif %}
     Navigate to the project directory and install all dependencies:
+    ```bash
+    ./just.sh install
     ```
-    uv sync --all-groups --all-extras
-    ```
-    This command will also create a virtual environment for the project.
-    To make sure that pre-commits are enabled run:
-    ```
-    uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
-    ```
+    This will also enable pre-commit hooks.
     {%- if use_dvc %}
     And make sure that you have all the necessary data available.
     ```

@@ -8,7 +8,3 @@ def main():
     model = load_model("model")
     print(model.__class__.__name__)
     # TODO implement prediction
-
-
-if __name__ == "__main__":
-    main()

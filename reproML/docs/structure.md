@@ -134,6 +134,8 @@ This is your first overview how to find your way around this project.
 ├── pyproject.toml     <- Project configuration and dependencies.
 ├── uv.lock            <- Full dependency list. Managed by uv, do not touch.
 │
+├── justfile           <- Useful commands
+│
 └── README.md          <- The top-level README for developers using this project.
 ```
 All folders marked with `<dvc>` are versioned via dvc and so are their subfolders.
@@ -334,17 +336,13 @@ def main():
     model = 42
     save_model(model, "model")
 
-
-if __name__ == "__main__":
-    main()
-
 ```
 Using this will automatically log the start and end of every function you decorate with it.
 Depening on the log level, you'll even be able to trace arguments and return values.
 ```bash
-$ uv run src/model/train.py
-# 2038-01-19 03:14:08,000 INFO    __main__.main START
-# 2038-01-19 03:14:08,001 DEBUG   __main__.main INPUTS:
+just run src/model/train.py
+# 2038-01-19 03:14:08,000 INFO    train.py.main START
+# 2038-01-19 03:14:08,001 DEBUG   train.py.main INPUTS:
 # 2038-01-19 03:14:08,002 INFO    src.model.io.save_model START
 # 2038-01-19 03:14:08,003 DEBUG   src.model.io.save_model INPUTS: model=42, model_name='model'
 # 2038-01-19 03:14:08,004 INFO    src.model.io.get_path START
@@ -353,8 +351,8 @@ $ uv run src/model/train.py
 # 2038-01-19 03:14:08,007 DEBUG   src.model.io.get_path OUTPUT: 'models/model.cldpkl'
 # 2038-01-19 03:14:08,008 INFO    src.model.io.save_model END
 # 2038-01-19 03:14:08,009 DEBUG   src.model.io.save_model OUTPUT: None
-# 2038-01-19 03:14:08,010 INFO    __main__.main END
-# 2038-01-19 03:14:08,011 DEBUG   __main__.main OUTPUT: None
+# 2038-01-19 03:14:08,010 INFO    train.py.main END
+# 2038-01-19 03:14:08,011 DEBUG   train.py.main OUTPUT: None
 ```
 Forcing yourself to only log via decorators can have some positive side effects:
 If you feel like you would like to add some logging within a function, this can be an indicator that the code block in question is a candidate to be refactored into a separate function.
@@ -368,23 +366,26 @@ All of these parameters should be handed to the code via environment variables.
 
 > A litmus test for whether an app has all config correctly factored out of the code is whether the codebase could be made open source at any moment, without compromising any credentials.[^6]
 
-That is why this template comes with [`python-dotenv`](https://pypi.org/project/python-dotenv/) pre-installed.
-Simply create a file named `.env` in the project root folder and enter your configration parameters:
+To store your secrets create a file named `.env` in the project root folder and enter your configration parameters:
 ```ini
 DATABASE_URL=postgres://localhost:1337/dbname
 DATBASE_USER=myusername
 DATABASE_PASSWORD=topsneaky
 ```
+Scripts run via [`just`](https://github.com/casey/just) automatically load these entries as environment variables.
+```bash
+just run src/script.py
+```
 In your code you can access these screts like this:
 ```python
+# src/script.py
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 database_url = os.getenv("DATABASE_URL")
 ```
 Thanks to the `.gitignore`, the `.env` file will not get committed into the git repository.
+
+Alternatively you can also use [`python-dotenv`](https://pypi.org/project/python-dotenv/) to load secrets from `.env` files.
 
 ## First steps
 
