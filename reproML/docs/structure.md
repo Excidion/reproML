@@ -136,6 +136,8 @@ This is your first overview how to find your way around this project.
 ├── pyproject.toml     <- Project configuration and dependencies.
 ├── uv.lock            <- Full dependency list. Managed by uv, do not touch.
 │
+├── justfile           <- Useful commands
+│
 └── README.md          <- The top-level README for developers using this project.
 ```
 All folders marked with `<dvc>` are versioned via dvc and so are their subfolders.

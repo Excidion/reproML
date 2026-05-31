@@ -53,6 +53,8 @@ Depending on your choices, it will generate a structure that looks something lik
 │   ├── model          <- Scripts for training and prediction
 │   └── visualization  <- Scripts to create visualizations
 │
+├── justfile           <- Useful commands
+│
 ├── pyproject.toml     <- Project configuration and dependencies.
 │
 └── README.md          <- The top-level README for developers using this project.
