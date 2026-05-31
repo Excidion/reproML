@@ -1,8 +1,7 @@
 # Technical Structure
-This section contains information how the projects files are organized and which tools are used.
-Furthermore it gives directions on how to use both tools and structure.
+This section contains information how the projects files are [organized](#directory-structure), based on the [reproML](https://github.com/Excidion/reproML) copier template.
+Furthermore it gives directions on how to use the [tools](#first-steps).
 
-This project was generated from the [reproML](https://github.com/Excidion/reproML) copier template.
 
 ??? note "Guiding Principles"
 
@@ -105,7 +104,6 @@ This is your first overview how to find your way around this project.
 │   ├── model.md       <- Document modeling from data to ML.
 │   ├── ethics.md      <- Ethics checklist (optional)
 │   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
-│   ├── code/          <- Automatically generated code documentation
 │   └── structure.md   <- Document tools and technical organization. You are here.
 │
 ├── models <dvc>       <- Trained and serialized models and other artifacts

@@ -8,22 +8,18 @@
 
 A toolset for collaborative development and reproducible results in data science and machine learning projects.
 
-## Prerequisites
-Make sure you have `uv` [installed](https://docs.astral.sh/uv/getting-started/installation/).
-For example via pip:
-```
-pip install uv
-```
+## Initialize a new project
+Make sure you have `uv` [installed](https://docs.astral.sh/uv/getting-started/installation/), for example via `pip install uv`.
 
-## Usage
 You can initialize a project from the command line.
-Just replace `my_new_project` with the name of the folder that should be created for the project.
 ```
-uvx copier copy --trust gh:Excidion/reproML my_new_project
+uvx copier copy --trust gh:Excidion/reproML <new_project_directory>
 ```
 You wil then be guided through a short questionaire.
-Depending on your choices, it will generate a structure that looks something like this:
+Depending on your choices, it will generate a structure that looks something like this.
 ```
+<new_project_directory>
+│
 ├── data               <- All data files belong into one of this folders subfolder
 │   ├── raw            <- The original, unedited data dump
 │   ├── interim        <- Intermediate data that has been or is being transformed
@@ -33,8 +29,8 @@ Depending on your choices, it will generate a structure that looks something lik
 │   ├── index.md       <- Landing page, describe the project and team.
 │   ├── context.md     <- Document context and goals.
 │   ├── model.md       <- Document modeling from data to ML.
+│   ├── ethics.md      <- Ethics checklist (optional)
 │   ├── notebooks/     <- Your most polished notebooks, integrated into the docs
-│   ├── code/          <- Automatically generated code documentation
 │   └── structure.md   <- Document tools and technical organization.
 │
 ├── models             <- Trained and serialized models and other artifacts
@@ -53,9 +49,19 @@ Depending on your choices, it will generate a structure that looks something lik
 │   ├── model          <- Scripts for training and prediction
 │   └── visualization  <- Scripts to create visualizations
 │
-├── justfile           <- Useful commands
+├── .pre-commit-config.yaml <- Automated quality checks
 │
 ├── pyproject.toml     <- Project configuration and dependencies.
 │
+├── justfile           <- Useful commands
+│
 └── README.md          <- The top-level README for developers using this project.
+```
+For more details check out the [documentation](https://excidion.github.io/reproML/structure/).
+
+
+## Upgrading and changing settings
+If you want to upgrade to the newest version of the template or change any of the settings given at initialization, simply run:
+```
+uvx copier update --trust
 ```
