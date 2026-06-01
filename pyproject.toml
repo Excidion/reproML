@@ -14,9 +14,9 @@ dependencies = [
     "mkdocs-api-autonav>=0.4.0",
     "mkdocs-jupyter>=0.25.0",
     "mkdocs-literate-nav>=0.6.1",
-    "mkdocs-material>=9.5.35",
-    "mkdocstrings[python]>=0.26.1",
+    "mkdocstrings[python]>=1.0.0",
     "rust-just>=1.46.0",
+    "zensical>=0.0.43",
 ]
 
 [dependency-groups]
