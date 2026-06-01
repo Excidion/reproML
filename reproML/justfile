@@ -20,4 +20,5 @@ check:
 # starts the documentation server
 docs:
   -uv run interrogate
+  -uv run pydeps src
   -uv run mkdocs serve
