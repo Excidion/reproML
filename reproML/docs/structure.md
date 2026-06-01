@@ -267,8 +267,8 @@ Therefore one should be striving to produce computations which can be executed a
 
 
 #### Modeling pipelines are directed acyclic graphs
-> The best way to ensure reproducibility is to treat your [modeling] pipeline as a directed acyclic graph ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)).
-> This means each step of your [pipeline] is a node in a directed graph with no loops.
+> The best way to ensure reproducibility is to treat your modeling pipeline as a directed acyclic graph ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)).
+> This means each step of your pipeline is a node in a directed graph with no loops.
 > You can run through the graph forwards to recreate any analysis output, or you can trace backwards from an output to examine the combination of code and data that created it.[^1]
 
 The code you write should move the raw data through a pipeline to your final outputs.

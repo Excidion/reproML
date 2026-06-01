@@ -20,7 +20,7 @@ __pycache__/
 *.swp
 *.swo
 
-# mkdocs build artifacts
+# zensical build artifacts
 # default
 site/
 # GitLab
