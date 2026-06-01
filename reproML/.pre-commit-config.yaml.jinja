@@ -69,6 +69,14 @@ repos:
     types: [file, python]
     stages:
     - pre-commit
+  - id: pydeps
+    name: pydeps
+    entry: uv run pydeps src
+    language: python
+    files: src
+    pass_filenames: false
+    stages:
+    - pre-commit
 {%- if use_dvc %}
   - id: dvc-pre-commit
     name: DVC pre-commit
