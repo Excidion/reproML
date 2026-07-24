@@ -134,7 +134,7 @@ _tasks:
     when: "{{ remote_location != '' and _copier_operation == 'update' }}"
 
   # extra documentation
-  - command: "uv run --with deon deon -o docs/ethics.md"
+  - command: "uvx deon -o docs/ethics.md"
     when: "{{ ethics_checklist and _copier_operation != 'update' }}"
 
   # initial commit
