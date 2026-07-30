@@ -118,7 +118,7 @@ _tasks:
 
   - command: "git remote add origin {{repo_url}}"
     when: "{{ repo_url != '' and _copier_operation != 'update' }}"
-  - command: "git remote set-url origin {{repo_url}}"
+  - command: "uv run {{ _copier_conf.src_path }}/scripts/set_remote_url.py \"{{repo_url}}\""
     when: "{{ repo_url != '' and _copier_operation == 'update' }}"
 
   # setup environment
