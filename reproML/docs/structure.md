@@ -160,7 +160,7 @@ Becasue every part of quality assurance that can be automated, should be.
 > - Write The Docs[^3] Community's ["current"](https://www.writethedocs.org/guide/writing/docs-principles/#current)-principle
 
 Having no documentation slows you down.
-Having documentation that is wrong leads might lead you onto the wrong path, which is worse.
+Incorrect documentation might lead you onto a wrong path, which is worse.
 
 > "Store sources as close as possible to the code which they document."
 > - Write The Docs[^3] Community's ["nearby"](https://www.writethedocs.org/guide/writing/docs-principles/#nearby)-principle
