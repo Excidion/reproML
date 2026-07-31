@@ -15,8 +15,8 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
-          #- macos-latest maybe activate later
-          #- windows-latest "Write test config" fails
+          - macos-latest
+          - windows-latest
         python_version:
           - "3.10"
           - "3.11"
@@ -49,13 +49,13 @@ jobs:
           vars: ${{ toJSON(matrix) }}
           prefix: MATRIX_
 
-      - name: Write test config
-        run: |
-            envsubst < "ctt.toml.template" > "ctt.toml"
-            cat ctt.toml
-
       - name: Install uv
         uses: astral-sh/setup-uv@v7
+
+      - name: Write test config
+        run: |
+            uv run scripts/substitute_env.py ctt.toml.template ctt.toml
+            cat ctt.toml
 
       - name: Install dependencies
         run: uv sync --frozen --only-group test

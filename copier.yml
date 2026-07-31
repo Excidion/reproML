@@ -109,13 +109,13 @@ _tasks:
   - command: "git init"
     when: "{{ _copier_operation != 'update' }}"
 
-  - command: "git config user.name {{author}}"
+  - command: "git config user.name \"{{author}}\""
     when: "{{ git_config and _copier_operation != 'update' }}"
 
-  - command: "git config user.email {{author_email}}"
+  - command: "git config user.email \"{{author_email}}\""
     when: "{{ git_config and _copier_operation != 'update' }}"
 
-  - command: "git remote add origin {{repo_url}}"
+  - command: "git remote add origin \"{{repo_url}}\""
     when: "{{ repo_url != '' and _copier_operation != 'update' }}"
   - command: "uv run {{ _copier_conf.src_path }}/scripts/set_remote_url.py \"{{repo_url}}\""
     when: "{{ repo_url != '' and _copier_operation == 'update' }}"
@@ -127,9 +127,9 @@ _tasks:
     when: "{{ _copier_operation != 'update' }}"
 
   # setup dvc
-  - command: "uv run dvc remote add -d remote0 {{remote_location}}"
+  - command: "uv run dvc remote add -d remote0 \"{{remote_location}}\""
     when: "{{ remote_location != '' and _copier_operation != 'update' }}"
-  - command: "uv run dvc remote modify remote0 url {{remote_location}}"
+  - command: "uv run dvc remote modify remote0 url \"{{remote_location}}\""
     when: "{{ remote_location != '' and _copier_operation == 'update' }}"
 
   # extra documentation
@@ -143,7 +143,7 @@ _tasks:
   - command: "git add ."
     when: "{{ _copier_operation != 'update' }}"
 
-  - command: "git commit -m 'Init from template: github.com/Excidion/reproML'"
+  - command: "git commit -m \"Init from template: github.com/Excidion/reproML\""
     when: "{{ _copier_operation != 'update' }}"
 
 
