@@ -1,0 +1,1755 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../code/src/visualization/plot_metrics/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+    
+    
+      
+        <title>Technical Structure - reproML</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#technical-structure" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="reproML" class="md-header__button md-logo" aria-label="reproML" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            reproML
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Technical Structure
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Excidion/reproML/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Excidion/reproML
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../reproML/" class="md-tabs__link">
+        
+  
+    
+  
+  reproML - Example Project
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../context/" class="md-tabs__link">
+        
+  
+    
+  
+  Context
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../notebooks/" class="md-tabs__link">
+          
+  
+    
+  
+  Analyses
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../model/" class="md-tabs__link">
+        
+  
+    
+  
+  Model
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../code/src/" class="md-tabs__link">
+          
+  
+    
+  
+  Source Code
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Technical Structure
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="reproML" class="md-nav__button md-logo" aria-label="reproML" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    reproML
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Excidion/reproML/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Excidion/reproML
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reproML/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    reproML - Example Project
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../notebooks/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Analyses
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Analyses
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/Data%20Quality%20Review/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data Quality Review
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Source Code
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Source Code
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../code/src/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    src
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            src
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../code/src/data/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    data
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/src/data/io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    io
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/src/data/make_dataset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    make_dataset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/src/features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/src/log/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    log
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../code/src/model/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    model
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_5" id="__nav_5_1_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            model
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/src/model/io/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    io
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/src/model/predict/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    predict
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/src/model/train/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    train
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../code/src/visualization/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    visualization
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_6" id="__nav_5_1_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_6">
+            <span class="md-nav__icon md-icon"></span>
+            visualization
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../code/src/visualization/plot_metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    plot_metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Technical Structure
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Technical Structure
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#directory-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directory structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opinions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Opinions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Opinions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automate-as-many-qualitiy-checks-as-possible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automate as many qualitiy checks as possible
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-should-be-close-to-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation should be close to code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-styles-are-not-worth-fighting-over" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code styles are not worth fighting over
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-data-should-be-immutable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raw data should be immutable
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#notebooks-are-not-considered-delivered-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notebooks are not considered delivered results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-science-has-to-be-reproducible" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Science has to be reproducible
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Science has to be reproducible">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modeling-pipelines-are-directed-acyclic-graphs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modeling pipelines are directed acyclic graphs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-reproducible-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build reproducible environments
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version-control-everything-that-you-reasonably-can" class="md-nav__link">
+    <span class="md-ellipsis">
+      Version control everything (that you reasonably can)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logging-should-not-obscure-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging should not obscure logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-configurations-in-version-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      No configurations in version control
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      First steps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="First steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-a-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installing a package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a diagram
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#versioning-a-dataset-with-dvc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Versioning a dataset with dvc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushing-your-first-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pushing your first commit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="technical-structure">Technical Structure</h1>
+<p>This section contains information how the projects files are <a href="#directory-structure">organized</a>, based on the <a href="https://github.com/Excidion/reproML">reproML</a> copier template.
+Furthermore it gives directions on how to use the <a href="#first-steps">tools</a>.</p>
+<details class="note">
+<summary>Guiding Principles</summary>
+<ul>
+<li>
+<p><strong>Reproducibility</strong>:
+You should always be able to reproduce identical results just based on the same raw data and source code.
+Ideally you will never have to hear these words:
+"Well, it worked on my machine."</p>
+</li>
+<li>
+<p><strong>Adaptability</strong>:
+This structure will help you get a head-start when your are starting a project with just yourself, your laptop and the best of intentions.
+But it will also make things easier when that project grows into a team with a cloud budget and great ambitions.
+In the same spirit, this structure is not intended to be rigid.
+The intention is to provide a dependable foundation for your next project to build from.</p>
+</li>
+<li>
+<p><strong>FOSS first</strong>:
+This project is built on top of free and open source software and this is by explicit choice.
+New Projects should not be locked into a specific software vendor by default.
+If your project uses proprietary software, go ahead - but I did not want to cherry-pick a specific vendor for everyone.</p>
+</li>
+</ul>
+</details>
+<details class="info">
+<summary>Acknowledgements &amp; Inspirations</summary>
+<p>The main influnces when defining this structure were the following:</p>
+<ul>
+<li>
+<p><strong>drivendata</strong><sup id="fnref7:1"><a class="footnote-ref" href="#fn:1">1</a></sup> for the starting point of this structure and many good opinions.
+You will find many direct and indirect quotes on this page.</p>
+</li>
+<li>
+<p><strong>writethedocs</strong><sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">2</a></sup> for opinions on documentation and tooling</p>
+</li>
+<li>
+<p><strong>black</strong><sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">3</a></sup> for opinions on code formatting</p>
+</li>
+<li>
+<p><strong>sighalt</strong><sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">4</a></sup> for his opinion on logging</p>
+</li>
+<li>
+<p><strong>The Twelve-Factor Manifesto</strong><sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">5</a></sup> for opinions on configs</p>
+</li>
+</ul>
+<p>I have referenced the relevant author(s) and/or source of inspiration wherever relevant and with a link to the original content in the footnote or text.</p>
+</details>
+<details class="question">
+<summary>Why use this project structure?</summary>
+<p>Directly quoted from drivendata<sup id="fnref6:1"><a class="footnote-ref" href="#fn:1">1</a></sup>:</p>
+<blockquote>
+<p>When we think about data analysis, we often think just about the resulting reports, insights, or visualizations.
+While these end products are generally the main event, it's easy to focus on making the products look nice and ignore the quality of the code that generates them.
+Because these end products are created programmatically, code quality is still important!
+And we're not talking about bikeshedding the indentation aesthetics or pedantic formatting standards — ultimately, data science code quality is about correctness and reproducibility.</p>
+<p>It's no secret that good analyses are often the result of very scattershot and serendipitous explorations.
+Tentative experiments and rapidly testing approaches that might not work out are all part of the process for getting to the good stuff, and there is no magic bullet to turn data exploration into a simple, linear progression.</p>
+<p>That being said, once started it is not a process that lends itself to thinking carefully about the structure of your code or project layout, so it's best to start with a clean, logical structure and stick to it throughout.
+We think it's a pretty big win all around to use a fairly standardized setup like this one.
+Here's why:</p>
+<p><strong>Other people will thank you</strong></p>
+<p>A well-defined, standard project structure means that a newcomer can begin to understand an analysis without digging in to extensive documentation. It also means that they don't necessarily have to read 100% of the code before knowing where to look for very specific things.</p>
+<p>Well organized code tends to be self-documenting in that the organization itself provides context for your code without much overhead. People will thank you for this because they can:</p>
+<ul>
+<li>Collaborate more easily with you on this analysis</li>
+<li>Learn from your analysis about the process and the domain</li>
+<li>Feel confident in the conclusions at which the analysis arrives</li>
+</ul>
+<p><strong>You will thank you</strong></p>
+<p>Ever tried to reproduce an analysis that you did a few months ago or even a few years ago?
+You may have written the code, but it's now impossible to decipher whether you should use <code>make_figures.py.old</code>, <code>make_figures_working.py</code> or <code>new_make_figures01.py</code> to get things done.
+Here are some questions we've learned to ask with a sense of existential dread:</p>
+<ul>
+<li>Are we supposed to go in and join the column X to the data before we get started or did that come from one of the notebooks?</li>
+<li>Come to think of it, which notebook do we have to run first before running the plotting code: was it "process data" or "clean data"?</li>
+<li>Where did the shapefiles get downloaded from for the geographic plots?</li>
+</ul>
+<p>These types of questions are painful and are symptoms of a disorganized project.
+A good project structure encourages practices that make it easier to come back to old work, for example separation of concerns, abstracting analysis as a DAG, and engineering best practices like version control.</p>
+</blockquote>
+</details>
+<h2 id="directory-structure">Directory structure</h2>
+<p>This is your first overview how to find your way around this project.
+<div class="highlight"><pre><span></span><code>├── .dvc               &lt;- Metadata managed by dvc, do not touch.
+│
+├── data &lt;dvc&gt;         &lt;- All data files belong into one of this folders subfolder
+│   ├── raw            &lt;- The original, unedited data dump
+│   ├── interim        &lt;- Intermediate data that has been or is being transformed
+│   └── processed      &lt;- The data sets used for modeling
+│
+├── docs               &lt;- Project documentation.
+│   ├── helper         &lt;- Helper files for docs deployment. You can ignore these.
+│   ├── index.md       &lt;- Landing page, describe the project and team.
+│   ├── context.md     &lt;- Document context and goals.
+│   ├── model.md       &lt;- Document modeling from data to ML.
+│   ├── ethics.md      &lt;- Ethics checklist (optional)
+│   ├── notebooks/     &lt;- Your most polished notebooks, integrated into the docs
+│   └── structure.md   &lt;- Document tools and technical organization. You are here.
+│
+├── models &lt;dvc&gt;       &lt;- Trained and serialized models and other artifacts
+│   └── logs           &lt;- Logfiles from training and prediction
+│
+├── notebooks          &lt;- Jupyter notebooks.
+│
+├── references         &lt;- Data dictionaries, manuals, and helper materials.
+│
+├── reports &lt;dvc&gt;      &lt;- Generated analysis as HTML, PDF, etc.
+│   └── figures        &lt;- Generated graphics and figures to be used in reports
+│
+├── src                &lt;- Source code for use in this project.
+│   ├── data           &lt;- Scripts to download, process or generate data
+│   ├── features       &lt;- Functions to turn data into features
+│   ├── model          &lt;- Scripts for training and prediction
+│   └── visualization  &lt;- Scripts to create visualizations
+│
+├── .pre-commit-config.yaml &lt;- Automated quality checks
+│
+├── .python-version    &lt;- Exactly what it says, do not touch.
+│
+├── .github/workflows  &lt;- CICD code for GitHub (optional)
+├── .gitlab-ci.yml     &lt;- CICD code for GitLab (optional)
+│
+├── .reproML.yml       &lt;- Settings given at project init, do not touch.
+│
+├── pyproject.toml     &lt;- Project configuration and dependencies.
+├── uv.lock            &lt;- Full dependency list. Managed by uv, do not touch.
+│
+├── justfile           &lt;- Useful commands
+│
+└── README.md          &lt;- The top-level README for developers using this project.
+</code></pre></div>
+All folders marked with <code>&lt;dvc&gt;</code> are versioned via dvc and so are their subfolders.</p>
+<h2 id="opinions">Opinions</h2>
+<p>There are some opinions and assumptions implicit in the project structure.
+These are derived from experience gained with past data science projects.
+Some of the opinions are about workflows, and some of the opinions are about tools that make things easier.
+The following section contains some of the thoughts which this project is built upon.
+If you care to add your own, please reach out to share them.</p>
+<h3 id="automate-as-many-qualitiy-checks-as-possible">Automate as many qualitiy checks as possible</h3>
+<p>Use <a href="https://pre-commit.com/">pre-commit</a> hooks to automatically run checks before comitting changes.
+Becasue every part of quality assurance that can be automated, should be.</p>
+<h3 id="documentation-should-be-close-to-code">Documentation should be close to code</h3>
+<blockquote>
+<p>"Consider incorrect documentation to be worse than missing documentation."
+- Write The Docs<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">2</a></sup> Community's <a href="https://www.writethedocs.org/guide/writing/docs-principles/#current">"current"</a>-principle</p>
+</blockquote>
+<p>Having no documentation slows you down.
+Incorrect documentation might lead you onto a wrong path, which is worse.</p>
+<blockquote>
+<p>"Store sources as close as possible to the code which they document."
+- Write The Docs<sup id="fnref:3"><a class="footnote-ref" href="#fn:3">2</a></sup> Community's <a href="https://www.writethedocs.org/guide/writing/docs-principles/#nearby">"nearby"</a>-principle</p>
+</blockquote>
+<p>If documenting takes too much effort, your documentation is doomed to be out of date.
+These observations lead to three decisions that keep documentation close to the code and easy to maintain.</p>
+<ul>
+<li>
+<p>Documentation is versioned within the repository.</p>
+</li>
+<li>
+<p>Documention is written in simple markdown files so you don't even have to leave your code editor.
+Markdown is rendered to beautiful web pages (like this one) via <a href="https://squidfunk.github.io/mkdocs-material/">mkdocs-material</a>.
+If you are feeling fancy you can even define
+<a href="https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage">diagrams</a>,
+<a href="https://squidfunk.github.io/mkdocs-material/reference/data-tables/#usage">tables</a>,
+and <a href="https://squidfunk.github.io/mkdocs-material/reference/lists/#using-task-lists">checklists</a>
+inside markdown.</p>
+</li>
+<li>
+<p>Source code documentation is automatically generated from <a href="https://peps.python.org/pep-0257/#what-is-a-docstring">docstrings</a> with <a href="https://mkdocstrings.github.io/python/">mkdocstrings-python</a> and <a href="https://github.com/tlambert03/mkdocs-api-autonav">mkdocs-api-autonav</a>.
+A pre-commit hook using <a href="https://interrogate.readthedocs.io/">interrogate</a> checks if <a href="https://www.writethedocs.org/guide/writing/docs-principles/#complete">all</a> docstrings exist.
+Another pre-commit hook using <a href="https://github.com/jsh9/pydoclint">pydoclint</a> ensures that the docstring fits the actual function definition.</p>
+</li>
+</ul>
+<h3 id="code-styles-are-not-worth-fighting-over">Code styles are not worth fighting over</h3>
+<p>Everybody likes debating about code aesthetics or pedantic standards, but you should</p>
+<blockquote>
+<p>"agree to cede control over (...) formatting" and
+"save time and mental energy for more important matters". - black<sup id="fnref:4"><a class="footnote-ref" href="#fn:4">3</a></sup></p>
+</blockquote>
+<p>This is why this template comes with an automatic code formatter (<a href="https://docs.astral.sh/ruff/">ruff</a>) and enforces it via pre-commit hooks.
+Per default, ruff is <a href="https://docs.astral.sh/ruff/formatter/black/">mostly</a> compliant with black and any <a href="https://docs.astral.sh/ruff/rules/">rules</a> can be <a href="https://docs.astral.sh/ruff/configuration/">configured</a> via the <code>pyproject.toml</code>.
+The defaults are great and ensure the diffs for merges and code reviews are as small as possible.</p>
+<p>In the same spirit, just use  the <em>google</em>-style for docstrings.
+It's elegant, but most importantly, it's (the only one) supported by all of <code>mkdocstrings-python</code>, <code>interrogate</code> and <code>pydoclint</code>, which is required for <a href="#documentation-should-be-close-to-code">this</a>.</p>
+<h3 id="raw-data-should-be-immutable">Raw data should be immutable</h3>
+<blockquote>
+<p>Don't ever edit your raw data, especially not manually, and especially not in Excel.
+(...)
+Don't overwrite your raw data.
+Don't save multiple versions of the raw data.<sup id="fnref5:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+</blockquote>
+<p>Treat the data (and its format) as immutable as possible.
+There are multiple good reasons for this:</p>
+<ul>
+<li>
+<p>It is impossible know which artifacts in the raw data that you want to <em>clean</em> right now might later turn out to be relevant information.
+An example could be missing values which hint at an underlying mechanic in the data generation process that you are yet to learn about.
+Even part of the data files metadata could become relevant as part of the analysis.</p>
+</li>
+<li>
+<p>Immutable raw data is a requirement if you want to <a href="#modeling-pipelines-are-directed-acyclic-graphs">treat your modeling pipeline as a DAG</a>.</p>
+</li>
+</ul>
+<details class="tip">
+<summary>Processed and interim data is mutable</summary>
+<p>Data in and after processing is very much mutable.
+The suggestions for immutability apply only to the folder <code>data/raw</code>.
+The contents of folders <code>data/interim</code> and <code>data/processed</code> will change based on how your code prosses the raw data.</p>
+</details>
+<details class="question">
+<summary>What if my data changes over time?</summary>
+<p>Imagine the scenario where you pull your data from an SQL database into <code>data/raw</code>.
+A new download at a later time might change the dataset you get.
+This is can be accounted for in multiple ways, for exmaple:</p>
+<ul>
+<li>If possible, include statements in your SQL query that limit the time window of the downloaded data.</li>
+<li>Version the <code>data/raw</code> folder with <code>dvc</code> and allow changes in raw data to be tracked.</li>
+</ul>
+</details>
+<h3 id="notebooks-are-not-considered-delivered-results">Notebooks are not considered delivered results</h3>
+<blockquote>
+<p>Notebooks (...) are very effective for exploratory data analysis because they enable rapid iteration and visualization of results.
+However, these tools can be less effective for reproducing an analysis.<sup id="fnref4:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+</blockquote>
+<p>Treat notebooks as kind of an explratory <em>playground</em> or a but nothing more.
+They can be great to test ideas, but, because of their shortcomings in reproducibility, should never considered to be delivered software.</p>
+<p>There are two suggestions for using notebooks effectively:</p>
+<ul>
+<li>
+<p>Do not to collaborate directly with others on the same notebook.
+The diffs in git are a nightmare to work with.</p>
+</li>
+<li>
+<p>If you catch yourself writing the same code in multiple notebooks:</p>
+<blockquote>
+<p>Refactor the good parts into source code<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+</blockquote>
+</li>
+</ul>
+<p>Since the project is structured like a Python package you can import your code and use it in notebooks with a cell like the following:
+<div class="highlight"><pre><span></span><code><span class="c1"># always reload modules so that as you change code in src, it gets loaded</span>
+<span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
+<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
+
+<span class="kn">from</span> <span class="nn">src.data</span> <span class="kn">import</span> <span class="n">make_dataset</span>
+</code></pre></div></p>
+<details class="tip">
+<summary>Integrate Notebooks into the documentation</summary>
+<p>Maybe you have one analysis in one of your notebooks that you are really proud of.
+It was used to make a decision within the project or show the status to an important stakeholder.
+You can <em>promote</em> this notebook to be part of the documentation.
+Simply copy it from <code>notebooks/*.ipynb</code> to <code>docs/notebooks/*.ipynb</code>.
+Then it will become rendered as a subpage of <a href="/notebooks/">this</a>.</p>
+</details>
+<h3 id="data-science-has-to-be-reproducible">Data Science has to be reproducible</h3>
+<p>Data Science projects are by nature scientific, so one should try to follow scientific principles where ever possible and feasible.
+Reproducibility or repeatability is a major principle underpinning the scientific method.
+Therefore one should be striving to produce computations which can be executed again with identical results.</p>
+<h4 id="modeling-pipelines-are-directed-acyclic-graphs">Modeling pipelines are directed acyclic graphs</h4>
+<blockquote>
+<p>The best way to ensure reproducibility is to treat your [modeling] pipeline as a directed acyclic graph (<a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">DAG</a>).
+This means each step of your [pipeline] is a node in a directed graph with no loops.
+You can run through the graph forwards to recreate any analysis output, or you can trace backwards from an output to examine the combination of code and data that created it.<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+</blockquote>
+<p>The code you write should move the raw data through a pipeline to your final outputs.
+You should not have to run all of the steps every time you want to make a new figure, but anyone should be able to reproduce the final products with only the code in <code>src</code> and the data in <code>data/raw</code>.
+This approach requires that you <a href="#raw-data-should-be-immutable">treat raw data as immutable</a>.
+Treating your analysis as a DAG is one of those concepts almost everyone in the data universe seems to agree on, so it should also help you integrate with their<sup id="fnref:7"><a class="footnote-ref" href="#fn:7">6</a></sup> tools and platforms if you desire to do so.</p>
+<h4 id="build-reproducible-environments">Build reproducible environments</h4>
+<blockquote>
+<p>The first step in reproducing an analysis is always replicating the computational environment it was run in.
+You need the same tools, the same libraries, and the same versions to make everything play nicely together.<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup></p>
+</blockquote>
+<p>For this, <a href="https://docs.astral.sh/uv/">uv</a> handles your dependencies as well as the setup your environments.
+This has a couple of advantages over the classic <code>requirements.txt</code> + <code>python -m venv</code>:</p>
+<ul>
+<li>
+<p><strong>Manage Python installations and environments</strong>:
+Because different projects will require different versions of the same packages or even different python versions it's best practice to use (virtual) <a href="https://docs.astral.sh/uv/pip/environments/">environments</a>. Furthermore uv can also manage different <a href="https://docs.astral.sh/uv/concepts/python-versions/">python versions</a> for you.</p>
+</li>
+<li>
+<p><strong>Resolve dependencies automatically</strong>:
+If one of your used packages requires <code>numpy&gt;1.10</code> and another <code>numpy&lt;1.24</code> uv can figure out a version of numpy that satisfies both.</p>
+</li>
+<li>
+<p><strong>Less headache when collaborating over different operating systems</strong>:
+Everyone on a Mac who ever got at <code>pip freeze &gt; requirements.txt</code> from a colleague using Windows will understand.
+This also comes in handy if you want to deploy your code to the cloud.</p>
+</li>
+<li>
+<p><strong>Differentiate between different groups of dependencies</strong>:
+Because your deployment in the cloud probably does not need a code formatter.
+For more details see uv's <a href="https://docs.astral.sh/uv/concepts/projects/dependencies/#dependency-groups">dependency groups</a>.</p>
+</li>
+</ul>
+<h4 id="version-control-everything-that-you-reasonably-can">Version control everything (that you reasonably can)</h4>
+<p>Some challenges arise when trying to combine the advandtages of version control with the experimental nature of data science projects.
+To solve the most common ones this template uses <a href="https://dvc.org/">dvc</a> to:</p>
+<ul>
+<li>
+<p><a href="https://dvc.org/doc/use-cases/versioning-data-and-models#versioning-data-and-models">Version artifacts</a> (datasets, models, plots):
+Track revisions of large files efficiently together with the code that produced them, directly integrated into the git workflow.
+Automatically backup and share these artifacts in <a href="https://dvc.org/doc/command-reference/remote/add#supported-storage-types">cloud storage</a> or on your local drive.
+Even if you are not allowed to store datasets (e.g. when handling sensitive data), keeping just models versioned can help.</p>
+</li>
+<li>
+<p><a href="https://dvc.org/doc/user-guide/pipelines/defining-pipelines">Define reproducible pipelines</a>:
+Pipelines represent data workflows as <a href="#modeling-pipelines-are-directed-acyclic-graphs">DAGs</a> that can be reproduced reliably.
+Workflows can be defined in a <a href="https://doc.dvc.org/user-guide/project-structure/dvcyaml-files"><code>dvc.yaml</code></a> file.
+In combination with the aforementioned versioning you will can have full transparency which version of code produced which version of an artifact.</p>
+</li>
+<li>
+<p><a href="https://dvc.org/doc/use-cases/experiment-tracking">Track experiments</a>:
+Quickly iterate on experiment ideas, with automatic bookkeeping of data dependencies, code, parameters, artifacts, models, and metrics.
+Compare metrics and plots between experiment directly within <a href="https://marketplace.visualstudio.com/items?itemName=Iterative.dvc">VS Code</a>.</p>
+</li>
+</ul>
+<h3 id="logging-should-not-obscure-logic">Logging should not obscure logic<sup id="fnref:5"><a class="footnote-ref" href="#fn:5">4</a></sup></h3>
+<p>Logging is not part of the logic of the code, but must live near it for obvious reasons.
+Typically this results in logging statements before and after each block (or even line) of code, which does not help readability.
+This is why this template uses the <a href="https://github.com/sighalt/logdecorator">logdecorator</a> package to implement a custom <a href="../code/src/log/">log</a> dectorator which can be used like this:
+(Also  all the imported functions have been decorated with <code>@log</code>.)
+<div class="highlight"><pre><span></span><code><span class="c1"># src/model/train.py</span>
+<span class="kn">from</span> <span class="nn">src.log</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="kn">from</span> <span class="nn">src.model.io</span> <span class="kn">import</span> <span class="n">save_model</span>
+
+
+<span class="nd">@log</span>
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Builds a model and saves it to the file system.&quot;&quot;&quot;</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="mi">42</span>
+    <span class="n">save_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">)</span>
+</code></pre></div>
+Using this will automatically log the start and end of every function you decorate with it.
+Depening on the log level, you'll even be able to trace arguments and return values.
+<div class="highlight"><pre><span></span><code>just<span class="w"> </span>run<span class="w"> </span>src/model/train.py
+<span class="c1"># 2038-01-19 03:14:08,000 INFO    train.py.main START</span>
+<span class="c1"># 2038-01-19 03:14:08,001 DEBUG   train.py.main INPUTS:</span>
+<span class="c1"># 2038-01-19 03:14:08,002 INFO    src.model.io.save_model START</span>
+<span class="c1"># 2038-01-19 03:14:08,003 DEBUG   src.model.io.save_model INPUTS: model=42, model_name=&#39;model&#39;</span>
+<span class="c1"># 2038-01-19 03:14:08,004 INFO    src.model.io.get_path START</span>
+<span class="c1"># 2038-01-19 03:14:08,005 DEBUG   src.model.io.get_path INPUTS: model_name=&#39;model&#39;</span>
+<span class="c1"># 2038-01-19 03:14:08,006 INFO    src.model.io.get_path END</span>
+<span class="c1"># 2038-01-19 03:14:08,007 DEBUG   src.model.io.get_path OUTPUT: &#39;models/model.cldpkl&#39;</span>
+<span class="c1"># 2038-01-19 03:14:08,008 INFO    src.model.io.save_model END</span>
+<span class="c1"># 2038-01-19 03:14:08,009 DEBUG   src.model.io.save_model OUTPUT: None</span>
+<span class="c1"># 2038-01-19 03:14:08,010 INFO    train.py.main END</span>
+<span class="c1"># 2038-01-19 03:14:08,011 DEBUG   train.py.main OUTPUT: None</span>
+</code></pre></div>
+Forcing yourself to only log via decorators can have some positive side effects:
+If you feel like you would like to add some logging within a function, this can be an indicator that the code block in question is a candidate to be refactored into a separate function.</p>
+<p>See <a href="https://www.roessler.dev/remove-visual-noise-of-logging-code-by-using-python-decorators.html">here</a> for more detailed illustration and examples.</p>
+<h3 id="no-configurations-in-version-control">No configurations in version control</h3>
+<p>Ideally none of the projects configuration - hostnames of databases and APIs or secrets like tokens and passwords - should be in the git repository.
+All of these parameters should be handed to the code via environment variables.</p>
+<blockquote>
+<p>A litmus test for whether an app has all config correctly factored out of the code is whether the codebase could be made open source at any moment, without compromising any credentials.<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">5</a></sup></p>
+</blockquote>
+<p>To store your secrets create a file named <code>.env</code> in the project root folder and enter your configration parameters:
+<div class="highlight"><pre><span></span><code><span class="na">DATABASE_URL</span><span class="o">=</span><span class="s">postgres://localhost:1337/dbname</span>
+<span class="na">DATBASE_USER</span><span class="o">=</span><span class="s">myusername</span>
+<span class="na">DATABASE_PASSWORD</span><span class="o">=</span><span class="s">topsneaky</span>
+</code></pre></div>
+Scripts run via <a href="https://github.com/casey/just"><code>just</code></a> automatically load these entries as environment variables.
+<div class="highlight"><pre><span></span><code>just<span class="w"> </span>run<span class="w"> </span>src/script.py
+</code></pre></div>
+In your code you can access these screts like this:
+<div class="highlight"><pre><span></span><code><span class="c1"># src/script.py</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">database_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;DATABASE_URL&quot;</span><span class="p">)</span>
+</code></pre></div>
+Thanks to the <code>.gitignore</code>, the <code>.env</code> file will not get committed into the git repository.</p>
+<p>Alternatively you can also use <a href="https://pypi.org/project/python-dotenv/"><code>python-dotenv</code></a> to load secrets from <code>.env</code> files.</p>
+<h2 id="first-steps">First steps</h2>
+<h3 id="installing-a-package">Installing a package</h3>
+<p>You can <a href="https://docs.astral.sh/uv/concepts/projects/#managing-dependencies">install packages via uv</a>:
+<div class="highlight"><pre><span></span><code>uv add &lt;package-name&gt;
+</code></pre></div>
+The packages is then installed into the virtual envrionment and added to the <code>pyproject.toml</code> and <code>uv.lock</code>.
+Commit these changes so everyone else that uses your code will have the same dependencies installed.</p>
+<h3 id="creating-a-diagram">Creating a diagram</h3>
+<p>You can design flowcharts in you markdown files.
+You can find some examples <a href="https://squidfunk.github.io/mkdocs-material/reference/diagrams/#usage">here</a> and more advanced syntax <a href="https://mermaid.js.org/syntax/flowchart.html">here</a>.</p>
+<h3 id="versioning-a-dataset-with-dvc">Versioning a dataset with dvc</h3>
+<p>Instead of tracking a file (eg. <code>data.csv</code>) directly, you track it's <code>data.csv.dvc</code> file with git.
+To create this file and therefore start tracking the original file with dvc execute:
+<div class="highlight"><pre><span></span><code>dvc add `data.csv`
+</code></pre></div>
+If you change <code>data.csv</code> later can simply add it again with the same command, just like you would do with code file versioned in git.</p>
+<p>You can always check on the status of all your tracked files with
+<div class="highlight"><pre><span></span><code>dvc status
+</code></pre></div>
+If you want to stop tracking a file you can just delete the file and then commit the deletion of the dvc file:
+<div class="highlight"><pre><span></span><code>git rm data.csv.dvc
+</code></pre></div></p>
+<h3 id="pushing-your-first-commit">Pushing your first commit</h3>
+<p>Don't forget to activate all pre-commit hooks,
+<div class="highlight"><pre><span></span><code>uv run pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
+</code></pre></div>
+before you:
+<div class="highlight"><pre><span></span><code>git commit -m &quot;Did the thing.&quot;
+</code></pre></div>
+To make sure the quality checks are actually run.</p>
+<p>When pushing your first commits to the remote you might encounter the following error message:
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push
+<span class="s2">&quot;ERROR: failed to push data to the cloud - config file error: no remote specified&quot;</span>
+</code></pre></div>
+The reason behind this that dvc wants to push your data, just as git pushes your code.
+By default, no remote data storage is configured and therefore dvc complains.</p>
+<p>To add a remote use <a href="https://dvc.org/doc/command-reference/remote/add#remote-add">this command</a>:
+<div class="highlight"><pre><span></span><code>dvc remote add -d &lt;remote name&gt; &lt;remote url&gt;
+</code></pre></div>
+There are a number of <a href="https://dvc.org/doc/command-reference/remote/add#supported-storage-types">remote storage backends</a> available.</p>
+<p>If you don't want to add a remote storage (yet), you can also use <code>git push --no-verify</code> to skip the synchronization.
+But it makes more sense to add a "local remote" as a temporary solution:
+<div class="highlight"><pre><span></span><code>dvc remote add -d local /path/where/you/want/the/data/stored
+</code></pre></div></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Quoted from and inspired by <a href="https://github.com/drivendata/cookiecutter-data-science">drivendata/cookiecutter-data-science</a>, their <a href="https://cookiecutter-data-science.drivendata.org/opinions/">opinions</a> and <a href="https://cookiecutter-data-science.drivendata.org/why/">motivation</a>&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref7:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:3">
+<p>Quoted from <em>Write The Docs</em>' <a href="https://www.writethedocs.org/guide/writing/docs-principles/#documentation-principles">principles</a> and inpsired by their <a href="https://www.writethedocs.org/guide/docs-as-code/">opinions on tooling</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:4">
+<p>Quoted from <a href="https://black.readthedocs.io/en/stable/">psf/black</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+<li id="fn:5">
+<p>Inspired by <a href="https://www.roessler.dev/remove-visual-noise-of-logging-code-by-using-python-decorators.html">sighalt's opinion on logging</a>&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+</li>
+<li id="fn:6">
+<p>Quoted from <a href="https://12factor.net/config">The Twelve-Factor Manifesto</a>&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+</li>
+<li id="fn:7">
+<p>All of <a href="https://doc.dvc.org/command-reference/dag">dvc</a>, <a href="https://www.databricks.com/glossary/dag">databricks</a>, <a href="https://docs.snowflake.com/en/user-guide/tasks-graphs">snowflake</a>, <a href="https://www.getdbt.com/blog/dag-use-cases-and-best-practices">dbt</a>, <a href="https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/dags.html">airflow</a> see data pipelines as <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclic graphs</a>. And probably more.&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/Excidion/reproML" target="_blank" rel="noopener" title="Structure generated by reproML" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.tabs", "navigation.tabs.sticky", "toc.integrate"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../helper/javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
