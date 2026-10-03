@@ -180,7 +180,8 @@ inside markdown.
 
 + Source code documentation is automatically generated from [docstrings](https://peps.python.org/pep-0257/#what-is-a-docstring) with [mkdocstrings-python](https://mkdocstrings.github.io/python/) and [mkdocs-api-autonav](https://github.com/tlambert03/mkdocs-api-autonav).
 A pre-commit hook using [interrogate](https://interrogate.readthedocs.io/) checks if [all](https://www.writethedocs.org/guide/writing/docs-principles/#complete) docstrings exist.
-Another pre-commit hook using [pydoclint](https://github.com/jsh9/pydoclint) ensures that the docstring fits the actual function definition.
+Another pre-commit hook using [pydoclint](https://github.com/jsh9/pydoclint) ensures that the docstring fits the actual function definition (documented arguments, return values and raised exceptions).
+mkdocstrings reads the types for the documentation from the function's [type hints](https://docs.python.org/3/library/typing.html), which [ty](https://docs.astral.sh/ty/) checks for correctness.
 
 
 ### Code styles are not worth fighting over
@@ -188,7 +189,7 @@ Everybody likes debating about code aesthetics or pedantic standards, but you sh
 > "agree to cede control over (...) formatting" and
 > "save time and mental energy for more important matters". - black[^4]
 
-This is why this template comes with an automatic code formatter ([ruff](https://docs.astral.sh/ruff/)) and enforces it via pre-commit hooks.
+This is why this template comes with an automatic code formatter and linter ([ruff](https://docs.astral.sh/ruff/)) as well as a type checker ([ty](https://docs.astral.sh/ty/)) and enforces them via pre-commit hooks.
 Per default, ruff is [mostly](https://docs.astral.sh/ruff/formatter/black/) compliant with black and any [rules](https://docs.astral.sh/ruff/rules/) can be [configured](https://docs.astral.sh/ruff/configuration/) via the `pyproject.toml`.
 The defaults are great and ensure the diffs for merges and code reviews are as small as possible.
 

@@ -20,10 +20,10 @@ def log(callable: Callable) -> Callable:
 
 
     Args:
-        callable (Callable): Function
+        callable: Function
 
     Returns:
-        Callable: Decorated function
+        Decorated function
     """
     if isinstance(callable, FunctionType):
         name = f"{callable.__module__}.{callable.__name__}"
