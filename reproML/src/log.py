@@ -3,6 +3,7 @@ import os
 from collections.abc import Callable
 from inspect import signature
 from types import FunctionType
+from typing import Any, TypeVar
 
 from logdecorator import log_on_end, log_on_start
 
@@ -12,8 +13,10 @@ logging.basicConfig(
     style="{",
 )
 
+F = TypeVar("F", bound=Callable[..., Any])
 
-def log(callable: Callable) -> Callable:
+
+def log(callable: F) -> F:
     """Decorates the function with autmatic logging on start and end.
     With log-level `INFO` start and end times are logged.
     With log-level `DEBUG` arguments and return values are logged additionally.
