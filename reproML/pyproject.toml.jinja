@@ -32,6 +32,13 @@ dev = [
     "ty>=0.0.5",
 ]
 
+# TODO: once Python 3.12 is the minimum version, switch src/log.py to PEP 695 syntax:
+# 1. remove the ignore below
+# 2. run `uv run ruff check --fix --unsafe-fixes`
+# 3. delete the `F = TypeVar(...)` line and `TypeVar` import
+[tool.ruff.lint.per-file-ignores]
+"src/log.py" = ["UP047"]
+
 [tool.interrogate]
 style = "google"
 ignore-init-module = true
