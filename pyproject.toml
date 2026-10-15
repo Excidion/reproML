@@ -7,7 +7,7 @@ authors = [
 ]
 readme = "README.md"
 license = "Apache-2.0"
-requires-python = ">=3.10.9"
+requires-python = ">=3.11"
 dependencies = [
     "interrogate>=1.7.0",
     "logdecorator>=2.5",
